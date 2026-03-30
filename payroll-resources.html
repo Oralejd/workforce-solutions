@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Resources — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 36px 32px 0; }
+    .section:last-of-type { padding-bottom: 40px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
+    .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .section-title { font-size: 15px; font-weight: 700; }
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
+    .resource-card:hover { border-color: #aaa; }
+    .resource-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 3px; }
+    .resource-source { font-size: 11px; color: #999; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-video   { background: #EEEDFE; color: #3C3489; }
+    .badge-article { background: #E6F1FB; color: #0C447C; }
+    .badge-tool    { background: #E1F5EE; color: #085041; }
+    .badge-guide   { background: #FAEEDA; color: #633806; }
+    /* Updates banner */
+    .updates-banner { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 20px 24px; margin-bottom: 0; }
+    .updates-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .updates-list { display: flex; flex-direction: column; gap: 10px; }
+    .update-item { display: flex; align-items: flex-start; gap: 12px; }
+    .update-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .ub-compliance { background: #E1F5EE; color: #0F6E56; }
+    .ub-tax { background: #FAEEDA; color: #633806; }
+    .update-text { font-size: 13px; }
+    .update-text a { color: #0F6E56; font-weight: 700; }
+    .update-text a:hover { text-decoration: underline; }
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+    @media (max-width: 768px) {
+      .resource-grid { grid-template-columns: 1fr; }
+      .section { padding: 28px 20px 0; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="smb-challenges.html" class="nav-link">Challenges for SMBs</a>
+      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
+      <a href="payroll-resources.html" class="nav-link active">Payroll resources</a>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; accountant resources</a>
+    </div>
+    <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">QBO Payroll</div>
+      <h1 class="page-title">Payroll resources</h1>
+      <p class="page-sub">Everything you need to set up, run, and stay compliant with QBO Payroll — from getting started guides to the latest regulatory updates.</p>
+    </div>
+  </div>
+
+  <!-- RECENT UPDATES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">🔔</div>
+      <div class="section-title">Recent updates — stay current</div>
+    </div>
+    <div class="updates-banner">
+      <div class="updates-list">
+        <div class="update-item">
+          <span class="update-badge ub-compliance">Compliance</span>
+          <div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/printers-printing/quickbooks-file-deliver-w-2s/L8zwjjzQf_US_en_US" target="_blank">W-2 filing &amp; delivery timing for employees →</a></div>
+        </div>
+        <div class="update-item">
+          <span class="update-badge ub-tax">Tax law</span>
+          <div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/tip-income/impact-tax-tips-provision-quickbooks-payroll/L6kRbKsEY_US_en_US" target="_blank">No Tax on Tips — impact to QBO Payroll →</a></div>
+        </div>
+        <div class="update-item">
+          <span class="update-badge ub-tax">Tax law</span>
+          <div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/track-worker-overtime/impact-tax-overtime-provision-quickbooks-payroll/L8bjFtrJ5_US_en_US" target="_blank">No Tax on OT — impact to QBO Payroll →</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GETTING STARTED -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">▶</div>
+      <div class="section-title">Getting started</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.youtube.com/watch?v=Knsx9TQRnxU&t=160s" target="_blank" class="resource-card">
+        <div><div class="resource-title">Step-by-step QBO Payroll setup guide</div><div class="resource-source">Parkway Business Solutions · YouTube</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://www.youtube.com/playlist?list=PLVxBmyedTVhQ23eDITqNqXgcOqcrA7cou" target="_blank" class="resource-card">
+        <div><div class="resource-title">Setting up payroll tutorial playlist</div><div class="resource-source">Intuit · YouTube Playlist</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://youtu.be/Vy48RjlCxII" target="_blank" class="resource-card">
+        <div><div class="resource-title">How to run &amp; process payroll taxes</div><div class="resource-source">Hector Garcia CPA · YouTube</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card">
+        <div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- COMPLIANCE & TAX -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E6F1FB;">⚖</div>
+      <div class="section-title">Compliance &amp; tax</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-compliance/payroll-tax-compliance-links/L0H0Syx14_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Payroll tax compliance by state</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/compliance-blog-information-on-new-taxes-state-rate-issues-and/05/1152485#I9" target="_blank" class="resource-card">
+        <div><div class="resource-title">Compliance blog — new taxes &amp; rate changes</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/taxation/set-local-taxes-online-payroll/L2RWrCe86_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Setting up local payroll taxes</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/payroll/1099-vs-w2/" target="_blank" class="resource-card">
+        <div><div class="resource-title">1099 vs. W-2: What's the difference?</div><div class="resource-source">QuickBooks Blog</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BENEFITS & HR -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">⭐</div>
+      <div class="section-title">Benefits &amp; HR</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/insurance-medical-benefits/sign-health-insurance-quickbooks-allstate-health/L47Np9Kg7_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Health benefits through QBO Payroll</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-additions-deductions/state-retirement-savings-plan-savers-program/L89a6cpwb_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">State-mandated retirement savings plans</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://www.americanprogress.org/article/the-state-of-paid-family-and-medical-leave-in-the-u-s-in-2024/" target="_blank" class="resource-card">
+        <div><div class="resource-title">State of paid family &amp; medical leave</div><div class="resource-source">American Progress · 2024</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://humaninterest.com/learn/articles/what-is-a-state-sponsored-retirement-plan/" target="_blank" class="resource-card">
+        <div><div class="resource-title">State-sponsored retirement plans explained</div><div class="resource-source">Human Interest</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
+    </div>
+  </footer>
+
+</body>
+</html>
