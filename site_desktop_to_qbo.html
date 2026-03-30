@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switching from Desktop? — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; }
+    .section:last-of-type { padding-bottom: 40px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
+    .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .section-title { font-size: 15px; font-weight: 700; }
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
+    .resource-card:hover { border-color: #aaa; }
+    .resource-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 3px; }
+    .resource-source { font-size: 11px; color: #999; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-video { background: #EEEDFE; color: #3C3489; }
+    .badge-guide { background: #FAEEDA; color: #633806; }
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .step-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; display: flex; gap: 14px; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: #1D9E75; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .step-desc { font-size: 13px; color: #555; line-height: 1.6; }
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+    @media (max-width: 768px) {
+      .resource-grid, .steps-grid { grid-template-columns: 1fr; }
+      .section { padding: 24px 20px 0; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="smb-challenges.html" class="nav-link">Challenges for SMBs</a>
+      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
+      <a href="payroll-resources.html" class="nav-link">Payroll resources</a>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; accountant resources</a>
+    </div>
+    <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Migration resources</div>
+      <h1 class="page-title">Switching from QuickBooks Desktop to QBO?</h1>
+      <p class="page-sub">Everything you need to plan and complete your move from QuickBooks Desktop to QuickBooks Online — from converting your file to fixing errors and getting set up after the switch.</p>
+    </div>
+  </div>
+
+  <!-- MIGRATION STEPS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">✓</div>
+      <div class="section-title">How the migration works</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Learn what moves over</div>
+          <p class="step-desc">Understand which features and data transfer automatically and what may need manual setup after the move.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Convert your file</div>
+          <p class="step-desc">Use Intuit's built-in migration tool to move your QuickBooks Desktop company file directly to QBO.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Fix any errors</div>
+          <p class="step-desc">Some data may not convert cleanly. Use the error-fixing guide to resolve common issues after migration.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Complete your setup</div>
+          <p class="step-desc">Follow the post-migration checklist to make sure your QBO account is fully configured and ready to use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORE MIGRATION GUIDES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">📄</div>
+      <div class="section-title">Core migration guides</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/learn-converting-quickbooks-desktop-quickbooks/L8TAphzFD_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Learn about switching from QBDT to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/move-quickbooks-desktop-file-quickbooks-online/L6af3Z0Fb_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Convert your QBDT file to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/expect-switch-quickbooks-desktop-quickbooks-online/L0dEyNosU_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">How features &amp; data move from QBDT to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/migrate-services/fix-errors-converting-quickbooks-desktop-online/L1fF2hcwF_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Fix errors when moving from QBDT to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/convert-files/converting-quickbooks-desktop-windows-mac-online/L6QYzKBOV_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">What to do after you make the move to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/inventory-management/moving-inventory-desktop/L3CUO7Hh9_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Move your inventory from QBDT to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- IMPORTING DATA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E6F1FB;">📥</div>
+      <div class="section-title">Importing lists &amp; data only</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/common-questions-importing-data-quickbooks-online/L4OYJRFdj_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Common questions about importing data to QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/manage-lists/import-products-and-services-from-excel/00/185613" target="_blank" class="resource-card">
+        <div><div class="resource-title">Import products and services into QBO</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">▶</div>
+      <div class="section-title">Videos</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.youtube.com/watch?v=PPXX51djh-4" target="_blank" class="resource-card">
+        <div><div class="resource-title">How to use the QuickBooks Online app</div><div class="resource-source">YouTube</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/download-products/download-use-quickbooks-online-advanced-desktop/L9BrRPlDD_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Download and use the QBO desktop app</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
+    </div>
+  </footer>
+
+</body>
+</html>
