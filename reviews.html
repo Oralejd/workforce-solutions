@@ -17,6 +17,17 @@
     .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
     .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
     .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
     .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
     .page-header-inner { max-width: 1100px; margin: 0 auto; }
     .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
@@ -36,7 +47,7 @@
     .review-desc { font-size: 13px; color: #555; line-height: 1.6; }
     .review-link { font-size: 13px; font-weight: 700; color: #0F6E56; align-self: flex-start; }
     .review-link:hover { text-decoration: underline; }
-    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 0; }
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { color: #999; }
@@ -50,19 +61,31 @@
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="smb-challenges.html" class="nav-link">Challenges for SMBs</a>
-      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
-      <a href="payroll-resources.html" class="nav-link">Payroll resources</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle active">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="reviews.html" class="nav-dropdown-item active">Reviews</a>
+        </div>
+      </div>
       <a href="partner-resources.html" class="nav-link">Partner &amp; accountant resources</a>
     </div>
     <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
   </nav>
-
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">Third-party reviews</div>
@@ -70,85 +93,55 @@
       <p class="page-sub">Independent reviews from trusted sources to help you and your clients make informed decisions about QBO Payroll and QB Time.</p>
     </div>
   </div>
-
   <div class="section">
-    <div class="disclaimer">
-      <strong>Note:</strong> The links below are for reference purposes only. We do not guarantee the accuracy of information on these websites — pricing and features are subject to change. Always visit the official QuickBooks website for the most current information.
-    </div>
-
+    <div class="disclaimer"><strong>Note:</strong> The links below are for reference purposes only. We do not guarantee the accuracy of information on these websites — pricing and features are subject to change. Always visit the official QuickBooks website for the most current information.</div>
     <div class="section-label">QBO Payroll reviews</div>
     <div class="reviews-grid">
       <a href="https://www.forbes.com/advisor/business/software/quickbooks-payroll-review/" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">Forbes Advisor</div>
-          <span class="review-product product-payroll">QBO Payroll</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">Forbes Advisor</div><span class="review-product product-payroll">QBO Payroll</span></div>
         <p class="review-desc">In-depth review covering features, pricing, pros and cons, and how QBO Payroll compares to competitors.</p>
         <span class="review-link">Read review →</span>
       </a>
       <a href="https://www.nerdwallet.com/article/small-business/quickbooks-payroll-review" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">NerdWallet</div>
-          <span class="review-product product-payroll">QBO Payroll</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">NerdWallet</div><span class="review-product product-payroll">QBO Payroll</span></div>
         <p class="review-desc">Comprehensive review with ratings across ease of use, features, customer support, and value for small businesses.</p>
         <span class="review-link">Read review →</span>
       </a>
       <a href="https://www.pcmag.com/reviews/intuit-quickbooks-payroll" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">PCMag</div>
-          <span class="review-product product-payroll">QBO Payroll</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">PCMag</div><span class="review-product product-payroll">QBO Payroll</span></div>
         <p class="review-desc">Expert review with detailed feature analysis, testing notes, and a bottom-line recommendation.</p>
         <span class="review-link">Read review →</span>
       </a>
       <a href="https://www.capterra.com/p/174981/QuickBooks/" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">Capterra</div>
-          <span class="review-product product-payroll">QBO Payroll</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">Capterra</div><span class="review-product product-payroll">QBO Payroll</span></div>
         <p class="review-desc">User-generated reviews and ratings from real small business owners and accounting professionals.</p>
         <span class="review-link">Read reviews →</span>
       </a>
       <a href="https://www.g2.com/products/intuit-quickbooks-payroll/reviews" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">G2</div>
-          <span class="review-product product-payroll">QBO Payroll</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">G2</div><span class="review-product product-payroll">QBO Payroll</span></div>
         <p class="review-desc">Verified user reviews with detailed ratings across setup, usability, support, and overall satisfaction.</p>
         <span class="review-link">Read reviews →</span>
       </a>
     </div>
-
     <div class="section-label">QB Time reviews</div>
     <div class="reviews-grid">
       <a href="https://www.businessnewsdaily.com/16212-quickbooks-time.html" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">Business News Daily</div>
-          <span class="review-product product-time">QB Time</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">Business News Daily</div><span class="review-product product-time">QB Time</span></div>
         <p class="review-desc">Detailed review of QB Time covering features, pricing tiers, and who it's best suited for.</p>
         <span class="review-link">Read review →</span>
       </a>
       <a href="https://www.capterra.com/p/151722/TSheets/" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">Capterra</div>
-          <span class="review-product product-time">QB Time</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">Capterra</div><span class="review-product product-time">QB Time</span></div>
         <p class="review-desc">User reviews and ratings from businesses that use QB Time for employee time tracking and scheduling.</p>
         <span class="review-link">Read reviews →</span>
       </a>
       <a href="https://www.g2.com/products/quickbooks-time/reviews" target="_blank" class="review-card">
-        <div class="review-card-top">
-          <div class="review-source">G2</div>
-          <span class="review-product product-time">QB Time</span>
-        </div>
+        <div class="review-card-top"><div class="review-source">G2</div><span class="review-product product-time">QB Time</span></div>
         <p class="review-desc">Verified user reviews with ratings on ease of use, features, and overall satisfaction with QB Time.</p>
         <span class="review-link">Read reviews →</span>
       </a>
     </div>
   </div>
-
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -157,6 +150,5 @@
       <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
     </div>
   </footer>
-
 </body>
 </html>

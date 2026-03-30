@@ -17,6 +17,17 @@
     .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
     .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
     .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
     .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
     .page-header-inner { max-width: 1100px; margin: 0 auto; }
     .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
@@ -51,19 +62,31 @@
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="smb-challenges.html" class="nav-link active">Challenges for SMBs</a>
-      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
-      <a href="payroll-resources.html" class="nav-link">Payroll resources</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle active">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item active">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
       <a href="partner-resources.html" class="nav-link">Partner &amp; accountant resources</a>
     </div>
     <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
   </nav>
-
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">For small businesses</div>
@@ -71,7 +94,6 @@
       <p class="page-sub">Running a small business means navigating an ever-changing landscape. Here are the key challenges SMBs need to stay ahead of — and how to tackle them.</p>
     </div>
   </div>
-
   <div class="section">
     <div class="challenge-grid">
       <div class="challenge-card">
@@ -115,7 +137,6 @@
         </div>
       </div>
     </div>
-
     <div class="bridge">
       <div>
         <div class="bridge-title">See how QBO Payroll addresses these challenges</div>
@@ -124,7 +145,6 @@
       <a href="how-qbo-payroll-helps.html" class="bridge-btn">How QBO Payroll helps →</a>
     </div>
   </div>
-
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -133,6 +153,5 @@
       <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
     </div>
   </footer>
-
 </body>
 </html>

@@ -17,6 +17,17 @@
     .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
     .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
     .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
     .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
     .page-header-inner { max-width: 1100px; margin: 0 auto; }
     .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
@@ -36,7 +47,7 @@
     .callout-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 6px; }
     .callout-text { font-size: 13px; color: #085041; line-height: 1.6; }
     .callout-text a { color: #0F6E56; font-weight: 700; text-decoration: underline; }
-    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 0; }
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { color: #999; }
@@ -50,19 +61,31 @@
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="smb-challenges.html" class="nav-link">Challenges for SMBs</a>
-      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
-      <a href="payroll-resources.html" class="nav-link">Payroll resources</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle active">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item active">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
       <a href="partner-resources.html" class="nav-link">Partner &amp; accountant resources</a>
     </div>
     <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
   </nav>
-
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">For small businesses</div>
@@ -70,10 +93,8 @@
       <p class="page-sub">QBO Payroll connects you with best-in-class providers for retirement, health, HR, and workers' comp — all accessible directly through your QuickBooks account.</p>
     </div>
   </div>
-
   <div class="section">
     <div class="benefits-grid">
-
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#E1F5EE;">💰</div>
         <div class="benefit-title">401(k) retirement plans</div>
@@ -81,7 +102,6 @@
         <p class="benefit-desc">Offer employees a competitive retirement savings plan without the administrative burden. Human Interest integrates directly with QBO Payroll for seamless contributions and recordkeeping.</p>
         <a class="benefit-link" href="https://humaninterest.com/payrolls/quickbooksonline/" target="_blank">→ Learn about 401(k) with Human Interest</a>
       </div>
-
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#E6F1FB;">❤️</div>
         <div class="benefit-title">Health benefits</div>
@@ -89,7 +109,6 @@
         <p class="benefit-desc">Offer medical, dental, and vision coverage to attract and retain top talent. Plans are available for businesses of all sizes and integrate directly with your QBO Payroll setup.</p>
         <a class="benefit-link" href="https://quickbooks.intuit.com/learn-support/en-us/help-article/insurance-medical-benefits/sign-health-insurance-quickbooks-allstate-health/L47Np9Kg7_US_en_US" target="_blank">→ Explore health benefits</a>
       </div>
-
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#EEEDFE;">👥</div>
         <div class="benefit-title">HR services</div>
@@ -97,7 +116,6 @@
         <p class="benefit-desc">Access expert HR guidance, a customizable employee handbook builder, labor law compliance tools, and live HR advisor support — all included with QBO Payroll Elite.</p>
         <a class="benefit-link" href="https://quickbooks.intuit.com/payroll/hr-services/" target="_blank">→ Learn about HR services</a>
       </div>
-
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#FAEEDA;">🦺</div>
         <div class="benefit-title">Workers' comp insurance</div>
@@ -105,15 +123,12 @@
         <p class="benefit-desc">Get affordable, flexible workers' compensation coverage that pays premiums based on actual payroll — no large upfront deposits or year-end audits. Syncs automatically with QBO Payroll.</p>
         <a class="benefit-link" href="https://quickbooks.intuit.com/payroll/workers-compensation/" target="_blank">→ Explore workers' comp</a>
       </div>
-
     </div>
-
     <div class="callout">
       <div class="callout-title">All benefits are available directly through QBO Payroll</div>
       <p class="callout-text">You don't need separate accounts or platforms to offer these benefits. Everything is accessible from your QuickBooks Payroll dashboard. Visit <a href="https://quickbooks.intuit.com/payroll/" target="_blank">quickbooks.intuit.com/payroll</a> to see which benefits are included in your plan tier.</p>
     </div>
   </div>
-
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -122,6 +137,5 @@
       <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
     </div>
   </footer>
-
 </body>
 </html>

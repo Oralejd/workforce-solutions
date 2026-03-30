@@ -17,12 +17,23 @@
     .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
     .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
     .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
     .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
     .page-header-inner { max-width: 1100px; margin: 0 auto; }
     .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
     .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
     .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
-    .section { max-width: 1100px; margin: 0 auto; padding: 36px 32px 0; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; }
     .section:last-of-type { padding-bottom: 40px; }
     .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
     .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
@@ -52,19 +63,31 @@
   </style>
 </head>
 <body>
-
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
-      <a href="smb-challenges.html" class="nav-link">Challenges for SMBs</a>
-      <a href="how-qbo-payroll-helps.html" class="nav-link">How QBO Payroll helps</a>
-      <a href="payroll-resources.html" class="nav-link">Payroll resources</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
       <a href="partner-resources.html" class="nav-link active">Partner &amp; accountant resources</a>
     </div>
     <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="nav-cta">Fee Calculator ↗</a>
   </nav>
-
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">For QSPs &amp; ProAdvisors</div>
@@ -72,138 +95,50 @@
       <p class="page-sub">Curated guides, videos, and tools to help you support QBO Payroll clients — organized by category so you can find what you need fast.</p>
     </div>
   </div>
-
-  <!-- SETUP & ONBOARDING -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#EEEDFE;">▶</div>
-      <div class="section-title">Setup &amp; onboarding</div>
-      <div class="section-count">5 resources</div>
-    </div>
+    <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">▶</div><div class="section-title">Setup &amp; onboarding</div><div class="section-count">5 resources</div></div>
     <div class="resource-grid">
-      <a href="https://www.youtube.com/watch?v=Knsx9TQRnxU&t=160s" target="_blank" class="resource-card">
-        <div><div class="resource-title">Step-by-step QBO Payroll setup guide</div><div class="resource-source">Parkway Business Solutions · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.youtube.com/watch?v=jZDT3ijtvHM" target="_blank" class="resource-card">
-        <div><div class="resource-title">How to set up QBO Payroll</div><div class="resource-source">PBN · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.youtube.com/playlist?list=PLVxBmyedTVhQ23eDITqNqXgcOqcrA7cou" target="_blank" class="resource-card">
-        <div><div class="resource-title">Setting up payroll tutorial playlist</div><div class="resource-source">Intuit · YouTube Playlist</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://youtu.be/Vy48RjlCxII" target="_blank" class="resource-card">
-        <div><div class="resource-title">How to run &amp; process payroll taxes</div><div class="resource-source">Hector Garcia CPA · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card">
-        <div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
+      <a href="https://www.youtube.com/watch?v=Knsx9TQRnxU&t=160s" target="_blank" class="resource-card"><div><div class="resource-title">Step-by-step QBO Payroll setup guide</div><div class="resource-source">Parkway Business Solutions · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.youtube.com/watch?v=jZDT3ijtvHM" target="_blank" class="resource-card"><div><div class="resource-title">How to set up QBO Payroll</div><div class="resource-source">PBN · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.youtube.com/playlist?list=PLVxBmyedTVhQ23eDITqNqXgcOqcrA7cou" target="_blank" class="resource-card"><div><div class="resource-title">Setting up payroll tutorial playlist</div><div class="resource-source">Intuit · YouTube Playlist</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://youtu.be/Vy48RjlCxII" target="_blank" class="resource-card"><div><div class="resource-title">How to run &amp; process payroll taxes</div><div class="resource-source">Hector Garcia CPA · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card"><div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
-
-  <!-- COMPLIANCE -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#E6F1FB;">⚖</div>
-      <div class="section-title">Compliance</div>
-      <div class="section-count">4 resources</div>
-    </div>
+    <div class="section-header"><div class="section-icon" style="background:#E6F1FB;">⚖</div><div class="section-title">Compliance</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-compliance/payroll-tax-compliance-links/L0H0Syx14_US_en_US" target="_blank" class="resource-card">
-        <div><div class="resource-title">Payroll tax compliance by state</div><div class="resource-source">QuickBooks Help</div></div>
-        <span class="badge badge-guide">Guide</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/compliance-blog-information-on-new-taxes-state-rate-issues-and/05/1152485#I9" target="_blank" class="resource-card">
-        <div><div class="resource-title">Compliance blog — new taxes, rate changes &amp; more</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-additions-deductions/state-retirement-savings-plan-savers-program/L89a6cpwb_US_en_US" target="_blank" class="resource-card">
-        <div><div class="resource-title">State-mandated retirement savings plans</div><div class="resource-source">QuickBooks Help</div></div>
-        <span class="badge badge-guide">Guide</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/payroll/1099-vs-w2/" target="_blank" class="resource-card">
-        <div><div class="resource-title">1099 vs. W-2: What's the difference?</div><div class="resource-source">QuickBooks Blog</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-compliance/payroll-tax-compliance-links/L0H0Syx14_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Payroll tax compliance by state</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
+      <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/compliance-blog-information-on-new-taxes-state-rate-issues-and/05/1152485#I9" target="_blank" class="resource-card"><div><div class="resource-title">Compliance blog — new taxes, rate changes &amp; more</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div><span class="badge badge-article">Article</span></a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-additions-deductions/state-retirement-savings-plan-savers-program/L89a6cpwb_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">State-mandated retirement savings plans</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
+      <a href="https://quickbooks.intuit.com/payroll/1099-vs-w2/" target="_blank" class="resource-card"><div><div class="resource-title">1099 vs. W-2: What's the difference?</div><div class="resource-source">QuickBooks Blog</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
-
-  <!-- DEMO VIDEOS & REVIEWS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#E1F5EE;">▶</div>
-      <div class="section-title">Demo videos &amp; reviews</div>
-      <div class="section-count">4 resources</div>
-    </div>
+    <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">▶</div><div class="section-title">Demo videos &amp; reviews</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
-      <a href="https://www.youtube.com/watch?v=eNe8eTmZX_U" target="_blank" class="resource-card">
-        <div><div class="resource-title">QBO Payroll full demo</div><div class="resource-source">Certum Solutions · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.youtube.com/watch?v=JKAUR9mYb6s&t=6s" target="_blank" class="resource-card">
-        <div><div class="resource-title">QBO Payroll breakdown &amp; review</div><div class="resource-source">Minding My Books · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.youtube.com/watch?v=tJUSTLfAht8" target="_blank" class="resource-card">
-        <div><div class="resource-title">Practical payroll review</div><div class="resource-source">Out of the Box Technology · YouTube</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
-      <a href="https://www.youtube.com/watch?v=GFEXMArkFkc&t=14s" target="_blank" class="resource-card">
-        <div><div class="resource-title">Points North certified payroll for QBO</div><div class="resource-source">YouTube demo</div></div>
-        <span class="badge badge-video">Video</span>
-      </a>
+      <a href="https://www.youtube.com/watch?v=eNe8eTmZX_U" target="_blank" class="resource-card"><div><div class="resource-title">QBO Payroll full demo</div><div class="resource-source">Certum Solutions · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.youtube.com/watch?v=JKAUR9mYb6s&t=6s" target="_blank" class="resource-card"><div><div class="resource-title">QBO Payroll breakdown &amp; review</div><div class="resource-source">Minding My Books · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.youtube.com/watch?v=tJUSTLfAht8" target="_blank" class="resource-card"><div><div class="resource-title">Practical payroll review</div><div class="resource-source">Out of the Box Technology · YouTube</div></div><span class="badge badge-video">Video</span></a>
+      <a href="https://www.youtube.com/watch?v=GFEXMArkFkc&t=14s" target="_blank" class="resource-card"><div><div class="resource-title">Points North certified payroll for QBO</div><div class="resource-source">YouTube demo</div></div><span class="badge badge-video">Video</span></a>
     </div>
   </div>
-
-  <!-- PRODUCT NEWS -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#FAEEDA;">📰</div>
-      <div class="section-title">Product news &amp; updates</div>
-      <div class="section-count">3 resources</div>
-    </div>
+    <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">📰</div><div class="section-title">Product news &amp; updates</div><div class="section-count">3 resources</div></div>
     <div class="resource-grid">
-      <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/quickbooks-online-payroll-and-time-product-news/05/1155573" target="_blank" class="resource-card">
-        <div><div class="resource-title">Payroll &amp; Time product news</div><div class="resource-source">QuickBooks</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/learn-support/articles/subject/04/product-blog-us/label-name/payroll%20updates" target="_blank" class="resource-card">
-        <div><div class="resource-title">Payroll blog</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
-      <a href="https://www.firmofthefuture.com/" target="_blank" class="resource-card">
-        <div><div class="resource-title">Firm of the Future</div><div class="resource-source">Partner-focused news &amp; insights</div></div>
-        <span class="badge badge-article">Article</span>
-      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/quickbooks-online-payroll-and-time-product-news/05/1155573" target="_blank" class="resource-card"><div><div class="resource-title">Payroll &amp; Time product news</div><div class="resource-source">QuickBooks</div></div><span class="badge badge-article">Article</span></a>
+      <a href="https://quickbooks.intuit.com/learn-support/articles/subject/04/product-blog-us/label-name/payroll%20updates" target="_blank" class="resource-card"><div><div class="resource-title">Payroll blog</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div><span class="badge badge-article">Article</span></a>
+      <a href="https://www.firmofthefuture.com/" target="_blank" class="resource-card"><div><div class="resource-title">Firm of the Future</div><div class="resource-source">Partner-focused news &amp; insights</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
-
-  <!-- TOOLS & DIRECTORIES -->
   <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background:#E1F5EE;">⚙</div>
-      <div class="section-title">Tools &amp; directories</div>
-      <div class="section-count">3 resources</div>
-    </div>
+    <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">⚙</div><div class="section-title">Tools &amp; directories</div><div class="section-count">3 resources</div></div>
     <div class="resource-grid">
-      <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="resource-card">
-        <div><div class="resource-title">ES Payroll Fee Calculator</div><div class="resource-source">Estimate IES payroll costs for clients</div></div>
-        <span class="badge badge-tool">Tool</span>
-      </a>
-      <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" class="resource-card">
-        <div><div class="resource-title">QuickBooks Solution Provider directory</div><div class="resource-source">Intuit Zift · Partner directory</div></div>
-        <span class="badge badge-tool">Tool</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/r/small-business-data/index/" target="_blank" class="resource-card">
-        <div><div class="resource-title">Small Business Index</div><div class="resource-source">QuickBooks data &amp; insights</div></div>
-        <span class="badge badge-tool">Tool</span>
-      </a>
+      <a href="https://qbespayrollfeecalculator.netlify.app/" target="_blank" class="resource-card"><div><div class="resource-title">ES Payroll Fee Calculator</div><div class="resource-source">Estimate IES payroll costs for clients</div></div><span class="badge badge-tool">Tool</span></a>
+      <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" class="resource-card"><div><div class="resource-title">QuickBooks Solution Provider directory</div><div class="resource-source">Intuit Zift · Partner directory</div></div><span class="badge badge-tool">Tool</span></a>
+      <a href="https://quickbooks.intuit.com/r/small-business-data/index/" target="_blank" class="resource-card"><div><div class="resource-title">Small Business Index</div><div class="resource-source">QuickBooks data &amp; insights</div></div><span class="badge badge-tool">Tool</span></a>
     </div>
   </div>
-
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -212,6 +147,5 @@
       <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
     </div>
   </footer>
-
 </body>
 </html>
