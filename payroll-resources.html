@@ -187,7 +187,7 @@
 <script>
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
-      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes('workforce-solutions-qb.netlify.app') && !href.includes('workforcesolutionsonline.com');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
       if (isExternal) {
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer');
