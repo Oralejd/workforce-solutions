@@ -148,5 +148,14 @@
       }
     });
   </script>
-</body>
+<script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'));
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
 </html>
