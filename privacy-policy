@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 800px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 13px; color: #999; }
+    .section { max-width: 800px; margin: 0 auto; padding: 36px 32px 40px; display: flex; flex-direction: column; gap: 28px; }
+    .policy-block { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 22px 24px; }
+    .policy-block h2 { font-size: 15px; font-weight: 700; margin-bottom: 10px; color: #1a1a1a; }
+    .policy-block p { font-size: 13px; color: #555; line-height: 1.7; }
+    .policy-block p + p { margin-top: 8px; }
+    .policy-block ul { font-size: 13px; color: #555; line-height: 1.7; padding-left: 20px; margin-top: 8px; }
+    .policy-block ul li { margin-bottom: 4px; }
+    .contact-box { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 20px 24px; }
+    .contact-box h2 { font-size: 15px; font-weight: 700; margin-bottom: 8px; color: #04342C; }
+    .contact-box p { font-size: 13px; color: #085041; line-height: 1.7; }
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+    @media (max-width: 768px) {
+      .section { padding: 28px 20px 32px; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
+    </div>
+    <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Legal</div>
+      <h1 class="page-title">Privacy policy</h1>
+      <p class="page-sub">Last updated: March 2026</p>
+    </div>
+  </div>
+
+  <div class="section">
+
+    <div class="policy-block">
+      <h2>Overview</h2>
+      <p>Workforce Solutions ("we," "us," or "our") operates this website as an educational resource for small business owners, QuickBooks ProAdvisors, and QuickBooks Solution Providers. We are committed to being transparent about how this site works and what, if any, information is collected when you visit.</p>
+    </div>
+
+    <div class="policy-block">
+      <h2>Information we do not collect</h2>
+      <p>This site does not:</p>
+      <ul>
+        <li>Require you to create an account or log in</li>
+        <li>Collect your name, email address, or any personal information</li>
+        <li>Use contact forms or newsletter signups</li>
+        <li>Process payments or store financial information</li>
+        <li>Sell, rent, or share any data with third parties for marketing purposes</li>
+      </ul>
+    </div>
+
+    <div class="policy-block">
+      <h2>Automatic data collection</h2>
+      <p>Like most websites, our hosting provider (Netlify) may automatically collect basic technical information when you visit, including your IP address, browser type, operating system, and pages visited. This data is used solely for security and performance monitoring and is not used to identify individual visitors.</p>
+      <p>We may also use basic analytics tools in the future to understand aggregate traffic patterns (such as which pages are most visited). If we do so, this policy will be updated to reflect that.</p>
+    </div>
+
+    <div class="policy-block">
+      <h2>Cookies</h2>
+      <p>This site does not use first-party cookies for tracking or advertising purposes. Netlify, our hosting provider, may set technical cookies necessary to operate the site securely. No personal data is stored in these cookies.</p>
+    </div>
+
+    <div class="policy-block">
+      <h2>Third-party links</h2>
+      <p>This site contains links to third-party websites including QuickBooks, Intuit, YouTube, and other external resources. When you click these links, you leave our site and are subject to the privacy policies of those third parties. We are not responsible for the privacy practices of external sites.</p>
+    </div>
+
+    <div class="policy-block">
+      <h2>The Payroll Quoter tool</h2>
+      <p>The QBO Payroll Quoter tool on this site runs entirely in your browser. Any values you enter (number of employees, states, plan selection) are not transmitted to or stored on any server. All calculations happen locally on your device and are not collected by us.</p>
+    </div>
+
+    <div class="policy-block">
+      <h2>Changes to this policy</h2>
+      <p>We may update this privacy policy from time to time. Any changes will be reflected on this page with an updated date. We encourage you to review this page periodically.</p>
+    </div>
+
+    <div class="contact-box">
+      <h2>Questions?</h2>
+      <p>If you have any questions about this privacy policy or how this site operates, you are welcome to reach out via the contact information on our partner resources page.</p>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
+
+</body>
+</html>
