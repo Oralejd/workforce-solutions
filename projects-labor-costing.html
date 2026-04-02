@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects & Labor Costing — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; }
+    .section:last-of-type { padding-bottom: 40px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
+    .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .section-title { font-size: 15px; font-weight: 700; }
+
+    /* WHY IT MATTERS */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .why-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
+    .why-icon { font-size: 20px; margin-bottom: 10px; }
+    .why-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .why-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .how-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; display: flex; gap: 12px; align-items: flex-start; }
+    .how-num { width: 28px; height: 28px; border-radius: 50%; background: #1D9E75; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .how-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .how-desc { font-size: 12px; color: #555; line-height: 1.6; }
+
+    /* PLAN NOTE */
+    .plan-note { background: #E6F1FB; border: 1px solid #B5D4F4; border-radius: 10px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: #0C447C; line-height: 1.6; }
+    .plan-note strong { font-weight: 700; }
+
+    /* RESOURCE CARDS */
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
+    .resource-card:hover { border-color: #aaa; }
+    .resource-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 3px; }
+    .resource-source { font-size: 11px; color: #999; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-video   { background: #EEEDFE; color: #3C3489; }
+    .badge-article { background: #E6F1FB; color: #0C447C; }
+    .badge-guide   { background: #FAEEDA; color: #633806; }
+
+    /* BRIDGE */
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #085041; }
+
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+    @media (max-width: 768px) {
+      .why-grid, .how-grid, .resource-grid { grid-template-columns: 1fr; }
+      .section { padding: 24px 20px 0; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle active">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item active">Projects &amp; labor costing</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
+    </div>
+    <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">QBO Projects &amp; Payroll</div>
+      <h1 class="page-title">Projects &amp; labor costing in QBO</h1>
+      <p class="page-sub">Know exactly which jobs make money — and which don't. QBO Projects combined with QBO Payroll and QB Time gives you real-time visibility into labor costs, project profitability, and budget performance.</p>
+    </div>
+  </div>
+
+  <!-- WHY IT MATTERS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">💡</div>
+      <div class="section-title">Why job costing matters</div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Know your true project profitability</div>
+        <p class="why-desc">Without job costing, you're guessing which projects make money. QBO Projects tracks every dollar of labor, materials, and expenses against each job so you always know your real margin.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⏱️</div>
+        <div class="why-title">Labor is your biggest cost — track it accurately</div>
+        <p class="why-desc">When QBO Payroll and QB Time are connected, labor costs including wages and payroll taxes are automatically allocated to the correct project based on timesheet entries — no manual entry needed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <div class="why-title">Bid smarter on future work</div>
+        <p class="why-desc">Historical job cost data from completed projects gives you real numbers to base future estimates on — so you stop underbidding jobs that erode your margins.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚠️</div>
+        <div class="why-title">Catch cost overruns before it's too late</div>
+        <p class="why-desc">Real-time project dashboards let you see when labor or materials are running over budget while the job is still active — not weeks later when reviewing the P&amp;L.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">⚙</div>
+      <div class="section-title">How QBO Projects + Payroll + QB Time work together</div>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <div>
+          <div class="how-title">Enable Projects in QBO</div>
+          <p class="how-desc">Go to Settings → Account and Settings → Advanced → Projects and toggle it on. Each job or engagement becomes its own project with its own dashboard.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <div>
+          <div class="how-title">Employees log time to projects</div>
+          <p class="how-desc">Using QB Time or QBO timesheets, employees tag their hours to the correct project. This time flows directly into payroll runs and the project's labor cost summary.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <div>
+          <div class="how-title">Payroll runs allocate labor costs</div>
+          <p class="how-desc">When payroll is processed, wages and employer taxes are automatically split across projects based on timesheet entries — no spreadsheets or manual allocation needed.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <div>
+          <div class="how-title">Assign expenses &amp; materials</div>
+          <p class="how-desc">Bills, expenses, and purchase orders can all be tagged to a specific project at the time of entry — giving you a complete picture of every cost associated with a job.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">5</div>
+        <div>
+          <div class="how-title">Review project profitability reports</div>
+          <p class="how-desc">The Projects dashboard shows real-time income, costs, and profit margin for each job. Run a Project Profitability report to compare actual costs vs. estimates at any time.</p>
+        </div>
+      </div>
+      <div class="how-card">
+        <div class="how-num">6</div>
+        <div>
+          <div class="how-title">Invoice from the project</div>
+          <p class="how-desc">Unbilled time and expenses are surfaced directly in the project view, so nothing gets missed when it's time to bill the client. Progress invoicing is also supported.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN NOTE -->
+  <div class="section">
+    <div class="plan-note">
+      <span style="font-size:18px; flex-shrink:0;">ℹ️</span>
+      <div><strong>Plan requirement:</strong> The Projects feature is available in QBO Plus and QBO Advanced. It is not available in QBO Simple Start or QBO Essentials. For full labor costing with automatic payroll allocation, QBO Payroll must also be enabled. QB Time Premium or Elite tier is recommended for mobile teams tracking time in the field.</div>
+    </div>
+  </div>
+
+  <!-- PROADVISOR & QSP GUIDES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">📄</div>
+      <div class="section-title">ProAdvisor &amp; QSP partner guides</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.firmofthefuture.com/product-update/quickbooks-online-project-center/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Leverage the power of the QBO Project Center</div><div class="resource-source">Firm of the Future · Intuit · 2025</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.firmofthefuture.com/accounting/new-for-quickbooks-online-labor-costing-for-projects/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Labor costing tracking in QBO Projects</div><div class="resource-source">Firm of the Future · Intuit</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://insightfulaccountant.com/accounting-tech/general-ledger/simplify-payroll-for-construction-clients-with-quickbooks-online-payroll-a-guide-for-accounting-firms/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Simplify payroll for construction clients — guide for accounting firms</div><div class="resource-source">Insightful Accountant · 2026</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://redmondaccounting.com/2025/02/20/job-costing-with-quickbooks-projects/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Streamlining job costing with QBO Projects</div><div class="resource-source">Redmond Accounting · QBO Advanced ProAdvisor · 2025</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://redmondaccounting.com/2025/02/27/advanced-insights-with-project-reports/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Advanced project reports &amp; labor costing</div><div class="resource-source">Redmond Accounting · QBO Advanced ProAdvisor · 2025</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.mindingmybooks.com/quickbooks-enterprise-construction-projects-labor-materials" target="_blank" class="resource-card">
+        <div><div class="resource-title">Tracking construction projects — labor &amp; materials</div><div class="resource-source">Minding My Books · Advanced ProAdvisor · 2025</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.peakadvisers.com/blog/projects-in-quickbooks-online-a-game-changer-for-job-costing-in-construction" target="_blank" class="resource-card">
+        <div><div class="resource-title">QBO Projects for contractors — job costing made simple</div><div class="resource-source">Peak Advisers · 2025</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.foundationsoft.com/learn/job-costing-quickbooks/" target="_blank" class="resource-card">
+        <div><div class="resource-title">3 ways to do job costing in QBO</div><div class="resource-source">Foundation Software</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- INTUIT OFFICIAL -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">✓</div>
+      <div class="section-title">Official Intuit resources</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/accounting/job-costing/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Job costing in QuickBooks — official overview</div><div class="resource-source">QuickBooks · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://fitsmallbusiness.com/how-to-create-project-quickbooks-online/" target="_blank" class="resource-card">
+        <div><div class="resource-title">How to create &amp; manage Projects in QBO</div><div class="resource-source">Fit Small Business · QuickBooks ProAdvisor · 2024</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">▶</div>
+      <div class="section-title">Videos — Hector Garcia CPA</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.youtube.com/results?search_query=Hector+Garcia+QuickBooks+Online+Projects+job+costing" target="_blank" class="resource-card">
+        <div><div class="resource-title">QBO Projects &amp; job costing tutorials</div><div class="resource-source">Hector Garcia CPA · YouTube · Advanced ProAdvisor</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://www.youtube.com/results?search_query=Hector+Garcia+QuickBooks+payroll+labor+costing+projects" target="_blank" class="resource-card">
+        <div><div class="resource-title">Allocating payroll costs to QBO Projects</div><div class="resource-source">Hector Garcia CPA · YouTube · Advanced ProAdvisor</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+      <a href="https://hectorgarcia.teachable.com/p/quickbooks-online-advanced-webinars-construction-2021" target="_blank" class="resource-card">
+        <div><div class="resource-title">QBO for contractors &amp; project-based businesses — full course</div><div class="resource-source">Hector Garcia CPA · Paid course · covers payroll job costing, progress invoicing, budget vs. actual</div></div>
+        <span class="badge badge-video">Course</span>
+      </a>
+      <a href="https://www.youtube.com/results?search_query=QuickBooks+Online+project+profitability+report+ProAdvisor" target="_blank" class="resource-card">
+        <div><div class="resource-title">QBO project profitability reports — ProAdvisor tutorials</div><div class="resource-source">YouTube · multiple ProAdvisor channels</div></div>
+        <span class="badge badge-video">Video</span>
+      </a>
+    </div>
+    <p style="font-size:11px; color:#999; margin-top:10px; line-height:1.5;">* Video links open YouTube search results filtered to ProAdvisor content. Hector Garcia CPA's channel at <a href="https://www.youtube.com/@HectorGarciaCPA" style="color:#0F6E56;">youtube.com/@HectorGarciaCPA</a> is the most comprehensive free source for QBO Projects tutorials.</p>
+  </div>
+
+  <!-- BRIDGE -->
+  <div class="section">
+    <div class="bridge">
+      <div>
+        <div class="bridge-title">Ready to see how QBO Payroll fits into your workflow?</div>
+        <div class="bridge-sub">Explore how QBO Payroll's integration with Projects and QB Time solves the labor costing challenge end to end.</div>
+      </div>
+      <a href="how-qbo-payroll-helps.html" class="bridge-btn">How QBO Payroll helps →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
+
+</body>
+</html>
