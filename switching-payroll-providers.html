@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switching Payroll Providers — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; }
+    .section:last-of-type { padding-bottom: 40px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
+    .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .section-title { font-size: 15px; font-weight: 700; }
+
+    /* PROVIDER CARDS */
+    .provider-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .provider-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 20px; }
+    .provider-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .provider-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 12px; }
+    .provider-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 8px; margin-bottom: 10px; }
+    .tag-import { background: #E1F5EE; color: #085041; }
+    .tag-manual { background: #FAEEDA; color: #633806; }
+    .provider-tip { font-size: 12px; color: #0F6E56; font-weight: 700; }
+
+    /* STEPS */
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .step-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; display: flex; gap: 14px; }
+    .step-num { width: 28px; height: 28px; border-radius: 50%; background: #1D9E75; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+    .step-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+    .step-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    /* WARNING NOTE */
+    .warning-note { background: #FAEEDA; border: 1px solid #FAC775; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; font-size: 13px; color: #633806; line-height: 1.6; }
+    .warning-note strong { font-weight: 700; }
+
+    /* INFO NOTE */
+    .info-note { background: #E6F1FB; border: 1px solid #B5D4F4; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; font-size: 13px; color: #0C447C; line-height: 1.6; }
+    .info-note strong { font-weight: 700; }
+
+    /* RESOURCE CARDS */
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
+    .resource-card:hover { border-color: #aaa; }
+    .resource-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 3px; }
+    .resource-source { font-size: 11px; color: #999; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-guide { background: #FAEEDA; color: #633806; }
+    .badge-article { background: #E6F1FB; color: #0C447C; }
+    .badge-tool { background: #E1F5EE; color: #085041; }
+
+    /* BRIDGE */
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #085041; }
+
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+    @media (max-width: 768px) {
+      .provider-grid, .steps-grid, .resource-grid { grid-template-columns: 1fr; }
+      .section { padding: 24px 20px 0; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle active">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+          <a href="switching-payroll-providers.html" class="nav-dropdown-item active">Switching payroll providers</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
+      </div>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
+    </div>
+    <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Migration resources</div>
+      <h1 class="page-title">Switching to QBO Payroll from ADP, Paychex, or Gusto?</h1>
+      <p class="page-sub">If you're already using QBO for accounting, consolidating payroll into QBO Payroll eliminates the disconnect between your books and your payroll data. Here's what to know before you make the switch.</p>
+    </div>
+  </div>
+
+  <!-- WHY SWITCH -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">💡</div>
+      <div class="section-title">Why businesses switch to QBO Payroll</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num" style="background:#0F6E56;">✓</div>
+        <div>
+          <div class="step-title">One system for accounting and payroll</div>
+          <p class="step-desc">When payroll lives inside QBO, wages, taxes, and deductions post directly to your books automatically — no manual journal entries or third-party syncs needed.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#0F6E56;">✓</div>
+        <div>
+          <div class="step-title">True labor costing with Projects</div>
+          <p class="step-desc">Third-party payroll processors can't automatically allocate labor costs to QBO Projects. With QBO Payroll, payroll costs flow directly into project profitability reports.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#0F6E56;">✓</div>
+        <div>
+          <div class="step-title">QB Time integration</div>
+          <p class="step-desc">Employee time tracked in QB Time syncs directly to payroll runs — eliminating double entry and reducing errors for hourly and project-based workforces.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#0F6E56;">✓</div>
+        <div>
+          <div class="step-title">Simpler vendor management</div>
+          <p class="step-desc">Fewer logins, fewer monthly bills, and one support team to call. Consolidating payroll into QBO reduces the overhead of managing multiple platforms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIMING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">📅</div>
+      <div class="section-title">When is the best time to switch?</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num" style="background:#1D9E75;">1</div>
+        <div>
+          <div class="step-title">Year-end — best option</div>
+          <p class="step-desc">Starting January 1 is the cleanest transition. There's no prior YTD data to carry over, W-2s are handled entirely by your new provider, and quarterly 941 filings start fresh. If you have any flexibility, plan for this timing.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#378ADD;">2</div>
+        <div>
+          <div class="step-title">Quarter-end — next best</div>
+          <p class="step-desc">Switching at the end of Q1, Q2, or Q3 (March 31, June 30, or September 30) limits the YTD data you need to carry over to one, two, or three quarters. It also aligns with Form 941 quarterly filing deadlines, keeping tax records clean.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#BA7517;">3</div>
+        <div>
+          <div class="step-title">Between payroll runs — if no other option</div>
+          <p class="step-desc">If year-end and quarter-end aren't possible, switch immediately after a completed payroll run and before the next one begins. This ensures your old provider fully closes out the most recent period before QBO Payroll takes over — minimizing the risk of duplicate payments or missed filings.</p>
+        </div>
+      </div>
+      <div class="step-card" style="background:#f5f5f0; border-color:#e0dfd8;">
+        <div style="width:28px; height:28px; border-radius:50%; background:#e0dfd8; color:#555; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; margin-top:2px;">⚠️</div>
+        <div>
+          <div class="step-title">Avoid switching mid-payroll period</div>
+          <p class="step-desc">Never switch in the middle of an active pay period. This creates complications with partial-period wage calculations, tax withholdings, and can result in employees being paid from two systems for the same period.</p>
+        </div>
+      </div>
+    </div>
+    <div class="warning-note" style="margin-top:14px;">
+      <span style="font-size:18px; flex-shrink:0;">⚠️</span>
+      <div><strong>Mid-year switches require extra care:</strong> Regardless of when you switch, any mid-year migration requires entering accurate year-to-date wages and tax withholdings for each employee so QBO Payroll can file correct quarterly 941s and year-end W-2s. Work with a QSP Partner or ProAdvisor to verify your YTD figures before running your first payroll.</div>
+    </div>
+  </div>
+
+  <!-- PROVIDER-SPECIFIC NOTES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">🔄</div>
+      <div class="section-title">What to know by provider</div>
+    </div>
+    <div class="provider-grid">
+      <div class="provider-card">
+        <div class="provider-name">Switching from ADP</div>
+        <span class="provider-tag tag-import">Data import available</span>
+        <p class="provider-desc">QBO Payroll can import employee and pay history data from ADP. Before switching, export your YTD payroll reports from ADP including wages, taxes withheld, and deductions. Your ProAdvisor or QBO setup wizard will guide the import process.</p>
+        <div class="provider-tip">→ Request a final YTD payroll summary from ADP before canceling</div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-name">Switching from Paychex</div>
+        <span class="provider-tag tag-import">Data import available</span>
+        <p class="provider-desc">QBO Payroll supports importing employee and pay history from Paychex. Check your Paychex contract for cancellation terms — some plans have annual commitments. Export all YTD tax and wage reports before ending service.</p>
+        <div class="provider-tip">→ Review your Paychex contract for notice requirements before switching</div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-name">Switching from Gusto</div>
+        <span class="provider-tag tag-import">Data import available</span>
+        <p class="provider-desc">QBO Payroll can import employee and pay history from Gusto. Since Gusto integrates with QBO for accounting, you may already have some data synced — work with a ProAdvisor to avoid duplicate entries during the transition.</p>
+        <div class="provider-tip">→ Disable the Gusto-QBO accounting sync before switching to avoid duplicate data</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E1F5EE;">⚙</div>
+      <div class="section-title">How the migration works</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Export YTD data from your current provider</div>
+          <p class="step-desc">Pull year-to-date wage reports, tax withholding summaries, and employee deduction details. You'll need these to enter accurate YTD figures in QBO Payroll.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Set up QBO Payroll</div>
+          <p class="step-desc">Add your company details, tax IDs, pay schedules, and employee records. Use the import tool to bring in employees and pay history from ADP, Paychex, or Gusto where available.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Enter YTD payroll history</div>
+          <p class="step-desc">If switching mid-year, manually enter YTD wages and tax withholdings for each employee so QBO Payroll can file accurate quarterly and annual returns.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Run your first payroll in QBO</div>
+          <p class="step-desc">Before submitting, use QBO Payroll's built-in <strong>Preview Payroll</strong> option to review employee pay amounts, tax withholdings, and deductions side by side with your current provider's most recent payroll. Only submit and pay employees once everything matches. This is your best opportunity to catch any setup issues before they affect your team's paychecks.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Cancel your old provider</div>
+          <p class="step-desc">Once your first live payroll runs cleanly in QBO, you're ready to cancel your old provider. Be sure to review your contract for any notice periods or cancellation requirements before doing so.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">6</div>
+        <div>
+          <div class="step-title">Connect QB Time (optional but recommended)</div>
+          <p class="step-desc">If you have hourly employees or track time by project, connect QB Time to your payroll. This enables automatic time-to-payroll sync and project labor costing.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROADVISOR NOTE -->
+  <div class="section">
+    <div class="info-note">
+      <span style="font-size:18px; flex-shrink:0;">ℹ️</span>
+      <div><strong>Work with a QSP Partner or ProAdvisor:</strong> Payroll migrations involve tax compliance risk, especially mid-year. A certified QuickBooks Solution Provider (QSP) or ProAdvisor can manage the YTD data entry, verify your setup, and ensure your first payroll run is accurate. Use the Solution Provider directory to find a certified partner near you.</div>
+    </div>
+  </div>
+
+  <!-- OFFICIAL RESOURCES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">📄</div>
+      <div class="section-title">Official setup &amp; migration resources</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-setup/import-employees-pay-history-adp-gusto-paychex/L5B86tEqo_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Import employees &amp; pay history from ADP, Gusto, or Paychex</div><div class="resource-source">QuickBooks Help · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/payroll/" target="_blank" class="resource-card">
+        <div><div class="resource-title">QBO Payroll plans &amp; pricing</div><div class="resource-source">QuickBooks · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-compliance/payroll-tax-compliance-links/L0H0Syx14_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Payroll tax compliance by state</div><div class="resource-source">QuickBooks Help · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" class="resource-card">
+        <div><div class="resource-title">Find a QuickBooks Solution Provider</div><div class="resource-source">Intuit · QSP Partner Directory</div></div>
+        <span class="badge badge-tool">Tool</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div class="section">
+    <div class="bridge">
+      <div>
+        <div class="bridge-title">Need help with your migration?</div>
+        <div class="bridge-sub">A certified QSP Partner or ProAdvisor can manage your payroll migration end to end — find one in the partner directory.</div>
+      </div>
+      <a href="partner-resources.html" class="bridge-btn">Partner &amp; Accountant Resources →</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
+
+</body>
+</html>
