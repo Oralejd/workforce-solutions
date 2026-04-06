@@ -20,7 +20,6 @@
     .nav-dropdown { position: relative; }
     .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
     .nav-dropdown-toggle:hover { color: #1a1a1a; }
-    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
     .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
     .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
     .nav-dropdown:hover .nav-dropdown-menu { display: block; }
@@ -63,6 +62,7 @@
   </style>
 </head>
 <body>
+
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
@@ -74,6 +74,7 @@
           <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
           <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
           <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+          <a href="switching-payroll-providers.html" class="nav-dropdown-item">Switching payroll providers</a>
         </div>
       </div>
       <div class="nav-dropdown">
@@ -81,6 +82,7 @@
         <div class="nav-dropdown-menu">
           <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
           <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
           <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
         </div>
       </div>
@@ -88,13 +90,28 @@
     </div>
     <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
   </nav>
+
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">For QSPs &amp; ProAdvisors</div>
-      <h1 class="page-title">Partner &amp; accountant resources</h1>
+      <h1 class="page-title">Partner &amp; Accountant Resources</h1>
       <p class="page-sub">Curated guides, videos, and tools to help you support QBO Payroll clients — organized by category so you can find what you need fast.</p>
     </div>
   </div>
+
+  <!-- QSP DIRECTORY FEATURED -->
+  <div class="section" style="padding-top:32px; padding-bottom:24px;">
+    <div style="background:#EEEDFE; border:1px solid #AFA9EC; border-radius:12px; padding:24px 26px; display:flex; align-items:center; justify-content:space-between; gap:20px;">
+      <div>
+        <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#534AB7; margin-bottom:6px;">Official Intuit Directory</div>
+        <div style="font-size:17px; font-weight:700; color:#26215C; margin-bottom:6px;">Find a certified QuickBooks Solution Provider</div>
+        <div style="font-size:13px; color:#3C3489; line-height:1.6; max-width:560px;">QSP Partners are certified experts who can help SMBs and accounting firms with QBO Payroll setup, migrations from third-party providers, ongoing payroll management, and more. Search the official Intuit directory to find a partner near you.</div>
+      </div>
+      <a href="https://intuit.ziftone.com/#/page/directory" style="background:#534AB7; color:#fff; border-radius:24px; padding:12px 22px; font-size:13px; font-weight:700; white-space:nowrap; flex-shrink:0;">Find a QSP Partner ↗</a>
+    </div>
+  </div>
+
+  <!-- SETUP & ONBOARDING -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">▶</div><div class="section-title">Setup &amp; onboarding</div><div class="section-count">5 resources</div></div>
     <div class="resource-grid">
@@ -105,6 +122,8 @@
       <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card"><div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- COMPLIANCE -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E6F1FB;">⚖</div><div class="section-title">Compliance</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
@@ -114,6 +133,8 @@
       <a href="https://quickbooks.intuit.com/payroll/1099-vs-w2/" target="_blank" class="resource-card"><div><div class="resource-title">1099 vs. W-2: What's the difference?</div><div class="resource-source">QuickBooks Blog</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- DEMO VIDEOS & REVIEWS -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">▶</div><div class="section-title">Demo videos &amp; reviews</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
@@ -123,6 +144,8 @@
       <a href="https://www.youtube.com/watch?v=GFEXMArkFkc&t=14s" target="_blank" class="resource-card"><div><div class="resource-title">Points North certified payroll for QBO</div><div class="resource-source">YouTube demo</div></div><span class="badge badge-video">Video</span></a>
     </div>
   </div>
+
+  <!-- PRODUCT NEWS -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">📰</div><div class="section-title">Product news &amp; updates</div><div class="section-count">3 resources</div></div>
     <div class="resource-grid">
@@ -131,6 +154,8 @@
       <a href="https://www.firmofthefuture.com/" target="_blank" class="resource-card"><div><div class="resource-title">Firm of the Future</div><div class="resource-source">Partner-focused news &amp; insights</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- TOOLS & DIRECTORIES -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">⚙</div><div class="section-title">Tools &amp; directories</div><div class="section-count">3 resources</div></div>
     <div class="resource-grid">
@@ -139,13 +164,26 @@
       <a href="https://quickbooks.intuit.com/r/small-business-data/index/" target="_blank" class="resource-card"><div><div class="resource-title">Small Business Index</div><div class="resource-source">QuickBooks data &amp; insights</div></div><span class="badge badge-tool">Tool</span></a>
     </div>
   </div>
+
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="partner-resources.html">Partner resources</a>
-      <a href="https://www.workforcesolutionsonline.com/privacy-policy" target="_blank">Privacy policy</a>
+      <a href="privacy-policy.html">Privacy policy</a>
     </div>
   </footer>
+
+  <script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
+
 </body>
 </html>
