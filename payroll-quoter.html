@@ -1,372 +1,265 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QBO Payroll Quoter — Workforce Solutions</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); min-height: 100vh; }
+import { useMemo, useState } from "react";
 
-    /* NAV */
-    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
-    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; text-decoration: none; color: #1a1a1a; }
-    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
-    .nav-links { display: flex; align-items: center; }
-    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; text-decoration: none; }
-    .nav-link:hover { color: #1a1a1a; }
-    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
-    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; text-decoration: none; }
-    .nav-cta:hover { background: #0F6E56; }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
-    .nav-dropdown-toggle:hover { color: #1a1a1a; }
-    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
-    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
-    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
-    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; text-decoration: none; }
-    .nav-dropdown-item:last-child { border-bottom: none; }
-    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+const PRICES = {
+  Core:    { base: 50,  perEmployee: 6.5,  perState: 12 },
+  Premium: { base: 88,  perEmployee: 10,   perState: 12 },
+  Elite:   { base: 134, perEmployee: 12,   perState: 0  },
+};
 
-    /* FOOTER */
-    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 0; }
-    .footer-brand { font-weight: 700; color: #555; }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-links a { color: #999; text-decoration: none; }
-    .footer-links a:hover { color: #555; }
+const PLAN_COLORS = {
+  Core:    { bg: "bg-slate-100", border: "border-slate-300", ring: "ring-slate-400", text: "text-slate-700" },
+  Premium: { bg: "bg-blue-50",   border: "border-blue-300",  ring: "ring-blue-500",  text: "text-blue-700"  },
+  Elite:   { bg: "bg-indigo-50", border: "border-indigo-300",ring: "ring-indigo-500",text: "text-indigo-700" },
+};
 
-    /* QUOTER STYLES */
-    .quoter-wrap { max-width: 680px; margin: 0 auto; padding: 32px 20px 40px; display: flex; flex-direction: column; gap: 16px; }
-    .quoter-header h1 { font-size: 22px; font-weight: 700; color: #1e293b; }
-    .quoter-header p { font-size: 13px; color: #94a3b8; margin-top: 4px; }
-    .card { background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
-    .card-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #94a3b8; margin-bottom: 12px; }
-    .plan-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-    .plan-btn { border-radius: 10px; border: 2px solid #e2e8f0; padding: 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all .15s; background: #fff; color: #94a3b8; }
-    .plan-btn:hover { border-color: #cbd5e1; background: #f8fafc; }
-    .plan-btn.active-core    { background: #f1f5f9; border-color: #94a3b8; color: #475569; box-shadow: 0 0 0 2px #94a3b8; }
-    .plan-btn.active-premium { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; box-shadow: 0 0 0 2px #3b82f6; }
-    .plan-btn.active-elite   { background: #eef2ff; border-color: #a5b4fc; color: #4338ca; box-shadow: 0 0 0 2px #6366f1; }
-    .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .input-card { background: #fff; border-radius: 16px; border: 1px solid #e2e8f0; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
-    .input-card label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #94a3b8; margin-bottom: 8px; }
-    .input-card input[type="number"] { width: 100%; font-size: 24px; font-weight: 700; color: #1e293b; background: transparent; border: none; outline: none; padding: 0; }
-    .input-hint { font-size: 11px; color: #94a3b8; margin-top: 4px; }
-    .promo-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
-    .promo-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: #3b82f6; flex-shrink: 0; cursor: pointer; }
-    .promo-label { font-size: 13px; color: #334155; cursor: pointer; }
-    .promo-price { margin-left: auto; font-size: 13px; font-weight: 700; color: #2563eb; }
-    .promo-dur-input { width: 44px; font-size: 12px; text-align: center; border: 1px solid #e2e8f0; border-radius: 8px; padding: 4px; }
-    .promo-warning { font-size: 11px; color: #d97706; padding-left: 26px; margin-top: 2px; }
-    .override-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: none; border: none; cursor: pointer; text-align: left; }
-    .override-title { font-size: 13px; font-weight: 700; color: #334155; }
-    .override-badge { margin-left: 8px; font-size: 11px; background: #fef3c7; color: #92400e; border-radius: 20px; padding: 2px 8px; }
-    .override-body { padding: 0 20px 20px; border-top: 1px solid #f1f5f9; padding-top: 16px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-    .override-field label { display: block; font-size: 11px; color: #94a3b8; margin-bottom: 4px; }
-    .override-field input { width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 8px; font-size: 13px; outline: none; }
-    .override-field input:focus { box-shadow: 0 0 0 2px #93c5fd; border-color: #93c5fd; }
-    .reset-btn { font-size: 11px; color: #ef4444; background: none; border: none; cursor: pointer; text-decoration: underline; }
-    .override-note { font-size: 11px; color: #94a3b8; grid-column: 1/-1; }
-    .result-card { border-radius: 16px; border: 2px solid; padding: 24px; }
-    .result-card.core    { background: #f1f5f9; border-color: #94a3b8; }
-    .result-card.premium { background: #eff6ff; border-color: #93c5fd; }
-    .result-card.elite   { background: #eef2ff; border-color: #a5b4fc; }
-    .result-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
-    .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #94a3b8; margin-bottom: 4px; }
-    .result-price { font-size: 40px; font-weight: 700; }
-    .result-price.core    { color: #475569; }
-    .result-price.premium { color: #1d4ed8; }
-    .result-price.elite   { color: #4338ca; }
-    .result-subprice { font-size: 11px; color: #94a3b8; margin-top: 2px; }
-    .result-plan-badge { font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; border: 1px solid; }
-    .result-plan-badge.core    { background: #f1f5f9; border-color: #94a3b8; color: #475569; }
-    .result-plan-badge.premium { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
-    .result-plan-badge.elite   { background: #eef2ff; border-color: #a5b4fc; color: #4338ca; }
-    .result-breakdown { border-top: 1px solid rgba(0,0,0,.08); padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
-    .breakdown-row { display: flex; justify-content: space-between; font-size: 13px; color: #475569; }
-    .breakdown-val { font-weight: 600; }
-    .result-divider { border-top: 1px solid rgba(0,0,0,.08); margin: 8px 0; }
-    .action-btns { display: flex; gap: 10px; margin-top: 20px; }
-    .btn-copy { flex: 1; padding: 11px; border-radius: 12px; background: #1e293b; color: #fff; font-size: 13px; font-weight: 700; border: none; cursor: pointer; transition: background .15s; }
-    .btn-copy:hover { background: #334155; }
-    .btn-email { flex: 1; padding: 11px; border-radius: 12px; background: #fff; color: #334155; font-size: 13px; font-weight: 700; border: 1px solid #cbd5e1; cursor: pointer; transition: background .15s; }
-    .btn-email:hover { background: #f8fafc; }
-    .footnote { font-size: 11px; color: #94a3b8; text-align: center; padding-bottom: 8px; }
-    @media (max-width: 600px) {
-      .input-grid { grid-template-columns: 1fr; }
-      .plan-grid { grid-template-columns: 1fr; }
-      .override-body { grid-template-columns: 1fr; }
-      .nav-links { display: none; }
-    }
-  </style>
-</head>
-<body>
+const fmt = n => n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 });
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <div class="nav-dropdown">
-        <div class="nav-dropdown-toggle">For SMBs</div>
-        <div class="nav-dropdown-menu">
-          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
-          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
-          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
-          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
-          <a href="switching-payroll-providers.html" class="nav-dropdown-item">Switching payroll providers</a>
+export default function App() {
+  const [plan, setPlan] = useState("Core");
+  const [employees, setEmployees] = useState(1);
+  const [states, setStates] = useState(1);
+  const [showOverrides, setShowOverrides] = useState(false);
+  const [customBase, setCustomBase] = useState("");
+  const [customPerEmp, setCustomPerEmp] = useState("");
+  const [customPerState, setCustomPerState] = useState("");
+  const [promo50, setPromo50] = useState(false);
+  const [promo30, setPromo30] = useState(false);
+  const [promo30Months, setPromo30Months] = useState(12);
+  const [copied, setCopied] = useState("");
+
+  const price = PRICES[plan];
+  const base    = customBase     !== "" ? parseFloat(customBase)     : price.base;
+  const perEmp  = customPerEmp   !== "" ? parseFloat(customPerEmp)   : price.perEmployee;
+  const perState= customPerState !== "" ? parseFloat(customPerState) : price.perState;
+  const addlStates = Math.max(0, states - 1);
+
+  const empCost   = Math.max(0, perEmp)   * Math.max(0, employees);
+  const stateCost = Math.max(0, perState) * addlStates;
+  const monthly   = Math.max(0, base) + empCost + stateCost;
+
+  const promoMonthly50    = Math.max(0, base) * 0.5 + empCost + stateCost;
+  const promoMonthly30_15 = Math.max(0, base) * 0.7 + Math.max(0, perEmp) * 0.85 * Math.max(0, employees) + stateCost;
+
+  const hasCustom = customBase !== "" || customPerEmp !== "" || customPerState !== "";
+
+  // ── Copy / email output (clean, concise) ──────────────────────────────────
+  const buildOutput = () => {
+    const lines = [
+      `QBO Payroll — ${plan} Plan`,
+      `${"─".repeat(32)}`,
+      `Employees:  ${employees}`,
+      `States:     ${states}`,
+      ``,
+      `Base fee:         ${fmt(Math.max(0, base))}/mo`,
+      `Per employee:     ${fmt(Math.max(0, perEmp))} × ${employees} = ${fmt(empCost)}/mo`,
+      addlStates > 0
+        ? `Extra states:     ${fmt(Math.max(0, perState))} × ${addlStates} = ${fmt(stateCost)}/mo`
+        : `Extra states:     none`,
+      ``,
+      `List price:       ${fmt(monthly)}/mo`,
+    ];
+    if (promo50) lines.push(`50% promo (3 mo):  ${fmt(promoMonthly50)}/mo`);
+    if (promo30) lines.push(`30/15 promo (${promo30Months} mo): ${fmt(promoMonthly30_15)}/mo`);
+    if (promo50 && promo30) lines.push(`* Promos cannot be combined.`);
+    lines.push(``, `Pricing as of Oct 2025. Subject to change.`);
+    return lines.join("\n");
+  };
+
+  const doCopy = async () => {
+    const text = buildOutput();
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = Object.assign(document.createElement("textarea"), {
+          value: text, style: "position:fixed;opacity:0;left:-9999px"
+        });
+        document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+      }
+      setCopied("Copied!"); setTimeout(() => setCopied(""), 2500);
+    } catch { setCopied("Copy failed"); setTimeout(() => setCopied(""), 2500); }
+  };
+
+  const doEmail = () => {
+    window.location.href = `mailto:?subject=${encodeURIComponent(`QBO Payroll ${plan} — Quote`)}&body=${encodeURIComponent(buildOutput())}`;
+  };
+
+  const pc = PLAN_COLORS[plan];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4 md:p-8 font-sans">
+      <div className="max-w-2xl mx-auto space-y-5">
+
+        {/* Header */}
+        <div className="mb-2">
+          <h1 className="text-2xl font-bold text-slate-800 tracking-tight">QBO Payroll Quoter</h1>
+          <p className="text-sm text-slate-500 mt-0.5">US monthly pricing · list rates as of Oct 2025</p>
         </div>
-      </div>
-      <div class="nav-dropdown">
-        <div class="nav-dropdown-toggle">Resources</div>
-        <div class="nav-dropdown-menu">
-          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
-          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
-          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+
+        {/* Plan selector */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">Plan</p>
+          <div className="grid grid-cols-3 gap-3">
+            {Object.keys(PRICES).map(p => (
+              <button
+                key={p}
+                onClick={() => setPlan(p)}
+                className={`rounded-xl border-2 py-3 text-sm font-semibold transition-all ${
+                  plan === p
+                    ? `${PLAN_COLORS[p].bg} ${PLAN_COLORS[p].border} ${PLAN_COLORS[p].text} ring-2 ${PLAN_COLORS[p].ring} ring-offset-1`
+                    : "border-slate-200 text-slate-500 hover:border-slate-300 hover:bg-slate-50"
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
-    </div>
-    <a href="payroll-quoter.html" class="nav-cta active">Payroll Quoter ↗</a>
-  </nav>
 
-  <!-- REACT APP -->
-  <div id="root"></div>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-brand">© 2025 Workforce Solutions</div>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="partner-resources.html">Partner resources</a>
-      <a href="privacy-policy.html" target="_blank">Privacy policy</a>
-    </div>
-  </footer>
-
-  <script type="text/babel">
-    const { useState } = React;
-
-    const PRICES = {
-      Core:    { base: 50,  perEmployee: 6.5,  perState: 12 },
-      Premium: { base: 88,  perEmployee: 10,   perState: 12 },
-      Elite:   { base: 134, perEmployee: 12,   perState: 0  },
-    };
-
-    const fmt = n => n.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 });
-
-    function App() {
-      const [plan, setPlan] = useState("Core");
-      const [employees, setEmployees] = useState(1);
-      const [states, setStates] = useState(1);
-      const [showOverrides, setShowOverrides] = useState(false);
-      const [customBase, setCustomBase] = useState("");
-      const [customPerEmp, setCustomPerEmp] = useState("");
-      const [customPerState, setCustomPerState] = useState("");
-      const [promo50, setPromo50] = useState(false);
-      const [promo30, setPromo30] = useState(false);
-      const [promo30Months, setPromo30Months] = useState(12);
-      const [copied, setCopied] = useState("");
-
-      const price = PRICES[plan];
-      const base     = customBase     !== "" ? parseFloat(customBase)     : price.base;
-      const perEmp   = customPerEmp   !== "" ? parseFloat(customPerEmp)   : price.perEmployee;
-      const perState = customPerState !== "" ? parseFloat(customPerState) : price.perState;
-      const addlStates = Math.max(0, states - 1);
-      const empCost    = Math.max(0, perEmp)   * Math.max(0, employees);
-      const stateCost  = Math.max(0, perState) * addlStates;
-      const monthly    = Math.max(0, base) + empCost + stateCost;
-      const promoMonthly50    = monthly / 2;
-      const promoMonthly30_15 = Math.max(0, base) * 0.7 + Math.max(0, perEmp) * 0.85 * Math.max(0, employees) + stateCost;
-      const hasCustom = customBase !== "" || customPerEmp !== "" || customPerState !== "";
-      const planKey   = plan.toLowerCase();
-
-      const buildOutput = () => {
-        const lines = [
-          `QBO Payroll — ${plan} Plan`,
-          `${"─".repeat(32)}`,
-          `Employees:  ${employees}`,
-          `States:     ${states}`,
-          ``,
-          `Base fee:         ${fmt(Math.max(0, base))}/mo`,
-          `Per employee:     ${fmt(Math.max(0, perEmp))} × ${employees} = ${fmt(empCost)}/mo`,
-          addlStates > 0 ? `Extra states:     ${fmt(Math.max(0, perState))} × ${addlStates} = ${fmt(stateCost)}/mo` : `Extra states:     none`,
-          ``,
-          `List price:       ${fmt(monthly)}/mo`,
-        ];
-        if (promo50) lines.push(`50% promo (3 mo):  ${fmt(promoMonthly50)}/mo`);
-        if (promo30) lines.push(`30/15 promo (${promo30Months} mo): ${fmt(promoMonthly30_15)}/mo`);
-        if (promo50 && promo30) lines.push(`* Promos cannot be combined.`);
-        lines.push(``, `Pricing as of Oct 2025. Subject to change.`);
-        return lines.join("\n");
-      };
-
-      const doCopy = async () => {
-        const text = buildOutput();
-        try {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(text);
-          } else {
-            const ta = Object.assign(document.createElement("textarea"), { value: text, style: "position:fixed;opacity:0;left:-9999px" });
-            document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
-          }
-          setCopied("Copied!"); setTimeout(() => setCopied(""), 2500);
-        } catch { setCopied("Copy failed"); setTimeout(() => setCopied(""), 2500); }
-      };
-
-      const doEmail = () => {
-        window.location.href = `mailto:?subject=${encodeURIComponent(`QBO Payroll ${plan} — Quote`)}&body=${encodeURIComponent(buildOutput())}`;
-      };
-
-      return (
-        <div className="quoter-wrap">
-          <div className="quoter-header">
-            <h1>QBO Payroll Quoter</h1>
-            <p>US monthly pricing · list rates as of Oct 2025</p>
-          </div>
-
-          {/* Plan selector */}
-          <div className="card">
-            <div className="card-label">Plan</div>
-            <div className="plan-grid">
-              {Object.keys(PRICES).map(p => (
-                <button
-                  key={p}
-                  onClick={() => setPlan(p)}
-                  className={`plan-btn ${plan === p ? `active-${p.toLowerCase()}` : ""}`}
-                >{p}</button>
-              ))}
+        {/* Inputs */}
+        <div className="grid grid-cols-2 gap-4">
+          {[
+            { label: "Active employees", value: employees, set: v => setEmployees(Math.max(0, v)), hint: "W-2 employees paid this month" },
+            { label: "Filing states",    value: states,    set: v => setStates(Math.max(1, v)),    hint: plan === "Elite" ? "Multistate included" : `+${fmt(perState)}/extra state` },
+          ].map(({ label, value, set, hint }) => (
+            <div key={label} className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+              <label className="block text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">{label}</label>
+              <input
+                type="number" min={1} value={value}
+                onChange={e => set(parseInt(e.target.value || "1", 10))}
+                className="w-full text-2xl font-bold text-slate-800 bg-transparent border-none outline-none p-0"
+              />
+              <p className="text-xs text-slate-400 mt-1">{hint}</p>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Inputs */}
-          <div className="input-grid">
-            <div className="input-card">
-              <label>Active employees</label>
-              <input type="number" min={0} value={employees} onChange={e => setEmployees(Math.max(0, parseInt(e.target.value || "0", 10)))} />
-              <div className="input-hint">W-2 employees paid this month</div>
-            </div>
-            <div className="input-card">
-              <label>Filing states</label>
-              <input type="number" min={1} value={states} onChange={e => setStates(Math.max(1, parseInt(e.target.value || "1", 10)))} />
-              <div className="input-hint">{plan === "Elite" ? "Multistate included" : `+${fmt(perState)}/extra state`}</div>
-            </div>
-          </div>
-
-          {/* Promos */}
-          <div className="card">
-            <div className="card-label">Promos</div>
-            <div className="promo-row">
-              <input type="checkbox" id="p50" checked={promo50} onChange={e => setPromo50(e.target.checked)} />
-              <label className="promo-label" htmlFor="p50">50% off first 3 months</label>
-              {promo50 && <span className="promo-price">{fmt(promoMonthly50)}/mo</span>}
-            </div>
-            <div className="promo-row">
-              <input type="checkbox" id="p30" checked={promo30} onChange={e => setPromo30(e.target.checked)} />
-              <label className="promo-label" htmlFor="p30">30% off base + 15% off per-employee</label>
+        {/* Promos */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-3">Promos</p>
+          <div className="space-y-3">
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" checked={promo50} onChange={e => setPromo50(e.target.checked)} className="w-4 h-4 accent-blue-600" />
+              <span className="text-sm text-slate-700">50% off first 3 months</span>
+              {promo50 && <span className="ml-auto text-sm font-semibold text-blue-600">{fmt(promoMonthly50)}/mo</span>}
+            </label>
+            <label className="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" checked={promo30} onChange={e => setPromo30(e.target.checked)} className="w-4 h-4 accent-blue-600" />
+              <span className="text-sm text-slate-700">30% off base + 15% off per-employee</span>
               {promo30 && (
-                <div style={{marginLeft:"auto", display:"flex", alignItems:"center", gap:6}}>
-                  <input type="number" min={1} value={promo30Months} onChange={e => setPromo30Months(Math.max(1, parseInt(e.target.value||"12",10)))} className="promo-dur-input" />
-                  <span style={{fontSize:11,color:"#94a3b8"}}>mo</span>
-                  <span className="promo-price">{fmt(promoMonthly30_15)}/mo</span>
+                <div className="ml-auto flex items-center gap-2">
+                  <input
+                    type="number" min={1} value={promo30Months}
+                    onChange={e => setPromo30Months(Math.max(1, parseInt(e.target.value || "12", 10)))}
+                    className="w-12 text-xs text-center border border-slate-200 rounded-lg p-1"
+                    title="Duration in months"
+                  />
+                  <span className="text-xs text-slate-400">mo</span>
+                  <span className="text-sm font-semibold text-blue-600">{fmt(promoMonthly30_15)}/mo</span>
                 </div>
               )}
-            </div>
-            {promo50 && promo30 && <div className="promo-warning">Promos can't be combined — shown separately for comparison.</div>}
-          </div>
-
-          {/* Override rates */}
-          <div className="card" style={{padding:0}}>
-            <button className="override-toggle" onClick={() => setShowOverrides(v => !v)}>
-              <div>
-                <span className="override-title">Override rates</span>
-                {hasCustom && <span className="override-badge">Custom</span>}
-              </div>
-              <span style={{color:"#94a3b8"}}>{showOverrides ? "▲" : "▼"}</span>
-            </button>
-            {showOverrides && (
-              <div className="override-body">
-                {[
-                  { label: "Base ($/mo)",     val: customBase,     set: setCustomBase,     ph: `${price.base}` },
-                  { label: "Per employee",    val: customPerEmp,   set: setCustomPerEmp,   ph: `${price.perEmployee}` },
-                  { label: "Per extra state", val: customPerState, set: setCustomPerState, ph: `${price.perState}` },
-                ].map(({ label, val, set, ph }) => (
-                  <div className="override-field" key={label}>
-                    <label>{label}</label>
-                    <input type="number" step="0.01" min={0} placeholder={ph} value={val} onChange={e => set(e.target.value)} />
-                  </div>
-                ))}
-                {hasCustom && (
-                  <div style={{gridColumn:"1/-1"}}>
-                    <button className="reset-btn" onClick={() => { setCustomBase(""); setCustomPerEmp(""); setCustomPerState(""); }}>Reset to list pricing</button>
-                  </div>
-                )}
-                <p className="override-note">Leave blank to use list pricing for the selected plan.</p>
-              </div>
+            </label>
+            {promo50 && promo30 && (
+              <p className="text-xs text-amber-600 pl-7">Promos can't be combined — shown separately for comparison.</p>
             )}
           </div>
-
-          {/* Result */}
-          <div className={`result-card ${planKey}`}>
-            <div className="result-top">
-              <div>
-                {(promo50 || promo30) ? (
-                  <>
-                    <div className="result-label">{promo50 && promo30 ? "Promos (not combinable)" : "Promo price"}</div>
-                    {promo50 && (
-                      <div style={{marginBottom: promo30 ? 12 : 0}}>
-                        <span className={`result-price ${planKey}`}>{fmt(promoMonthly50)}</span>
-                        <span style={{fontSize:11,color:"#94a3b8",marginLeft:8}}>/mo · first 3 months</span>
-                        <div className="result-subprice">List: <span style={{textDecoration:"line-through"}}>{fmt(monthly)}</span></div>
-                      </div>
-                    )}
-                    {promo50 && promo30 && <div className="result-divider"/>}
-                    {promo30 && (
-                      <div>
-                        <span className={`result-price ${planKey}`}>{fmt(promoMonthly30_15)}</span>
-                        <span style={{fontSize:11,color:"#94a3b8",marginLeft:8}}>/mo · {promo30Months} mo</span>
-                        <div className="result-subprice">List: <span style={{textDecoration:"line-through"}}>{fmt(monthly)}</span></div>
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <div className="result-label">Monthly list price</div>
-                    <div className={`result-price ${planKey}`}>{fmt(monthly)}</div>
-                  </>
-                )}
-              </div>
-              <span className={`result-plan-badge ${planKey}`}>{plan}</span>
-            </div>
-            <div className="result-breakdown">
-              <div className="breakdown-row"><span>Base fee</span><span className="breakdown-val">{fmt(Math.max(0, base))}</span></div>
-              <div className="breakdown-row"><span>Employees ({employees})</span><span className="breakdown-val">{fmt(empCost)}</span></div>
-              <div className="breakdown-row"><span>Extra states ({addlStates})</span><span className="breakdown-val">{fmt(stateCost)}</span></div>
-            </div>
-            <div className="action-btns">
-              <button className="btn-copy" onClick={doCopy}>{copied || "Copy quote"}</button>
-              <button className="btn-email" onClick={doEmail}>Email quote</button>
-            </div>
-          </div>
-
-          <div className="footnote">List rates · Oct 2025 · Taxes, add-ons, and negotiated discounts not included.</div>
         </div>
-      );
-    }
 
-    ReactDOM.render(<App />, document.getElementById("root"));
-  </script>
+        {/* Override rates — now top-level, easy to find */}
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200">
+          <button
+            onClick={() => setShowOverrides(v => !v)}
+            className="w-full flex items-center justify-between px-5 py-4 text-left"
+          >
+            <div>
+              <span className="text-sm font-semibold text-slate-700">Override rates</span>
+              {hasCustom && <span className="ml-2 text-xs bg-amber-100 text-amber-700 rounded-full px-2 py-0.5">Custom</span>}
+            </div>
+            <span className="text-slate-400 text-lg">{showOverrides ? "▲" : "▼"}</span>
+          </button>
+          {showOverrides && (
+            <div className="px-5 pb-5 border-t border-slate-100 pt-4 grid grid-cols-3 gap-4">
+              {[
+                { label: "Base ($/mo)",       val: customBase,      set: setCustomBase,      ph: `${price.base}` },
+                { label: "Per employee",       val: customPerEmp,    set: setCustomPerEmp,    ph: `${price.perEmployee}` },
+                { label: "Per extra state",    val: customPerState,  set: setCustomPerState,  ph: `${price.perState}` },
+              ].map(({ label, val, set, ph }) => (
+                <div key={label}>
+                  <label className="block text-xs text-slate-500 mb-1">{label}</label>
+                  <input
+                    type="number" step="0.01" min={0} placeholder={ph} value={val}
+                    onChange={e => set(e.target.value)}
+                    className="w-full rounded-lg border border-slate-300 p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300"
+                  />
+                </div>
+              ))}
+              {hasCustom && (
+                <div className="col-span-3">
+                  <button onClick={() => { setCustomBase(""); setCustomPerEmp(""); setCustomPerState(""); }} className="text-xs text-red-500 hover:underline">
+                    Reset to list pricing
+                  </button>
+                </div>
+              )}
+              <p className="col-span-3 text-xs text-slate-400">Leave blank to use list pricing for the selected plan.</p>
+            </div>
+          )}
+        </div>
 
-<script>
-    document.querySelectorAll('a[href]').forEach(a => {
-      const href = a.getAttribute('href');
-      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
-      if (isExternal) {
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener noreferrer');
-      }
-    });
-  </script>
-</html>
+        {/* Quote result */}
+        <div className={`rounded-2xl border-2 ${pc.border} ${pc.bg} p-6`}>
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              {(promo50 || promo30) ? (
+                <>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">
+                    {promo50 && promo30 ? "Promos (not combinable)" : "Promo price"}
+                  </p>
+                  {promo50 && (
+                    <div className="mb-1">
+                      <span className={`text-4xl font-bold ${pc.text}`}>{fmt(promoMonthly50)}</span>
+                      <span className="text-xs text-slate-400 font-medium ml-2">/ mo · first 3 months</span>
+                      <div className="text-sm text-slate-400 mt-0.5">
+                        List: <span className="line-through">{fmt(monthly)}</span>
+                      </div>
+                    </div>
+                  )}
+                  {promo30 && (
+                    <div>
+                      {promo50 && <div className="border-t border-slate-200 my-2" />}
+                      <span className={`text-4xl font-bold ${pc.text}`}>{fmt(promoMonthly30_15)}</span>
+                      <span className="text-xs text-slate-400 font-medium ml-2">/ mo · {promo30Months} mo</span>
+                      <div className="text-sm text-slate-400 mt-0.5">
+                        List: <span className="line-through">{fmt(monthly)}</span>
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">Monthly list price</p>
+                  <p className={`text-4xl font-bold mt-1 ${pc.text}`}>{fmt(monthly)}</p>
+                </>
+              )}
+            </div>
+            <span className={`text-sm font-semibold px-3 py-1 rounded-full ${pc.bg} ${pc.border} border ${pc.text}`}>{plan}</span>
+          </div>
+          <div className="text-sm text-slate-600 space-y-1 border-t border-slate-200 pt-4">
+            <div className="flex justify-between"><span>Base fee</span><span className="font-medium">{fmt(Math.max(0, base))}</span></div>
+            <div className="flex justify-between"><span>Employees ({employees})</span><span className="font-medium">{fmt(empCost)}</span></div>
+            <div className="flex justify-between"><span>Extra states ({addlStates})</span><span className="font-medium">{fmt(stateCost)}</span></div>
+          </div>
+          <div className="flex gap-2 mt-5">
+            <button onClick={doCopy}  className="flex-1 py-2.5 rounded-xl bg-slate-800 text-white text-sm font-semibold hover:bg-slate-700 transition-colors">
+              {copied || "Copy quote"}
+            </button>
+            <button onClick={doEmail} className="flex-1 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-colors">
+              Email quote
+            </button>
+          </div>
+        </div>
+
+        <p className="text-xs text-slate-400 text-center pb-4">List rates · Oct 2025 · Taxes, add-ons, and negotiated discounts not included.</p>
+      </div>
+    </div>
+  );
+}
