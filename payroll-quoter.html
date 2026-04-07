@@ -1,429 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QBO Payroll Quoter | Workforce Solutions Online</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QBO Payroll Quoter | Workforce Solutions</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #1e293b; min-height: 100vh; }
+    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
 
-    /* ── Nav (matches site) ── */
-    nav { background: #1e3a5f; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
-    nav .logo { color: #fff; font-weight: 700; font-size: 15px; text-decoration: none; letter-spacing: .3px; }
-    nav ul { list-style: none; display: flex; gap: 6px; flex-wrap: wrap; }
-    nav ul li a { color: #cbd5e1; font-size: 13px; text-decoration: none; padding: 6px 10px; border-radius: 6px; transition: background .15s, color .15s; }
-    nav ul li a:hover, nav ul li a.active { background: rgba(255,255,255,.12); color: #fff; }
+    /* ── Nav (exact match to index.html) ── */
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .nav-cta.active-page { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
 
-    /* ── Page layout ── */
-    .page-header { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a4f 100%); color: #fff; padding: 40px 24px 36px; text-align: center; }
-    .page-header h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; margin-bottom: 8px; }
-    .page-header p { font-size: 14px; color: #94a3b8; }
+    /* ── Page header ── */
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 40px 32px 36px; text-align: center; }
+    .page-header-eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+    .page-header h1 { font-size: 26px; font-weight: 700; line-height: 1.25; margin-bottom: 8px; }
+    .page-header p { font-size: 13px; color: #555; }
 
-    main { max-width: 680px; margin: 32px auto; padding: 0 16px 60px; display: flex; flex-direction: column; gap: 16px; }
+    /* ── Main layout ── */
+    main { max-width: 680px; margin: 32px auto; padding: 0 20px 60px; display: flex; flex-direction: column; gap: 14px; }
 
     /* ── Cards ── */
-    .card { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 1px 4px rgba(0,0,0,.05); overflow: hidden; }
+    .card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; overflow: hidden; }
     .card-body { padding: 20px; }
-    .card-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 12px; }
+    .card-label { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 14px; }
 
     /* ── Plan buttons ── */
     .plan-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-    .plan-btn { border: 2px solid #e2e8f0; border-radius: 10px; padding: 12px 8px; font-size: 13px; font-weight: 600; cursor: pointer; background: #fff; color: #64748b; transition: all .15s; }
-    .plan-btn:hover { border-color: #94a3b8; background: #f8fafc; }
-    .plan-btn.active-core    { border-color: #94a3b8; background: #f1f5f9; color: #475569; box-shadow: 0 0 0 3px #94a3b8; }
-    .plan-btn.active-premium { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; box-shadow: 0 0 0 3px #3b82f6; }
-    .plan-btn.active-elite   { border-color: #a5b4fc; background: #eef2ff; color: #4338ca; box-shadow: 0 0 0 3px #6366f1; }
+    .plan-btn { border: 2px solid #e0dfd8; border-radius: 8px; padding: 11px 8px; font-size: 13px; font-weight: 700; cursor: pointer; background: #fff; color: #555; font-family: Arial, Helvetica, sans-serif; transition: all .15s; }
+    .plan-btn:hover { border-color: #aaa; color: #1a1a1a; }
+    .plan-btn.active { border-color: #1D9E75; background: #E1F5EE; color: #0F6E56; box-shadow: 0 0 0 2px #1D9E75; }
 
     /* ── Number inputs ── */
     .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .input-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px; }
-    .input-card label { display: block; font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
-    .input-card input[type="number"] { width: 100%; font-size: 26px; font-weight: 700; color: #1e293b; border: none; outline: none; background: transparent; }
-    .input-card .hint { font-size: 11px; color: #94a3b8; margin-top: 4px; }
+    .input-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
+    .input-card label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #999; margin-bottom: 8px; }
+    .input-card input[type="number"] { width: 100%; font-size: 28px; font-weight: 700; color: #1a1a1a; border: none; outline: none; background: transparent; font-family: Arial, Helvetica, sans-serif; }
+    .input-hint { font-size: 11px; color: #999; margin-top: 4px; }
 
     /* ── Promos ── */
-    .promo-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
-    .promo-row:last-child { border-bottom: none; }
-    .promo-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: #2563eb; flex-shrink: 0; cursor: pointer; }
-    .promo-row label { font-size: 13px; color: #334155; cursor: pointer; flex: 1; }
-    .promo-price { font-size: 13px; font-weight: 600; color: #2563eb; white-space: nowrap; }
-    .promo-months { width: 52px; font-size: 12px; text-align: center; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px 6px; }
-    .promo-months-label { font-size: 11px; color: #94a3b8; }
-    .promo-warning { font-size: 11px; color: #b45309; padding: 6px 0 2px 26px; }
+    .promo-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f0efe8; }
+    .promo-row:last-of-type { border-bottom: none; }
+    .promo-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: #1D9E75; flex-shrink: 0; cursor: pointer; }
+    .promo-row label { font-size: 13px; color: #333; cursor: pointer; flex: 1; }
+    .promo-price { font-size: 13px; font-weight: 700; color: #0F6E56; white-space: nowrap; }
+    .promo-months { width: 50px; font-size: 12px; text-align: center; border: 1px solid #e0dfd8; border-radius: 6px; padding: 3px 6px; font-family: Arial, Helvetica, sans-serif; }
+    .promo-months-label { font-size: 11px; color: #999; }
+    .promo-warning { font-size: 11px; color: #b45309; padding: 6px 0 0 25px; }
 
     /* ── Override accordion ── */
-    .override-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: none; border: none; cursor: pointer; font-family: inherit; }
+    .override-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: none; border: none; cursor: pointer; font-family: Arial, Helvetica, sans-serif; }
     .override-toggle-left { display: flex; align-items: center; gap: 10px; }
-    .override-toggle-left span { font-size: 14px; font-weight: 600; color: #334155; }
-    .badge-custom { font-size: 10px; background: #fef3c7; color: #b45309; border-radius: 99px; padding: 2px 8px; font-weight: 600; }
-    .override-chevron { font-size: 12px; color: #94a3b8; transition: transform .2s; }
+    .override-toggle-left span { font-size: 13px; font-weight: 700; color: #333; }
+    .badge-custom { font-size: 10px; background: #FEF3C7; color: #b45309; border-radius: 99px; padding: 2px 8px; font-weight: 700; }
+    .override-chevron { font-size: 11px; color: #999; transition: transform .2s; }
     .override-chevron.open { transform: rotate(180deg); }
-    .override-body { padding: 0 20px 20px; border-top: 1px solid #f1f5f9; display: none; }
+    .override-body { padding: 0 20px 20px; border-top: 1px solid #f0efe8; display: none; }
     .override-body.open { display: block; }
     .override-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
-    .override-grid label { display: block; font-size: 11px; color: #64748b; margin-bottom: 6px; }
-    .override-grid input { width: 100%; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-family: inherit; }
-    .override-grid input:focus { outline: none; box-shadow: 0 0 0 2px #93c5fd; }
-    .override-reset { font-size: 11px; color: #ef4444; background: none; border: none; cursor: pointer; margin-top: 10px; }
+    .override-grid label { display: block; font-size: 11px; color: #555; margin-bottom: 5px; }
+    .override-grid input { width: 100%; border: 1px solid #e0dfd8; border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: Arial, Helvetica, sans-serif; }
+    .override-grid input:focus { outline: none; border-color: #1D9E75; box-shadow: 0 0 0 2px #E1F5EE; }
+    .override-reset { font-size: 11px; color: #e53e3e; background: none; border: none; cursor: pointer; margin-top: 10px; font-family: Arial, Helvetica, sans-serif; }
     .override-reset:hover { text-decoration: underline; }
-    .override-note { font-size: 11px; color: #94a3b8; margin-top: 8px; }
+    .override-note { font-size: 11px; color: #999; margin-top: 8px; }
 
-    /* ── Quote result card ── */
-    .result-card { border-radius: 14px; border: 2px solid #e2e8f0; padding: 24px; }
-    .result-card.core    { border-color: #94a3b8; background: #f8fafc; }
-    .result-card.premium { border-color: #93c5fd; background: #eff6ff; }
-    .result-card.elite   { border-color: #a5b4fc; background: #eef2ff; }
+    /* ── Quote result ── */
+    .result-card { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 24px; }
+    .result-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 12px; }
+    .result-label { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
+    .result-price { font-size: 40px; font-weight: 700; color: #04342C; line-height: 1.1; }
+    .result-msrp { font-size: 12px; color: #555; margin-top: 4px; }
+    .result-msrp s { color: #888; }
+    .result-duration { font-size: 11px; color: #085041; margin-top: 2px; }
+    .result-promo-divider { border: none; border-top: 1px solid #9FE1CB; margin: 12px 0; }
+    .plan-badge { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 99px; background: #fff; border: 1px solid #9FE1CB; color: #0F6E56; white-space: nowrap; flex-shrink: 0; }
 
-    .result-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
-    .result-label { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px; }
-    .result-price { font-size: 38px; font-weight: 700; line-height: 1.1; }
-    .result-price.core    { color: #475569; }
-    .result-price.premium { color: #1d4ed8; }
-    .result-price.elite   { color: #4338ca; }
-    .result-msrp { font-size: 13px; color: #94a3b8; margin-top: 4px; }
-    .result-msrp s { color: #94a3b8; }
-    .result-duration { font-size: 11px; color: #64748b; font-weight: 500; margin-top: 2px; }
-    .plan-badge { font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 99px; border: 1px solid; }
-    .plan-badge.core    { background: #f1f5f9; border-color: #94a3b8; color: #475569; }
-    .plan-badge.premium { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
-    .plan-badge.elite   { background: #eef2ff; border-color: #a5b4fc; color: #4338ca; }
+    .breakdown { border-top: 1px solid #9FE1CB; padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+    .breakdown-row { display: flex; justify-content: space-between; font-size: 13px; color: #085041; }
+    .breakdown-row span:last-child { font-weight: 700; }
 
-    .result-promo-divider { border: none; border-top: 1px solid #e2e8f0; margin: 12px 0; }
+    .result-actions { display: flex; gap: 10px; margin-top: 18px; align-items: center; }
+    .btn-primary { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: Arial, Helvetica, sans-serif; transition: background .15s; }
+    .btn-primary:hover { background: #085041; }
+    .btn-secondary { background: #fff; color: #1a1a1a; border: 1px solid #ccc; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: Arial, Helvetica, sans-serif; transition: border-color .15s; }
+    .btn-secondary:hover { border-color: #888; }
+    .copy-confirm { font-size: 11px; color: #0F6E56; }
 
-    .breakdown { border-top: 1px solid #e2e8f0; padding-top: 14px; display: flex; flex-direction: column; gap: 6px; }
-    .breakdown-row { display: flex; justify-content: space-between; font-size: 13px; color: #475569; }
-    .breakdown-row span:last-child { font-weight: 600; }
+    .footnote { font-size: 11px; color: #999; text-align: center; }
 
-    .result-actions { display: flex; gap: 10px; margin-top: 18px; }
-    .btn-primary { flex: 1; padding: 11px; border-radius: 10px; background: #1e3a5f; color: #fff; font-size: 13px; font-weight: 600; border: none; cursor: pointer; font-family: inherit; transition: background .15s; }
-    .btn-primary:hover { background: #162d4a; }
-    .btn-secondary { flex: 1; padding: 11px; border-radius: 10px; background: #fff; color: #334155; font-size: 13px; font-weight: 600; border: 1px solid #e2e8f0; cursor: pointer; font-family: inherit; transition: background .15s; }
-    .btn-secondary:hover { background: #f8fafc; }
-    .copy-confirm { font-size: 11px; color: #16a34a; align-self: center; }
+    /* ── Footer (exact match) ── */
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
 
-    .footnote { font-size: 11px; color: #94a3b8; text-align: center; }
-
-    /* ── Footer ── */
-    footer { background: #1e3a5f; color: #94a3b8; text-align: center; font-size: 12px; padding: 20px; margin-top: 40px; }
-    footer a { color: #93c5fd; text-decoration: none; }
-
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
       .input-grid { grid-template-columns: 1fr; }
       .override-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .page-header { padding: 28px 20px 24px; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <a class="logo" href="/index.html">Workforce Solutions Online</a>
-  <ul>
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/how-qbo-payroll-helps.html">QBO Payroll</a></li>
-    <li><a href="/payroll-quoter.html" class="active">Quoter</a></li>
-    <li><a href="/partner-resources.html">Partner Resources</a></li>
-    <li><a href="/smb-challenges.html">SMB Challenges</a></li>
-  </ul>
-</nav>
-
-<div class="page-header">
-  <h1>QBO Payroll Quoter</h1>
-  <p>US monthly list pricing · Core, Premium &amp; Elite · Updated Oct 2025</p>
-</div>
-
-<main>
-
-  <!-- Plan -->
-  <div class="card">
-    <div class="card-body">
-      <div class="card-label">Plan</div>
-      <div class="plan-grid">
-        <button class="plan-btn active-core" data-plan="Core" onclick="setPlan('Core')">Core</button>
-        <button class="plan-btn" data-plan="Premium" onclick="setPlan('Premium')">Premium</button>
-        <button class="plan-btn" data-plan="Elite" onclick="setPlan('Elite')">Elite</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Employees + States -->
-  <div class="input-grid">
-    <div class="input-card">
-      <label for="emp-input">Active Employees</label>
-      <input type="number" id="emp-input" min="0" value="1" oninput="recalc()" />
-      <div class="hint">W-2 employees paid this month</div>
-    </div>
-    <div class="input-card">
-      <label for="state-input">Filing States</label>
-      <input type="number" id="state-input" min="1" value="1" oninput="recalc()" />
-      <div class="hint" id="state-hint">+$12.00/extra state</div>
-    </div>
-  </div>
-
-  <!-- Promos -->
-  <div class="card">
-    <div class="card-body">
-      <div class="card-label">Promos</div>
-      <div class="promo-row">
-        <input type="checkbox" id="promo50" onchange="recalc()" />
-        <label for="promo50">50% off base fee — first 3 months</label>
-        <span class="promo-price" id="promo50-price" style="display:none"></span>
-      </div>
-      <div class="promo-row">
-        <input type="checkbox" id="promo30" onchange="recalc()" />
-        <label for="promo30">30% off base + 15% off per-employee</label>
-        <span style="display:flex;align-items:center;gap:6px">
-          <input type="number" class="promo-months" id="promo30-months" min="1" value="12" oninput="recalc()" />
-          <span class="promo-months-label">mo</span>
-          <span class="promo-price" id="promo30-price" style="display:none"></span>
-        </span>
-      </div>
-      <div class="promo-warning" id="promo-warning" style="display:none">Promos can't be combined — shown separately for comparison.</div>
-    </div>
-  </div>
-
-  <!-- Override rates -->
-  <div class="card">
-    <button class="override-toggle" onclick="toggleOverrides()">
-      <div class="override-toggle-left">
-        <span>Override rates</span>
-        <span class="badge-custom" id="custom-badge" style="display:none">Custom</span>
-      </div>
-      <span class="override-chevron" id="override-chevron">▼</span>
-    </button>
-    <div class="override-body" id="override-body">
-      <div class="override-grid">
-        <div>
-          <label>Base ($/mo)</label>
-          <input type="number" step="0.01" min="0" id="custom-base" placeholder="50" oninput="recalc()" />
-        </div>
-        <div>
-          <label>Per employee ($/ee/mo)</label>
-          <input type="number" step="0.01" min="0" id="custom-perempl" placeholder="6.50" oninput="recalc()" />
-        </div>
-        <div>
-          <label>Per extra state ($/state/mo)</label>
-          <input type="number" step="0.01" min="0" id="custom-perstate" placeholder="12" oninput="recalc()" />
+  <nav class="nav">
+    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
+          <a href="switching-payroll-providers.html" class="nav-dropdown-item">Switching payroll providers</a>
         </div>
       </div>
-      <button class="override-reset" id="override-reset" onclick="resetOverrides()" style="display:none">Reset to list pricing</button>
-      <div class="override-note">Leave blank to use list pricing for the selected plan.</div>
-    </div>
-  </div>
-
-  <!-- Quote result -->
-  <div class="result-card core" id="result-card">
-    <div class="result-top">
-      <div id="result-price-block">
-        <!-- Injected by JS -->
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
+          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
+          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+        </div>
       </div>
-      <span class="plan-badge core" id="plan-badge">Core</span>
+      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
     </div>
-    <div class="breakdown">
-      <div class="breakdown-row"><span>Base fee</span><span id="bd-base">$50.00</span></div>
-      <div class="breakdown-row"><span id="bd-emp-label">Employees (1)</span><span id="bd-emp">$6.50</span></div>
-      <div class="breakdown-row"><span id="bd-state-label">Extra states (0)</span><span id="bd-state">$0.00</span></div>
-    </div>
-    <div class="result-actions">
-      <button class="btn-primary" id="copy-btn" onclick="doCopy()">Copy quote</button>
-      <button class="btn-secondary" onclick="doEmail()">Email quote</button>
-      <span class="copy-confirm" id="copy-confirm"></span>
-    </div>
+    <a href="payroll-quoter.html" class="nav-cta active-page">Payroll Quoter ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-eyebrow">Pricing Tool</div>
+    <h1>QBO Payroll Quoter</h1>
+    <p>US monthly list pricing · Core, Premium &amp; Elite · Updated Oct 2025</p>
   </div>
 
-  <div class="footnote">List rates · Oct 2025 · Taxes, add-ons, and negotiated discounts not included.</div>
+  <main>
 
-</main>
+    <!-- Plan -->
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Plan</div>
+        <div class="plan-grid">
+          <button class="plan-btn active" data-plan="Core" onclick="setPlan('Core')">Core</button>
+          <button class="plan-btn" data-plan="Premium" onclick="setPlan('Premium')">Premium</button>
+          <button class="plan-btn" data-plan="Elite" onclick="setPlan('Elite')">Elite</button>
+        </div>
+      </div>
+    </div>
 
-<footer>
-  <p>&copy; 2025 Workforce Solutions Online &nbsp;|&nbsp; <a href="mailto:info@workforcesolutionsonline.com">Contact</a></p>
-</footer>
+    <!-- Employees + States -->
+    <div class="input-grid">
+      <div class="input-card">
+        <label for="emp-input">Active Employees</label>
+        <input type="number" id="emp-input" min="0" value="1" oninput="recalc()" />
+        <div class="input-hint">W-2 employees paid this month</div>
+      </div>
+      <div class="input-card">
+        <label for="state-input">Filing States</label>
+        <input type="number" id="state-input" min="1" value="1" oninput="recalc()" />
+        <div class="input-hint" id="state-hint">+$12.00/extra state</div>
+      </div>
+    </div>
 
-<script>
-  const PRICES = {
-    Core:    { base: 50,  perEmployee: 6.5,  perState: 12 },
-    Premium: { base: 88,  perEmployee: 10,   perState: 12 },
-    Elite:   { base: 134, perEmployee: 12,   perState: 0  },
-  };
+    <!-- Promos -->
+    <div class="card">
+      <div class="card-body">
+        <div class="card-label">Promos</div>
+        <div class="promo-row">
+          <input type="checkbox" id="promo50" onchange="recalc()" />
+          <label for="promo50">50% off base fee — first 3 months</label>
+          <span class="promo-price" id="promo50-price" style="display:none"></span>
+        </div>
+        <div class="promo-row">
+          <input type="checkbox" id="promo30" onchange="recalc()" />
+          <label for="promo30">30% off base + 15% off per-employee</label>
+          <span style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+            <input type="number" class="promo-months" id="promo30-months" min="1" value="12" oninput="recalc()" />
+            <span class="promo-months-label">mo</span>
+            <span class="promo-price" id="promo30-price" style="display:none"></span>
+          </span>
+        </div>
+        <div class="promo-warning" id="promo-warning" style="display:none">Promos can't be combined — shown separately for comparison.</div>
+      </div>
+    </div>
 
-  const PLAN_STYLE = {
-    Core:    { card: 'core',    badge: 'core',    price: 'core'    },
-    Premium: { card: 'premium', badge: 'premium', price: 'premium' },
-    Elite:   { card: 'elite',   badge: 'elite',   price: 'elite'   },
-  };
+    <!-- Override rates -->
+    <div class="card">
+      <button class="override-toggle" onclick="toggleOverrides()">
+        <div class="override-toggle-left">
+          <span>Override rates</span>
+          <span class="badge-custom" id="custom-badge" style="display:none">Custom</span>
+        </div>
+        <span class="override-chevron" id="override-chevron">▼</span>
+      </button>
+      <div class="override-body" id="override-body">
+        <div class="override-grid">
+          <div>
+            <label>Base ($/mo)</label>
+            <input type="number" step="0.01" min="0" id="custom-base" placeholder="50" oninput="recalc()" />
+          </div>
+          <div>
+            <label>Per employee ($/ee/mo)</label>
+            <input type="number" step="0.01" min="0" id="custom-perempl" placeholder="6.50" oninput="recalc()" />
+          </div>
+          <div>
+            <label>Per extra state ($/state/mo)</label>
+            <input type="number" step="0.01" min="0" id="custom-perstate" placeholder="12" oninput="recalc()" />
+          </div>
+        </div>
+        <button class="override-reset" id="override-reset" onclick="resetOverrides()" style="display:none">Reset to list pricing</button>
+        <div class="override-note">Leave blank to use list pricing for the selected plan.</div>
+      </div>
+    </div>
 
-  let currentPlan = 'Core';
+    <!-- Quote result -->
+    <div class="result-card">
+      <div class="result-top">
+        <div id="result-price-block"></div>
+        <span class="plan-badge" id="plan-badge">Core</span>
+      </div>
+      <div class="breakdown">
+        <div class="breakdown-row"><span>Base fee</span><span id="bd-base"></span></div>
+        <div class="breakdown-row"><span id="bd-emp-label">Employees (1)</span><span id="bd-emp"></span></div>
+        <div class="breakdown-row"><span id="bd-state-label">Extra states (0)</span><span id="bd-state"></span></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn-primary" id="copy-btn" onclick="doCopy()">Copy quote</button>
+        <button class="btn-secondary" onclick="doEmail()">Email quote</button>
+        <span class="copy-confirm" id="copy-confirm"></span>
+      </div>
+    </div>
 
-  const fmt = n => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
+    <div class="footnote">List rates · Oct 2025 · Taxes, add-ons, and negotiated discounts not included.</div>
 
-  function setPlan(plan) {
-    currentPlan = plan;
-    document.querySelectorAll('.plan-btn').forEach(b => {
-      b.className = 'plan-btn';
-      if (b.dataset.plan === plan) b.classList.add('active-' + plan.toLowerCase());
-    });
-    // Update override placeholders
-    const p = PRICES[plan];
-    document.getElementById('custom-base').placeholder    = p.base;
-    document.getElementById('custom-perempl').placeholder = p.perEmployee;
-    document.getElementById('custom-perstate').placeholder = p.perState;
-    recalc();
-  }
+  </main>
 
-  function toggleOverrides() {
-    const body = document.getElementById('override-body');
-    const chev = document.getElementById('override-chevron');
-    const open = body.classList.toggle('open');
-    chev.classList.toggle('open', open);
-  }
+  <footer class="footer">
+    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="partner-resources.html">Partner resources</a>
+      <a href="privacy-policy.html">Privacy policy</a>
+    </div>
+  </footer>
 
-  function resetOverrides() {
-    ['custom-base','custom-perempl','custom-perstate'].forEach(id => document.getElementById(id).value = '');
-    recalc();
-  }
+  <script>
+    const PRICES = {
+      Core:    { base: 50,  perEmployee: 6.5,  perState: 12 },
+      Premium: { base: 88,  perEmployee: 10,   perState: 12 },
+      Elite:   { base: 134, perEmployee: 12,   perState: 0  },
+    };
 
-  function getVal(id, fallback) {
-    const v = document.getElementById(id).value;
-    return v !== '' ? parseFloat(v) : fallback;
-  }
+    let currentPlan = 'Core';
+    const fmt = n => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
 
-  function recalc() {
-    const p      = PRICES[currentPlan];
-    const base   = getVal('custom-base',    p.base);
-    const perEmp = getVal('custom-perempl', p.perEmployee);
-    const perSt  = getVal('custom-perstate', p.perState);
-    const emps   = Math.max(0, parseInt(document.getElementById('emp-input').value   || '0', 10));
-    const states = Math.max(1, parseInt(document.getElementById('state-input').value || '1', 10));
-    const addlSt = Math.max(0, states - 1);
-
-    const empCost   = perEmp * emps;
-    const stateCost = perSt  * addlSt;
-    const monthly   = Math.max(0, base) + empCost + stateCost;
-
-    // Promo 50%: discount applies to BASE ONLY
-    const promo50Monthly = Math.max(0, base) * 0.5 + empCost + stateCost;
-    // Promo 30/15: 30% off base, 15% off per-employee, no discount on per-state
-    const promo30Monthly = Math.max(0, base) * 0.7 + perEmp * 0.85 * emps + stateCost;
-
-    const p50on = document.getElementById('promo50').checked;
-    const p30on = document.getElementById('promo30').checked;
-    const p30mo = Math.max(1, parseInt(document.getElementById('promo30-months').value || '12', 10));
-
-    // State hint
-    document.getElementById('state-hint').textContent =
-      currentPlan === 'Elite' ? 'Multistate included' : `+${fmt(perSt)}/extra state`;
-
-    // Custom badge + reset
-    const hasCustom = document.getElementById('custom-base').value !== '' ||
-                      document.getElementById('custom-perempl').value !== '' ||
-                      document.getElementById('custom-perstate').value !== '';
-    document.getElementById('custom-badge').style.display  = hasCustom ? '' : 'none';
-    document.getElementById('override-reset').style.display = hasCustom ? '' : 'none';
-
-    // Promo inline prices
-    const p50el = document.getElementById('promo50-price');
-    p50el.style.display = p50on ? '' : 'none';
-    if (p50on) p50el.textContent = fmt(promo50Monthly) + '/mo';
-
-    const p30el = document.getElementById('promo30-price');
-    p30el.style.display = p30on ? '' : 'none';
-    if (p30on) p30el.textContent = fmt(promo30Monthly) + '/mo';
-
-    document.getElementById('promo-warning').style.display = (p50on && p30on) ? '' : 'none';
-
-    // Result card styling
-    const s = PLAN_STYLE[currentPlan];
-    const card = document.getElementById('result-card');
-    card.className = 'result-card ' + s.card;
-    const badge = document.getElementById('plan-badge');
-    badge.className = 'plan-badge ' + s.badge;
-    badge.textContent = currentPlan;
-
-    // Price block
-    const priceBlock = document.getElementById('result-price-block');
-    if (!p50on && !p30on) {
-      priceBlock.innerHTML = `
-        <div class="result-label">Monthly list price</div>
-        <div class="result-price ${s.price}">${fmt(monthly)}</div>`;
-    } else {
-      let html = `<div class="result-label">${p50on && p30on ? 'Promos (not combinable)' : 'Promo price'}</div>`;
-      if (p50on) {
-        html += `
-          <div class="result-price ${s.price}">${fmt(promo50Monthly)}</div>
-          <div class="result-duration">/ mo · first 3 months</div>
-          <div class="result-msrp">List: <s>${fmt(monthly)}</s></div>`;
-      }
-      if (p30on) {
-        if (p50on) html += `<hr class="result-promo-divider">`;
-        html += `
-          <div class="result-price ${s.price}">${fmt(promo30Monthly)}</div>
-          <div class="result-duration">/ mo · ${p30mo} months</div>
-          <div class="result-msrp">List: <s>${fmt(monthly)}</s></div>`;
-      }
-      priceBlock.innerHTML = html;
+    function setPlan(plan) {
+      currentPlan = plan;
+      document.querySelectorAll('.plan-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.plan === plan);
+      });
+      const p = PRICES[plan];
+      document.getElementById('custom-base').placeholder     = p.base;
+      document.getElementById('custom-perempl').placeholder  = p.perEmployee;
+      document.getElementById('custom-perstate').placeholder = p.perState;
+      recalc();
     }
 
-    // Breakdown
-    document.getElementById('bd-base').textContent       = fmt(Math.max(0, base));
-    document.getElementById('bd-emp-label').textContent  = `Employees (${emps})`;
-    document.getElementById('bd-emp').textContent        = fmt(empCost);
-    document.getElementById('bd-state-label').textContent = `Extra states (${addlSt})`;
-    document.getElementById('bd-state').textContent      = fmt(stateCost);
+    function toggleOverrides() {
+      const body = document.getElementById('override-body');
+      const chev = document.getElementById('override-chevron');
+      const open = body.classList.toggle('open');
+      chev.classList.toggle('open', open);
+    }
 
-    // Store for copy/email
-    window._quoteData = { plan: currentPlan, emps, states, addlSt, base, perEmp, perSt, empCost, stateCost, monthly, promo50Monthly, promo30Monthly, p50on, p30on, p30mo };
-  }
+    function resetOverrides() {
+      ['custom-base','custom-perempl','custom-perstate'].forEach(id => document.getElementById(id).value = '');
+      recalc();
+    }
 
-  function buildOutput() {
-    const d = window._quoteData;
-    const line = (a, b) => `${a.padEnd(22)}${b}`;
-    const lines = [
-      `QBO Payroll — ${d.plan} Plan`,
-      '─'.repeat(34),
-      line('Employees:', String(d.emps)),
-      line('States:', String(d.states)),
-      '',
-      line('Base fee:', fmt(Math.max(0, d.base)) + '/mo'),
-      line(`Per employee (${d.emps}):`, fmt(d.empCost) + '/mo'),
-      line(`Extra states (${d.addlSt}):`, d.addlSt > 0 ? fmt(d.stateCost) + '/mo' : 'none'),
-      '',
-      line('List price:', fmt(d.monthly) + '/mo'),
-    ];
-    if (d.p50on) lines.push(line('50% promo (3 mo):', fmt(d.promo50Monthly) + '/mo'));
-    if (d.p30on) lines.push(line(`30/15 promo (${d.p30mo} mo):`, fmt(d.promo30Monthly) + '/mo'));
-    if (d.p50on && d.p30on) lines.push('* Promos cannot be combined.');
-    lines.push('', 'Pricing as of Oct 2025. Subject to change.');
-    return lines.join('\n');
-  }
+    function getVal(id, fallback) {
+      const v = document.getElementById(id).value;
+      return v !== '' ? parseFloat(v) : fallback;
+    }
 
-  async function doCopy() {
-    const text = buildOutput();
-    const btn = document.getElementById('copy-btn');
-    const confirm = document.getElementById('copy-confirm');
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
+    function recalc() {
+      const p      = PRICES[currentPlan];
+      const base   = getVal('custom-base',     p.base);
+      const perEmp = getVal('custom-perempl',  p.perEmployee);
+      const perSt  = getVal('custom-perstate', p.perState);
+      const emps   = Math.max(0, parseInt(document.getElementById('emp-input').value   || '0', 10));
+      const states = Math.max(1, parseInt(document.getElementById('state-input').value || '1', 10));
+      const addlSt = Math.max(0, states - 1);
+
+      const empCost   = perEmp * emps;
+      const stateCost = perSt  * addlSt;
+      const monthly   = Math.max(0, base) + empCost + stateCost;
+
+      // 50% off BASE ONLY
+      const promo50Monthly = Math.max(0, base) * 0.5 + empCost + stateCost;
+      // 30% off base + 15% off per-employee; per-state unchanged
+      const promo30Monthly = Math.max(0, base) * 0.7 + perEmp * 0.85 * emps + stateCost;
+
+      const p50on = document.getElementById('promo50').checked;
+      const p30on = document.getElementById('promo30').checked;
+      const p30mo = Math.max(1, parseInt(document.getElementById('promo30-months').value || '12', 10));
+
+      // State hint
+      document.getElementById('state-hint').textContent =
+        currentPlan === 'Elite' ? 'Multistate included at no extra charge' : `+${fmt(perSt)}/extra state`;
+
+      // Custom badge + reset button
+      const hasCustom = ['custom-base','custom-perempl','custom-perstate'].some(id => document.getElementById(id).value !== '');
+      document.getElementById('custom-badge').style.display   = hasCustom ? '' : 'none';
+      document.getElementById('override-reset').style.display = hasCustom ? '' : 'none';
+
+      // Inline promo prices
+      const p50el = document.getElementById('promo50-price');
+      p50el.style.display = p50on ? '' : 'none';
+      if (p50on) p50el.textContent = fmt(promo50Monthly) + '/mo';
+
+      const p30el = document.getElementById('promo30-price');
+      p30el.style.display = p30on ? '' : 'none';
+      if (p30on) p30el.textContent = fmt(promo30Monthly) + '/mo';
+
+      document.getElementById('promo-warning').style.display = (p50on && p30on) ? '' : 'none';
+
+      // Plan badge
+      document.getElementById('plan-badge').textContent = currentPlan;
+
+      // Price block
+      const priceBlock = document.getElementById('result-price-block');
+      if (!p50on && !p30on) {
+        priceBlock.innerHTML = `
+          <div class="result-label">Monthly list price</div>
+          <div class="result-price">${fmt(monthly)}</div>`;
       } else {
-        const ta = Object.assign(document.createElement('textarea'), { value: text, style: 'position:fixed;opacity:0;left:-9999px' });
-        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        let html = `<div class="result-label">${(p50on && p30on) ? 'Promos (not combinable — shown separately)' : 'Promo price'}</div>`;
+        if (p50on) {
+          html += `
+            <div class="result-price">${fmt(promo50Monthly)}</div>
+            <div class="result-duration">/ mo · first 3 months</div>
+            <div class="result-msrp">List price: <s>${fmt(monthly)}</s></div>`;
+        }
+        if (p30on) {
+          if (p50on) html += `<hr class="result-promo-divider">`;
+          html += `
+            <div class="result-price">${fmt(promo30Monthly)}</div>
+            <div class="result-duration">/ mo · ${p30mo} months</div>
+            <div class="result-msrp">List price: <s>${fmt(monthly)}</s></div>`;
+        }
+        priceBlock.innerHTML = html;
       }
-      btn.textContent = 'Copied!';
-      confirm.textContent = '';
-    } catch {
-      confirm.textContent = 'Copy failed — select manually';
+
+      // Breakdown
+      document.getElementById('bd-base').textContent        = fmt(Math.max(0, base));
+      document.getElementById('bd-emp-label').textContent   = `Employees (${emps})`;
+      document.getElementById('bd-emp').textContent         = fmt(empCost);
+      document.getElementById('bd-state-label').textContent = `Extra states (${addlSt})`;
+      document.getElementById('bd-state').textContent       = fmt(stateCost);
+
+      window._q = { plan: currentPlan, emps, states, addlSt, base, perEmp, perSt, empCost, stateCost, monthly, promo50Monthly, promo30Monthly, p50on, p30on, p30mo };
     }
-    setTimeout(() => { btn.textContent = 'Copy quote'; confirm.textContent = ''; }, 2500);
-  }
 
-  function doEmail() {
-    const d = window._quoteData;
-    window.location.href = `mailto:?subject=${encodeURIComponent(`QBO Payroll ${d.plan} — Quote`)}&body=${encodeURIComponent(buildOutput())}`;
-  }
+    function buildOutput() {
+      const d = window._q;
+      const row = (a, b) => `${a.padEnd(24)}${b}`;
+      const lines = [
+        `QBO Payroll — ${d.plan} Plan`,
+        '─'.repeat(36),
+        row('Employees:', String(d.emps)),
+        row('States:', String(d.states)),
+        '',
+        row('Base fee:', fmt(d.base) + '/mo'),
+        row(`Per employee (${d.emps}):`, fmt(d.empCost) + '/mo'),
+        row(`Extra states (${d.addlSt}):`, d.addlSt > 0 ? fmt(d.stateCost) + '/mo' : 'none'),
+        '',
+        row('List price:', fmt(d.monthly) + '/mo'),
+      ];
+      if (d.p50on) lines.push(row('50% promo — base (3 mo):', fmt(d.promo50Monthly) + '/mo'));
+      if (d.p30on) lines.push(row(`30/15 promo (${d.p30mo} mo):`, fmt(d.promo30Monthly) + '/mo'));
+      if (d.p50on && d.p30on) lines.push('* Promos cannot be combined.');
+      lines.push('', 'Pricing as of Oct 2025. Subject to change.');
+      return lines.join('\n');
+    }
 
-  // Init
-  recalc();
-</script>
+    async function doCopy() {
+      const btn = document.getElementById('copy-btn');
+      const confirm = document.getElementById('copy-confirm');
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(buildOutput());
+        } else {
+          const ta = Object.assign(document.createElement('textarea'), { value: buildOutput(), style: 'position:fixed;opacity:0;left:-9999px' });
+          document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        }
+        btn.textContent = 'Copied!';
+      } catch { confirm.textContent = 'Copy failed — select manually'; }
+      setTimeout(() => { btn.textContent = 'Copy quote'; confirm.textContent = ''; }, 2500);
+    }
+
+    function doEmail() {
+      const d = window._q;
+      window.location.href = `mailto:?subject=${encodeURIComponent('QBO Payroll ' + d.plan + ' — Quote')}&body=${encodeURIComponent(buildOutput())}`;
+    }
+
+    // External link handler (matches index.html)
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer'); }
+    });
+
+    recalc();
+  </script>
 </body>
 </html>
