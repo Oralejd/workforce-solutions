@@ -66,6 +66,8 @@
     .qsp-card-desc { font-size: 13px; color: #555; line-height: 1.6; }
 
     .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .warning-note { background: #FAEEDA; border: 1px solid #FAC775; border-radius: 10px; padding: 14px 18px; display: flex; gap: 12px; font-size: 13px; color: #633806; line-height: 1.6; }
+    .warning-note strong { font-weight: 700; }
     .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
     .bridge-sub { font-size: 13px; color: #085041; }
     .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
@@ -157,6 +159,48 @@
         <div>
           <div class="step-title">Complete your setup</div>
           <p class="step-desc">Follow the post-migration checklist to make sure your QBO account is fully configured and ready to use.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYROLL CONSIDERATIONS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">💸</div>
+      <div class="section-title">Don't overlook payroll when making the move</div>
+    </div>
+    <div class="warning-note" style="margin-bottom: 14px;">
+      <span style="font-size:18px; flex-shrink:0;">⚠️</span>
+      <div><strong>Payroll is the most complex part of a Desktop-to-QBO migration</strong> — and the part most likely to cause problems if not planned carefully. Unlike accounting data, payroll carries tax compliance obligations that can't simply be converted from a file. Plan this separately from the rest of your migration.</div>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num" style="background:#BA7517;">1</div>
+        <div>
+          <div class="step-title">Timing your payroll cutover</div>
+          <p class="step-desc">The cleanest switch is at year-end (January 1) — no prior YTD data to carry over and W-2s are handled entirely by QBO Payroll. Quarter-end is the next best option. If neither is possible, switch immediately after a completed payroll run and before the next one begins. Never switch mid-pay-period.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#BA7517;">2</div>
+        <div>
+          <div class="step-title">YTD payroll data — what carries over</div>
+          <p class="step-desc">QuickBooks Desktop payroll history does not automatically migrate to QBO Payroll. If switching mid-year, you must manually enter year-to-date wages, tax withholdings, and deductions for each employee so QBO Payroll can file accurate quarterly 941s and year-end W-2s.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#BA7517;">3</div>
+        <div>
+          <div class="step-title">Setting up payroll in QBO</div>
+          <p class="step-desc">After migrating, you'll need to configure QBO Payroll from scratch — pay schedules, tax IDs, direct deposit, employee deductions, workers' comp codes, and time tracking. This is separate from converting your company file and requires its own setup checklist.</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="background:#BA7517;">4</div>
+        <div>
+          <div class="step-title">Run a parallel check before going live</div>
+          <p class="step-desc">Before running your first live payroll in QBO, use the Preview Payroll option to verify employee pay amounts, tax withholdings, and deductions against your last Desktop payroll run. Only submit once everything matches — this is your best opportunity to catch setup issues before they affect paychecks.</p>
         </div>
       </div>
     </div>
