@@ -47,15 +47,8 @@
     .badge-video { background: #EEEDFE; color: #3C3489; }
     .badge-article { background: #E6F1FB; color: #0C447C; }
     .badge-guide { background: #FAEEDA; color: #633806; }
-    .updates-banner { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 20px 24px; }
-    .updates-list { display: flex; flex-direction: column; gap: 10px; }
-    .update-item { display: flex; align-items: flex-start; gap: 12px; }
-    .update-badge { font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
-    .ub-compliance { background: #E1F5EE; color: #0F6E56; }
-    .ub-tax { background: #FAEEDA; color: #633806; }
-    .update-text { font-size: 13px; }
-    .update-text a { color: #0F6E56; font-weight: 700; }
-    .update-text a:hover { text-decoration: underline; }
+    .badge-compliance { background: #E1F5EE; color: #0F6E56; }
+    .badge-tax { background: #FAEEDA; color: #633806; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -96,6 +89,7 @@
     </div>
     <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
   </nav>
+
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">QBO Payroll</div>
@@ -103,6 +97,7 @@
       <p class="page-sub">Everything you need to set up, run, and stay compliant with QBO Payroll — from getting started guides to the latest regulatory updates.</p>
     </div>
   </div>
+
   <!-- TIER COMPARISON -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">📊</div><div class="section-title">QBO Payroll tier comparison</div></div>
@@ -131,16 +126,26 @@
     <p style="font-size:11px; color:#999; margin-bottom:0; line-height:1.5;">* Features subject to change. Verify at <a href="https://quickbooks.intuit.com/payroll/" target="_blank" style="color:#0F6E56;">quickbooks.intuit.com/payroll</a>. For a full breakdown see <a href="how-qbo-payroll-helps.html" style="color:#0F6E56;">How QBO Payroll helps</a>.</p>
   </div>
 
+  <!-- RECENT UPDATES -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">🔔</div><div class="section-title">Recent updates — stay current</div></div>
-    <div class="updates-banner">
-      <div class="updates-list">
-        <div class="update-item"><span class="update-badge ub-compliance">Compliance</span><div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/printers-printing/quickbooks-file-deliver-w-2s/L8zwjjzQf_US_en_US" target="_blank">W-2 filing &amp; delivery timing for employees →</a></div></div>
-        <div class="update-item"><span class="update-badge ub-tax">Tax law</span><div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/tip-income/impact-tax-tips-provision-quickbooks-payroll/L6kRbKsEY_US_en_US" target="_blank">No Tax on Tips — impact to QBO Payroll →</a></div></div>
-        <div class="update-item"><span class="update-badge ub-tax">Tax law</span><div class="update-text"><a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/track-worker-overtime/impact-tax-overtime-provision-quickbooks-payroll/L8bjFtrJ5_US_en_US" target="_blank">No Tax on OT — impact to QBO Payroll →</a></div></div>
-      </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/printers-printing/quickbooks-file-deliver-w-2s/L8zwjjzQf_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">W-2 filing &amp; delivery timing for employees</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-compliance">Compliance</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/tip-income/impact-tax-tips-provision-quickbooks-payroll/L6kRbKsEY_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">No Tax on Tips — impact to QBO Payroll</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-tax">Tax law</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/track-worker-overtime/impact-tax-overtime-provision-quickbooks-payroll/L8bjFtrJ5_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">No Tax on OT — impact to QBO Payroll</div><div class="resource-source">QuickBooks Help</div></div>
+        <span class="badge badge-tax">Tax law</span>
+      </a>
     </div>
   </div>
+
+  <!-- GETTING STARTED -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">▶</div><div class="section-title">Getting started</div></div>
     <div class="resource-grid">
@@ -150,6 +155,8 @@
       <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card"><div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- COMPLIANCE & TAX -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E6F1FB;">⚖</div><div class="section-title">Compliance &amp; tax</div></div>
     <div class="resource-grid">
@@ -159,6 +166,8 @@
       <a href="https://quickbooks.intuit.com/payroll/1099-vs-w2/" target="_blank" class="resource-card"><div><div class="resource-title">1099 vs. W-2: What's the difference?</div><div class="resource-source">QuickBooks Blog</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- BENEFITS & HR -->
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">⭐</div><div class="section-title">Benefits &amp; HR</div></div>
     <div class="resource-grid">
@@ -168,6 +177,33 @@
       <a href="https://humaninterest.com/learn/articles/what-is-a-state-sponsored-retirement-plan/" target="_blank" class="resource-card"><div><div class="resource-title">State-sponsored retirement plans explained</div><div class="resource-source">Human Interest</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
+
+  <!-- WORKERS COMP -->
+  <div class="section">
+    <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">🦺</div><div class="section-title">Workers' compensation</div></div>
+    <div style="background:#fff; border:1px solid #e0dfd8; border-radius:12px; padding:18px 20px; margin-bottom:14px; font-size:13px; color:#555; line-height:1.7;">
+      <strong style="color:#1a1a1a;">Workers' comp is required in most states</strong> — and QBO Payroll integrates with <strong>NEXT Insurance</strong> to offer a Pay As You Go option. Premiums are calculated automatically each payroll run based on actual wages, eliminating the year-end lump sum and simplifying your annual audit. The $5/mo administration fee applies to Core subscribers; the fee is waived for Premium and Elite. Note: integrated Pay As You Go is not available in OH, ND, WA, or WY — employers in those states must purchase coverage directly from the state fund.
+    </div>
+    <div class="resource-grid">
+      <a href="https://quickbooks.intuit.com/payroll/workers-compensation/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Workers' comp in QBO Payroll — overview &amp; quote</div><div class="resource-source">QuickBooks · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/workers-compensation/learn-get-workers-compensation-insurance/L8FBa7AX0_US_en_US" target="_blank" class="resource-card">
+        <div><div class="resource-title">Understand workers' compensation insurance</div><div class="resource-source">QuickBooks Help · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/payroll/workers-compensation/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Workers' comp laws by state — what's required</div><div class="resource-source">QuickBooks · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+      <a href="https://quickbooks.intuit.com/accountants/products-solutions/workers-compensation-insurance/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Pay As You Go workers' comp — ProAdvisor overview</div><div class="resource-source">QuickBooks Accountants · Intuit</div></div>
+        <span class="badge badge-guide">Guide</span>
+      </a>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -177,7 +213,7 @@
     </div>
   </footer>
 
-<script>
+  <script>
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
       const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
@@ -187,4 +223,5 @@
       }
     });
   </script>
+</body>
 </html>
