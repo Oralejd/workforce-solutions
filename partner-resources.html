@@ -48,6 +48,11 @@
     .badge-article { background: #E6F1FB; color: #0C447C; }
     .badge-tool   { background: #E1F5EE; color: #085041; }
     .badge-guide  { background: #FAEEDA; color: #633806; }
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1100px; margin: 32px auto 0; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #085041; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -58,6 +63,7 @@
       .section { padding: 28px 20px 0; }
       .page-header { padding: 28px 20px; }
       .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; margin: 32px 20px 0; }
     }
   </style>
 </head>
@@ -113,13 +119,14 @@
 
   <!-- SETUP & ONBOARDING -->
   <div class="section">
-    <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">▶</div><div class="section-title">Setup &amp; onboarding</div><div class="section-count">5 resources</div></div>
+    <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">▶</div><div class="section-title">Setup &amp; onboarding</div><div class="section-count">6 resources</div></div>
     <div class="resource-grid">
       <a href="https://www.youtube.com/watch?v=Knsx9TQRnxU&t=160s" target="_blank" class="resource-card"><div><div class="resource-title">Step-by-step QBO Payroll setup guide</div><div class="resource-source">Parkway Business Solutions · YouTube</div></div><span class="badge badge-video">Video</span></a>
       <a href="https://www.youtube.com/watch?v=jZDT3ijtvHM" target="_blank" class="resource-card"><div><div class="resource-title">How to set up QBO Payroll</div><div class="resource-source">PBN · YouTube</div></div><span class="badge badge-video">Video</span></a>
       <a href="https://www.youtube.com/playlist?list=PLVxBmyedTVhQ23eDITqNqXgcOqcrA7cou" target="_blank" class="resource-card"><div><div class="resource-title">Setting up payroll tutorial playlist</div><div class="resource-source">Intuit · YouTube Playlist</div></div><span class="badge badge-video">Video</span></a>
       <a href="https://youtu.be/Vy48RjlCxII" target="_blank" class="resource-card"><div><div class="resource-title">How to run &amp; process payroll taxes</div><div class="resource-source">Hector Garcia CPA · YouTube</div></div><span class="badge badge-video">Video</span></a>
       <a href="https://www.forbes.com/advisor/business/how-do-payroll-quickbooks/" target="_blank" class="resource-card"><div><div class="resource-title">How to do payroll in QBO — 6-step guide</div><div class="resource-source">Forbes Advisor</div></div><span class="badge badge-article">Article</span></a>
+      <a href="https://quickbooks.intuit.com/accountants/training-certification/certification/" target="_blank" class="resource-card"><div><div class="resource-title">Get certified — ProAdvisor Academy</div><div class="resource-source">Intuit · QuickBooks Accountants</div></div><span class="badge badge-guide">Guide</span></a>
     </div>
   </div>
 
@@ -147,22 +154,32 @@
 
   <!-- PRODUCT NEWS -->
   <div class="section">
-    <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">📰</div><div class="section-title">Product news &amp; updates</div><div class="section-count">3 resources</div></div>
+    <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">📰</div><div class="section-title">Product news &amp; updates</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
       <a href="https://quickbooks.intuit.com/learn-support/articles/getting-the-most-out-of-quickbooks/quickbooks-online-payroll-and-time-product-news/05/1155573" target="_blank" class="resource-card"><div><div class="resource-title">Payroll &amp; Time product news</div><div class="resource-source">QuickBooks</div></div><span class="badge badge-article">Article</span></a>
       <a href="https://quickbooks.intuit.com/learn-support/articles/subject/04/product-blog-us/label-name/payroll%20updates" target="_blank" class="resource-card"><div><div class="resource-title">Payroll blog</div><div class="resource-source">QuickBooks Learn &amp; Support</div></div><span class="badge badge-article">Article</span></a>
       <a href="https://www.firmofthefuture.com/" target="_blank" class="resource-card"><div><div class="resource-title">Firm of the Future</div><div class="resource-source">Partner-focused news &amp; insights</div></div><span class="badge badge-article">Article</span></a>
+      <a href="https://insightfulaccountant.com/" target="_blank" class="resource-card"><div><div class="resource-title">Insightful Accountant</div><div class="resource-source">Independent accounting &amp; payroll news</div></div><span class="badge badge-article">Article</span></a>
     </div>
   </div>
 
   <!-- TOOLS & DIRECTORIES -->
   <div class="section">
-    <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">⚙</div><div class="section-title">Tools &amp; directories</div><div class="section-count">3 resources</div></div>
+    <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">⚙</div><div class="section-title">Tools &amp; directories</div><div class="section-count">4 resources</div></div>
     <div class="resource-grid">
       <a href="payroll-quoter.html" class="resource-card"><div><div class="resource-title">QBO Payroll Quoter</div><div class="resource-source">Calculate monthly costs by plan, employees &amp; states</div></div><span class="badge badge-tool">Tool</span></a>
       <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" class="resource-card"><div><div class="resource-title">QuickBooks Solution Provider directory</div><div class="resource-source">Intuit Zift · Partner directory</div></div><span class="badge badge-tool">Tool</span></a>
       <a href="https://quickbooks.intuit.com/r/small-business-data/index/" target="_blank" class="resource-card"><div><div class="resource-title">Small Business Index</div><div class="resource-source">QuickBooks data &amp; insights</div></div><span class="badge badge-tool">Tool</span></a>
+      <a href="https://apps.com/quickbooks/" target="_blank" class="resource-card"><div><div class="resource-title">QuickBooks App Store</div><div class="resource-source">Browse &amp; recommend integrations for clients</div></div><span class="badge badge-tool">Tool</span></a>
     </div>
+  </div>
+
+  <div class="bridge" style="margin-left:32px; margin-right:32px;">
+    <div>
+      <div class="bridge-title">Ready to quote a client?</div>
+      <div class="bridge-sub">Get an instant price by plan, number of employees, and states — with promo pricing built in.</div>
+    </div>
+    <a href="payroll-quoter.html" class="bridge-btn">Payroll Quoter →</a>
   </div>
 
   <footer class="footer">
