@@ -53,6 +53,11 @@
     .tip-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
     .tip-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
     .tip-desc { font-size: 13px; color: #555; line-height: 1.6; }
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1100px; margin: 32px auto 0; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #085041; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -63,6 +68,7 @@
       .section { padding: 24px 20px 0; }
       .page-header { padding: 28px 20px; }
       .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; margin: 32px 20px 0; }
     }
   </style>
 </head>
@@ -86,6 +92,7 @@
         <div class="nav-dropdown-menu">
           <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
           <a href="qb-time-resources.html" class="nav-dropdown-item active">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
           <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
         </div>
       </div>
@@ -93,6 +100,7 @@
     </div>
     <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
   </nav>
+
   <div class="page-header">
     <div class="page-header-inner">
       <div class="eyebrow">Time tracking</div>
@@ -100,19 +108,23 @@
       <p class="page-sub">Everything you need to set up, manage, and get the most out of QB Time — from getting started guides to advanced configuration and how-to videos.</p>
     </div>
   </div>
+
   <div style="max-width:1100px; margin: 0 auto; padding: 0 32px;">
     <div class="tip-bar" style="margin-top:24px; border-radius:8px;"><strong>Tip:</strong> There are many resources on this page. Use <strong>Ctrl + F</strong> on your keyboard to search for a specific topic.</div>
   </div>
+
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E1F5EE;">▶</div><div class="section-title">Getting started</div></div>
     <div class="resource-grid">
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/product-setup/quickbooks-time-administrator-getting-started/L1nzb97U3_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Get started with QB Time</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/product-setup/quickbooks-time-administrator-getting-started/L1nzb97U3_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Get started with QB Time — administrator guide</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/feature-preferences/manager-getting-started-guide-quickbooks-time/L2zBlImFw_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Get started with QB Time — manager guide</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
       <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/payroll-processes/set-quickbooks-time-account-quickbooks-online/L2DxYHusM_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Set up QB Time in QBO or QBO Payroll</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
       <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/time-tracking/turn-set-time-tracking-quickbooks-online/L6RFDI0xh_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">Turn on and set up time tracking in QBO</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
       <a href="https://app.tsheets.intuit.com/testdrive" target="_blank" class="resource-card"><div><div class="resource-title">Test drive QB Time</div><div class="resource-source">Interactive demo</div></div><span class="badge badge-tool">Tool</span></a>
       <a href="https://www.youtube.com/watch?v=jtA0FWfKHuU" target="_blank" class="resource-card"><div><div class="resource-title">Getting started with QB Time</div><div class="resource-source">YouTube · Video</div></div><span class="badge badge-video">Video</span></a>
     </div>
   </div>
+
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#E6F1FB;">⚙</div><div class="section-title">Configuration &amp; settings</div></div>
     <div class="resource-grid">
@@ -128,6 +140,7 @@
       <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/security-access/dcaa-compliance/L5Zz61uln_US_en_US" target="_blank" class="resource-card"><div><div class="resource-title">DCAA compliance with QB Time</div><div class="resource-source">QuickBooks Help</div></div><span class="badge badge-guide">Guide</span></a>
     </div>
   </div>
+
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#EEEDFE;">▶</div><div class="section-title">How-to videos</div></div>
     <div class="resource-grid">
@@ -145,6 +158,7 @@
       <a href="https://www.youtube.com/watch?v=qD6oVzZ8VjY" target="_blank" class="resource-card"><div><div class="resource-title">Manage add-ons in QB Time</div><div class="resource-source">YouTube</div></div><span class="badge badge-video">Video</span></a>
     </div>
   </div>
+
   <div class="section">
     <div class="section-header"><div class="section-icon" style="background:#FAEEDA;">💡</div><div class="section-title">SMB tips — getting employees to embrace time tracking</div></div>
     <div class="tips-grid">
@@ -154,6 +168,15 @@
       <div class="tip-card"><div class="tip-title">Make it a habit</div><p class="tip-desc">Encourage employees to make time tracking part of their daily routine. Set reminders or create a schedule to help them remember to log time regularly.</p></div>
     </div>
   </div>
+
+  <div class="bridge" style="margin-left:32px; margin-right:32px;">
+    <div>
+      <div class="bridge-title">Put your time data to work</div>
+      <div class="bridge-sub">See how QB Time hours flow into project costing and labor tracking.</div>
+    </div>
+    <a href="projects-labor-costing.html" class="bridge-btn">Projects &amp; labor costing →</a>
+  </div>
+
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
@@ -163,7 +186,7 @@
     </div>
   </footer>
 
-<script>
+  <script>
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
       const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
@@ -173,4 +196,5 @@
       }
     });
   </script>
+</body>
 </html>
