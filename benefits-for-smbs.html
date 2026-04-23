@@ -43,14 +43,16 @@
     .benefit-desc { font-size: 13px; color: #555; line-height: 1.65; margin-bottom: 14px; flex: 1; }
     .benefit-link { display: inline-block; font-size: 13px; font-weight: 700; color: #0F6E56; }
     .benefit-link:hover { text-decoration: underline; }
-    .provider-split { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid #f0efe8; }
-    .provider-item { background: #f5f5f0; border: 1px solid #e0dfd8; border-radius: 8px; padding: 12px 14px; }
-    .provider-item-name { font-size: 12px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
-    .provider-item-desc { font-size: 12px; color: #555; line-height: 1.55; margin-bottom: 8px; }
     .callout { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; margin-top: 32px; }
     .callout-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 6px; }
     .callout-text { font-size: 13px; color: #085041; line-height: 1.6; }
     .callout-text a { color: #0F6E56; font-weight: 700; text-decoration: underline; }
+    .bridge-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 20px; }
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex: 1; min-width: 260px; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #085041; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -61,6 +63,7 @@
       .section { padding: 28px 20px 32px; }
       .page-header { padding: 28px 20px; }
       .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -84,6 +87,7 @@
         <div class="nav-dropdown-menu">
           <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
           <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
           <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
         </div>
       </div>
@@ -103,7 +107,6 @@
   <div class="section">
     <div class="benefits-grid">
 
-      <!-- 401K -->
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#E1F5EE;">💰</div>
         <div class="benefit-title">401(k) retirement plans</div>
@@ -113,7 +116,6 @@
         <a class="benefit-link" href="https://quickbooks.intuit.com/payroll/401k/" target="_blank">→ Learn about Vestwell</a>
       </div>
 
-      <!-- HEALTH BENEFITS -->
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#E6F1FB;">❤️</div>
         <div class="benefit-title">Health benefits</div>
@@ -122,7 +124,6 @@
         <a class="benefit-link" href="https://quickbooks.intuit.com/payroll/health-benefits/" target="_blank">→ Explore health benefits</a>
       </div>
 
-      <!-- HR SERVICES — unchanged -->
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#EEEDFE;">👥</div>
         <div class="benefit-title">HR services</div>
@@ -131,7 +132,6 @@
         <a class="benefit-link" href="https://quickbooks.intuit.com/payroll/hr-services/" target="_blank">→ Learn about HR services</a>
       </div>
 
-      <!-- WORKERS COMP — unchanged -->
       <div class="benefit-card">
         <div class="benefit-icon" style="background:#FAEEDA;">🦺</div>
         <div class="benefit-title">Workers' comp insurance</div>
@@ -141,9 +141,27 @@
       </div>
 
     </div>
+
     <div class="callout">
       <div class="callout-title">All benefits are available directly through QBO Payroll</div>
       <p class="callout-text">You don't need separate accounts or platforms to offer these benefits. Everything is accessible from your QuickBooks Payroll dashboard. Visit <a href="https://quickbooks.intuit.com/payroll/" target="_blank">quickbooks.intuit.com/payroll</a> to see which benefits are included in your plan tier.</p>
+    </div>
+
+    <div class="bridge-row">
+      <div class="bridge">
+        <div>
+          <div class="bridge-title">Not sure which plan includes what?</div>
+          <div class="bridge-sub">See a full side-by-side breakdown of Core, Premium, and Elite.</div>
+        </div>
+        <a href="how-qbo-payroll-helps.html" class="bridge-btn">Compare plans →</a>
+      </div>
+      <div class="bridge">
+        <div>
+          <div class="bridge-title">Switching from another provider?</div>
+          <div class="bridge-sub">Timing, migration steps, and what to watch out for when moving to QBO Payroll.</div>
+        </div>
+        <a href="switching-payroll-providers.html" class="bridge-btn">See migration guide →</a>
+      </div>
     </div>
   </div>
 
