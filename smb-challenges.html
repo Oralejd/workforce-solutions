@@ -6,7 +6,7 @@
   <title>Challenges for SMBs — Workforce Solutions</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
     .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
     .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
@@ -28,37 +28,31 @@
     .nav-dropdown-item:last-child { border-bottom: none; }
     .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
     .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
-    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
-    .page-header-inner { max-width: 1100px; margin: 0 auto; }
-    .eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
-    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
-    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 620px; }
-    .section { max-width: 1100px; margin: 0 auto; padding: 36px 32px; }
-    .challenge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 36px; }
-    .challenge-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 20px; display: flex; gap: 14px; align-items: flex-start; transition: border-color .15s; }
-    .challenge-card:hover { border-color: #aaa; }
-    .challenge-num { width: 28px; height: 28px; border-radius: 50%; background: #f5f5f0; border: 1px solid #e0dfd8; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #555; flex-shrink: 0; margin-top: 2px; }
+    .page-hero { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 40px 32px 36px; }
+    .page-hero-inner { max-width: 1100px; margin: 0 auto; }
+    .page-eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+    .page-title { font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 10px; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 640px; }
+    .section { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
+    .challenges-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 40px; }
+    .challenge-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 20px 24px; display: flex; gap: 20px; align-items: flex-start; transition: border-color .15s, box-shadow .15s; }
+    .challenge-card:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .challenge-num { width: 32px; height: 32px; border-radius: 50%; background: #1D9E75; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
     .challenge-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-    .challenge-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 10px; }
-    .challenge-link { font-size: 13px; font-weight: 700; color: #0F6E56; }
+    .challenge-desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 8px; }
+    .challenge-link { font-size: 12px; color: #0F6E56; font-weight: 700; }
     .challenge-link:hover { text-decoration: underline; }
-    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
-    .bridge-sub { font-size: 13px; color: #085041; }
-    .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .bridge-btn:hover { background: #085041; }
+    .calc-callout { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .calc-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
+    .calc-sub { font-size: 13px; color: #085041; }
+    .calc-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; transition: background .15s; }
+    .calc-btn:hover { background: #085041; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { color: #999; }
     .footer-links a:hover { color: #555; }
-    @media (max-width: 768px) {
-      .challenge-grid { grid-template-columns: 1fr; }
-      .section { padding: 28px 20px; }
-      .page-header { padding: 28px 20px; }
-      .nav-links { display: none; }
-      .bridge { flex-direction: column; align-items: flex-start; }
-    }
+    @media (max-width: 768px) { .section { padding: 32px 20px; } .page-hero { padding: 32px 20px; } .nav-links { display: none; } .calc-callout { flex-direction: column; align-items: flex-start; } .challenge-card { flex-direction: column; gap: 10px; } }
   </style>
 </head>
 <body>
@@ -70,7 +64,7 @@
         <div class="nav-dropdown-toggle active">For SMBs</div>
         <div class="nav-dropdown-menu">
           <a href="smb-challenges.html" class="nav-dropdown-item active">Challenges for SMBs</a>
-          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
+          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QuickBooks Workforce helps</a>
           <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
           <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
           <a href="switching-payroll-providers.html" class="nav-dropdown-item">Switching payroll providers</a>
@@ -81,6 +75,7 @@
         <div class="nav-dropdown-menu">
           <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
           <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
+          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
           <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
         </div>
       </div>
@@ -88,21 +83,23 @@
     </div>
     <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
   </nav>
-  <div class="page-header">
-    <div class="page-header-inner">
-      <div class="eyebrow">For small businesses</div>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-eyebrow">For small businesses</div>
       <h1 class="page-title">Top challenges facing small businesses today</h1>
       <p class="page-sub">Running a small business means navigating an ever-changing landscape. Here are the key challenges SMBs need to stay ahead of — and how to tackle them.</p>
     </div>
   </div>
+
   <div class="section">
-    <div class="challenge-grid">
+    <div class="challenges-list">
       <div class="challenge-card">
         <div class="challenge-num">1</div>
         <div>
           <div class="challenge-title">Hiring &amp; retaining top talent</div>
           <p class="challenge-desc">Competition for skilled workers is intense. SMBs need compelling compensation, benefits, and culture to attract and keep the right people.</p>
-          <a class="challenge-link" href="https://www.businessnewsdaily.com/hiring-retention-difficulties" target="_blank">→ Read more</a>
+          <a href="https://www.businessnewsdaily.com/hiring-retention-difficulties" class="challenge-link">→ Read more</a>
         </div>
       </div>
       <div class="challenge-card">
@@ -110,7 +107,7 @@
         <div>
           <div class="challenge-title">Regulatory compliance</div>
           <p class="challenge-desc">Federal, state, and local regulations are constantly evolving. Missing a change can mean penalties — staying current is non-negotiable.</p>
-          <a class="challenge-link" href="https://www.businessnewsdaily.com/10204-local-state-business-regulations.html" target="_blank">→ Read more</a>
+          <a href="https://www.businessnewsdaily.com/10204-local-state-business-regulations.html" class="challenge-link">→ Read more</a>
         </div>
       </div>
       <div class="challenge-card">
@@ -118,7 +115,7 @@
         <div>
           <div class="challenge-title">Digital transformation</div>
           <p class="challenge-desc">SMBs that embrace digital tools are growing faster. Automating payroll, time tracking, and HR can free up significant time and reduce errors.</p>
-          <a class="challenge-link" href="https://www.uschamber.com/co/run/technology/impact-of-technology-small-business" target="_blank">→ Read more</a>
+          <a href="https://www.uschamber.com/co/run/technology/impact-of-technology-small-business" class="challenge-link">→ Read more</a>
         </div>
       </div>
       <div class="challenge-card">
@@ -126,7 +123,7 @@
         <div>
           <div class="challenge-title">Paid family &amp; medical leave</div>
           <p class="challenge-desc">State-level PFML laws are expanding rapidly. Understanding your obligations — and communicating them to employees — is increasingly critical.</p>
-          <a class="challenge-link" href="https://www.newamerica.org/insights/explainer-paid-and-unpaid-leave-policies-in-the-united-states/" target="_blank">→ Read more</a>
+          <a href="https://www.newamerica.org/insights/explainer-paid-and-unpaid-leave-policies-in-the-united-states/" class="challenge-link">→ Read more</a>
         </div>
       </div>
       <div class="challenge-card">
@@ -134,35 +131,34 @@
         <div>
           <div class="challenge-title">State-mandated retirement plans</div>
           <p class="challenge-desc">More states are requiring employers to offer retirement savings options. Know whether your state has a mandate and what your obligations are.</p>
-          <a class="challenge-link" href="https://humaninterest.com/learn/articles/what-is-a-state-sponsored-retirement-plan/" target="_blank">→ Read more</a>
+          <a href="https://humaninterest.com/learn/articles/what-is-a-state-sponsored-retirement-plan/" class="challenge-link">→ Read more</a>
         </div>
       </div>
     </div>
-    <div class="bridge">
+
+    <div class="calc-callout">
       <div>
-        <div class="bridge-title">See how QBO Payroll addresses these challenges</div>
-        <div class="bridge-sub">Automation, compliance tools, benefits, and time tracking — all in one place.</div>
+        <div class="calc-title">See how QuickBooks Workforce addresses these challenges</div>
+        <div class="calc-sub">Automation, compliance tools, benefits, and time tracking — all in one place.</div>
       </div>
-      <a href="how-qbo-payroll-helps.html" class="bridge-btn">How QBO Payroll helps →</a>
+      <a href="how-qbo-payroll-helps.html" class="calc-btn">How QuickBooks Workforce helps →</a>
     </div>
   </div>
+
   <footer class="footer">
     <div class="footer-brand">© 2025 Workforce Solutions</div>
     <div class="footer-links">
       <a href="index.html">Home</a>
       <a href="partner-resources.html">Partner resources</a>
-      <a href="privacy-policy.html" target="_blank">Privacy policy</a>
+      <a href="privacy-policy.html">Privacy policy</a>
     </div>
   </footer>
-
-<script>
+  <script>
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
       const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
-      if (isExternal) {
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener noreferrer');
-      }
+      if (isExternal) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener noreferrer'); }
     });
   </script>
+</body>
 </html>
