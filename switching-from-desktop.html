@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Switching from Desktop — Workforce Solutions</title>
+  <title>Switching from Desktop? — Workforce Solutions</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
@@ -28,35 +28,41 @@
     .nav-dropdown-item:last-child { border-bottom: none; }
     .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
     .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
-    .page-hero { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 40px 32px 36px; }
-    .page-hero-inner { max-width: 1100px; margin: 0 auto; }
-    .page-eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
-    .page-title { font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 10px; }
-    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 640px; }
     .section { max-width: 1100px; margin: 0 auto; padding: 40px 32px; }
     .section-label { font-size: 11px; font-weight: 700; color: #999; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 18px; }
-    .steps-row { display: flex; gap: 14px; margin-bottom: 36px; flex-wrap: wrap; }
+    .page-eyebrow { font-size: 11px; font-weight: 700; color: #0F6E56; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
+    .page-title { font-size: 28px; font-weight: 700; line-height: 1.25; margin-bottom: 14px; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; margin-bottom: 28px; }
+    .steps-row { display: flex; gap: 14px; margin-bottom: 32px; flex-wrap: wrap; }
     .step-card { flex: 1; min-width: 180px; background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
     .step-num { width: 28px; height: 28px; border-radius: 50%; background: #1D9E75; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-bottom: 10px; }
     .step-title { font-size: 13px; font-weight: 700; margin-bottom: 5px; }
     .step-desc { font-size: 12px; color: #555; line-height: 1.55; }
-    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 36px; }
-    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 16px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 5px; transition: border-color .15s, box-shadow .15s; }
-    .resource-card:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
-    .resource-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; align-self: flex-start; }
-    .badge-guide   { background: #E6F1FB; color: #185FA5; }
-    .badge-video   { background: #fef2f2; color: #b91c1c; }
-    .resource-title { font-size: 13px; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
-    .resource-meta { font-size: 12px; color: #999; }
+    .resource-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+    .resource-item { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: border-color .15s, box-shadow .15s; text-decoration: none; color: inherit; }
+    .resource-item:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+    .resource-item-left { display: flex; flex-direction: column; gap: 3px; }
+    .resource-item-title { font-size: 13px; font-weight: 700; color: #1a1a1a; line-height: 1.4; }
+    .resource-item-meta { font-size: 12px; color: #999; }
+    .resource-item-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .resource-badge { display: inline-block; font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: 10px; white-space: nowrap; }
+    .badge-guide { background: #E6F1FB; color: #185FA5; }
+    .badge-video { background: #fef2f2; color: #b91c1c; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
     .footer-links a { color: #999; }
     .footer-links a:hover { color: #555; }
-    @media (max-width: 768px) { .resource-grid { grid-template-columns: 1fr; } .steps-row { flex-direction: column; } .section { padding: 32px 20px; } .page-hero { padding: 32px 20px; } .nav-links { display: none; } }
+    @media (max-width: 768px) {
+      .steps-row { flex-direction: column; }
+      .section { padding: 32px 20px; }
+      .nav-links { display: none; }
+      .resource-item { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
+
   <nav class="nav">
     <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
@@ -85,84 +91,122 @@
     <a href="payroll-quoter.html" class="nav-cta">Payroll Quoter ↗</a>
   </nav>
 
-  <div class="page-hero">
-    <div class="page-hero-inner">
+  <div style="background:#f5f5f0; border-bottom:1px solid #e0dfd8;">
+    <div class="section" style="padding-bottom:36px;">
       <div class="page-eyebrow">Migration resources</div>
       <h1 class="page-title">Switching from QuickBooks Desktop to QBO?</h1>
       <p class="page-sub">Everything you need to plan and complete your move from QuickBooks Desktop to QuickBooks Online — from converting your file to fixing errors and getting set up after the switch.</p>
+
+      <div class="section-label" style="margin-top:4px;">✓ How the migration works</div>
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-title">Learn what moves over</div>
+          <p class="step-desc">Understand which features and data transfer automatically and what may need manual setup after the move.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-title">Convert your file</div>
+          <p class="step-desc">Use Intuit's built-in migration tool to move your QuickBooks Desktop company file directly to QBO.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-title">Fix any errors</div>
+          <p class="step-desc">Some data may not convert cleanly. Use the error-fixing guide to resolve common issues after migration.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <div class="step-title">Complete your setup</div>
+          <p class="step-desc">Follow the post-migration checklist to make sure your QBO account is fully configured and ready to use.</p>
+        </div>
+      </div>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-label">How the migration works</div>
-    <div class="steps-row">
-      <div class="step-card"><div class="step-num">1</div><div class="step-title">Learn what moves over</div><p class="step-desc">Understand which features and data transfer automatically and what may need manual setup after the move.</p></div>
-      <div class="step-card"><div class="step-num">2</div><div class="step-title">Convert your file</div><p class="step-desc">Use Intuit's built-in migration tool to move your QuickBooks Desktop company file directly to QBO.</p></div>
-      <div class="step-card"><div class="step-num">3</div><div class="step-title">Fix any errors</div><p class="step-desc">Some data may not convert cleanly. Use the error-fixing guide to resolve common issues after migration.</p></div>
-      <div class="step-card"><div class="step-num">4</div><div class="step-title">Complete your setup</div><p class="step-desc">Follow the post-migration checklist to make sure your QBO account is fully configured and ready to use.</p></div>
-    </div>
 
-    <div class="section-label">Core migration guides</div>
-    <div class="resource-grid">
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/learn-converting-quickbooks-desktop-quickbooks/L8TAphzFD_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Learn about switching from QBDT to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+    <div class="section-label">📄 Core migration guides</div>
+    <div class="resource-list">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/accounting-bookkeeping/learn-converting-quickbooks-desktop-quickbooks/L8TAphzFD_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Learn about switching from QBDT to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/move-quickbooks-desktop-file-quickbooks-online/L6af3Z0Fb_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Convert your QBDT file to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/move-quickbooks-desktop-file-quickbooks-online/L6af3Z0Fb_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Convert your QBDT file to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/expect-switch-quickbooks-desktop-quickbooks-online/L0dEyNosU_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">How features &amp; data move from QBDT to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/expect-switch-quickbooks-desktop-quickbooks-online/L0dEyNosU_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">How features &amp; data move from QBDT to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/migrate-services/fix-errors-converting-quickbooks-desktop-online/L1fF2hcwF_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Fix errors when moving from QBDT to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/migrate-services/fix-errors-converting-quickbooks-desktop-online/L1fF2hcwF_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Fix errors when moving from QBDT to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/convert-files/converting-quickbooks-desktop-windows-mac-online/L6QYzKBOV_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">What to do after you make the move to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/convert-files/converting-quickbooks-desktop-windows-mac-online/L6QYzKBOV_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">What to do after you make the move to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/inventory-management/moving-inventory-desktop/L3CUO7Hh9_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Move your inventory from QBDT to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
-      </a>
-    </div>
-
-    <div class="section-label">Importing lists &amp; data only</div>
-    <div class="resource-grid">
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/common-questions-importing-data-quickbooks-online/L4OYJRFdj_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Common questions about importing data to QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
-      </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/manage-lists/import-products-and-services-from-excel/00/185613" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Import products and services into QBO</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/inventory-management/moving-inventory-desktop/L3CUO7Hh9_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Move your inventory from QBDT to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
     </div>
 
-    <div class="section-label">Videos</div>
-    <div class="resource-grid">
-      <a href="https://www.youtube.com/watch?v=PPXX51djh-4" class="resource-card">
-        <span class="resource-badge badge-video">Video</span>
-        <span class="resource-title">How to use the QuickBooks Online app</span>
-        <span class="resource-meta">YouTube</span>
+    <div class="section-label">📥 Importing lists &amp; data only</div>
+    <div class="resource-list">
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/import-export-data-files/common-questions-importing-data-quickbooks-online/L4OYJRFdj_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Common questions about importing data to QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
-      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/download-products/download-use-quickbooks-online-advanced-desktop/L9BrRPlDD_US_en_US" class="resource-card">
-        <span class="resource-badge badge-guide">Guide</span>
-        <span class="resource-title">Download and use the QBO desktop app</span>
-        <span class="resource-meta">QuickBooks Help</span>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/manage-lists/import-products-and-services-from-excel/00/185613" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Import products and services into QBO</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
       </a>
     </div>
+
+    <div class="section-label">▶ Videos</div>
+    <div class="resource-list">
+      <a href="https://www.youtube.com/watch?v=PPXX51djh-4" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">How to use the QuickBooks Online app</span>
+          <span class="resource-item-meta">YouTube</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-video">Video</span></div>
+      </a>
+      <a href="https://quickbooks.intuit.com/learn-support/en-us/help-article/download-products/download-use-quickbooks-online-advanced-desktop/L9BrRPlDD_US_en_US" class="resource-item">
+        <div class="resource-item-left">
+          <span class="resource-item-title">Download and use the QBO desktop app</span>
+          <span class="resource-item-meta">QuickBooks Help</span>
+        </div>
+        <div class="resource-item-right"><span class="resource-badge badge-guide">Guide</span></div>
+      </a>
+    </div>
+
   </div>
 
   <footer class="footer">
@@ -173,6 +217,7 @@
       <a href="privacy-policy.html">Privacy policy</a>
     </div>
   </footer>
+
   <script>
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
