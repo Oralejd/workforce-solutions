@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QBO Payroll Quoter | Workforce Solutions</title>
+  <title>QuickBooks Workforce Quoter | Workforce Solutions</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Nav (exact match to index.html) ── */
+    /* ── Nav ── */
     .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
     .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
     .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
@@ -46,7 +46,7 @@
 
     /* ── Plan buttons ── */
     .plan-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
-    .plan-btn { border: 2px solid #e0dfd8; border-radius: 8px; padding: 11px 8px; font-size: 13px; font-weight: 700; cursor: pointer; background: #fff; color: #555; font-family: Arial, Helvetica, sans-serif; transition: all .15s; }
+    .plan-btn { border: 2px solid #e0dfd8; border-radius: 8px; padding: 11px 8px; font-size: 13px; font-weight: 700; cursor: pointer; background: #fff; color: #555; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: all .15s; }
     .plan-btn:hover { border-color: #aaa; color: #1a1a1a; }
     .plan-btn.active { border-color: #1D9E75; background: #E1F5EE; color: #0F6E56; box-shadow: 0 0 0 2px #1D9E75; }
 
@@ -54,7 +54,7 @@
     .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .input-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
     .input-card label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #999; margin-bottom: 8px; }
-    .input-card input[type="number"] { width: 100%; font-size: 28px; font-weight: 700; color: #1a1a1a; border: none; outline: none; background: transparent; font-family: Arial, Helvetica, sans-serif; }
+    .input-card input[type="number"] { width: 100%; font-size: 28px; font-weight: 700; color: #1a1a1a; border: none; outline: none; background: transparent; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .input-hint { font-size: 11px; color: #999; margin-top: 4px; }
 
     /* ── Promos ── */
@@ -63,12 +63,12 @@
     .promo-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: #1D9E75; flex-shrink: 0; cursor: pointer; }
     .promo-row label { font-size: 13px; color: #333; cursor: pointer; flex: 1; }
     .promo-price { font-size: 13px; font-weight: 700; color: #0F6E56; white-space: nowrap; }
-    .promo-months { width: 50px; font-size: 12px; text-align: center; border: 1px solid #e0dfd8; border-radius: 6px; padding: 3px 6px; font-family: Arial, Helvetica, sans-serif; }
+    .promo-months { width: 50px; font-size: 12px; text-align: center; border: 1px solid #e0dfd8; border-radius: 6px; padding: 3px 6px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .promo-months-label { font-size: 11px; color: #999; }
     .promo-warning { font-size: 11px; color: #b45309; padding: 6px 0 0 25px; }
 
     /* ── Override accordion ── */
-    .override-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: none; border: none; cursor: pointer; font-family: Arial, Helvetica, sans-serif; }
+    .override-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: none; border: none; cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .override-toggle-left { display: flex; align-items: center; gap: 10px; }
     .override-toggle-left span { font-size: 13px; font-weight: 700; color: #333; }
     .badge-custom { font-size: 10px; background: #FEF3C7; color: #b45309; border-radius: 99px; padding: 2px 8px; font-weight: 700; }
@@ -78,9 +78,9 @@
     .override-body.open { display: block; }
     .override-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-top: 16px; }
     .override-grid label { display: block; font-size: 11px; color: #555; margin-bottom: 5px; }
-    .override-grid input { width: 100%; border: 1px solid #e0dfd8; border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: Arial, Helvetica, sans-serif; }
+    .override-grid input { width: 100%; border: 1px solid #e0dfd8; border-radius: 6px; padding: 7px 10px; font-size: 13px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .override-grid input:focus { outline: none; border-color: #1D9E75; box-shadow: 0 0 0 2px #E1F5EE; }
-    .override-reset { font-size: 11px; color: #e53e3e; background: none; border: none; cursor: pointer; margin-top: 10px; font-family: Arial, Helvetica, sans-serif; }
+    .override-reset { font-size: 11px; color: #e53e3e; background: none; border: none; cursor: pointer; margin-top: 10px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     .override-reset:hover { text-decoration: underline; }
     .override-note { font-size: 11px; color: #999; margin-top: 8px; }
 
@@ -100,15 +100,15 @@
     .breakdown-row span:last-child { font-weight: 700; }
 
     .result-actions { display: flex; gap: 10px; margin-top: 18px; align-items: center; }
-    .btn-primary { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: Arial, Helvetica, sans-serif; transition: background .15s; }
+    .btn-primary { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; border: none; cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: background .15s; }
     .btn-primary:hover { background: #085041; }
-    .btn-secondary { background: #fff; color: #1a1a1a; border: 1px solid #ccc; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: Arial, Helvetica, sans-serif; transition: border-color .15s; }
+    .btn-secondary { background: #fff; color: #1a1a1a; border: 1px solid #ccc; border-radius: 24px; padding: 10px 22px; font-size: 13px; font-weight: 700; cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; transition: border-color .15s; }
     .btn-secondary:hover { border-color: #888; }
     .copy-confirm { font-size: 11px; color: #0F6E56; }
 
     .footnote { font-size: 11px; color: #999; text-align: center; }
 
-    /* ── Footer (exact match) ── */
+    /* ── Footer ── */
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -155,8 +155,8 @@
 
   <div class="page-header">
     <div class="page-header-eyebrow">Pricing Tool</div>
-    <h1>QBO Payroll Quoter</h1>
-    <p>US monthly list pricing · Core, Premium &amp; Elite · Updated Oct 2025</p>
+    <h1>QuickBooks Workforce Quoter</h1>
+    <p>US monthly list pricing · Workforce Payroll, Workforce Premium &amp; Workforce Elite · Updated Oct 2025</p>
   </div>
 
   <main>
@@ -166,9 +166,9 @@
       <div class="card-body">
         <div class="card-label">Plan</div>
         <div class="plan-grid">
-          <button class="plan-btn active" data-plan="Core" onclick="setPlan('Core')">Core</button>
-          <button class="plan-btn" data-plan="Premium" onclick="setPlan('Premium')">Premium</button>
-          <button class="plan-btn" data-plan="Elite" onclick="setPlan('Elite')">Elite</button>
+          <button class="plan-btn active" data-plan="WorkforcePayroll" onclick="setPlan('WorkforcePayroll')">Workforce Payroll</button>
+          <button class="plan-btn" data-plan="WorkforcePremium" onclick="setPlan('WorkforcePremium')">Workforce Premium</button>
+          <button class="plan-btn" data-plan="WorkforceElite" onclick="setPlan('WorkforceElite')">Workforce Elite</button>
         </div>
       </div>
     </div>
@@ -242,7 +242,7 @@
     <div class="result-card">
       <div class="result-top">
         <div id="result-price-block"></div>
-        <span class="plan-badge" id="plan-badge">Core</span>
+        <span class="plan-badge" id="plan-badge">Workforce Payroll</span>
       </div>
       <div class="breakdown">
         <div class="breakdown-row"><span>Base fee</span><span id="bd-base"></span></div>
@@ -271,12 +271,18 @@
 
   <script>
     const PRICES = {
-      Core:    { base: 50,  perEmployee: 6.5,  perState: 12 },
-      Premium: { base: 88,  perEmployee: 10,   perState: 12 },
-      Elite:   { base: 134, perEmployee: 12,   perState: 0  },
+      WorkforcePayroll: { base: 50,  perEmployee: 6.5,  perState: 12 },
+      WorkforcePremium: { base: 88,  perEmployee: 10,   perState: 12 },
+      WorkforceElite:   { base: 134, perEmployee: 12,   perState: 0  },
     };
 
-    let currentPlan = 'Core';
+    const PLAN_LABELS = {
+      WorkforcePayroll: 'Workforce Payroll',
+      WorkforcePremium: 'Workforce Premium',
+      WorkforceElite:   'Workforce Elite',
+    };
+
+    let currentPlan = 'WorkforcePayroll';
     const fmt = n => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 2 });
 
     function setPlan(plan) {
@@ -332,7 +338,7 @@
 
       // State hint
       document.getElementById('state-hint').textContent =
-        currentPlan === 'Elite' ? 'Multistate included at no extra charge' : `+${fmt(perSt)}/extra state`;
+        currentPlan === 'WorkforceElite' ? 'Multistate included at no extra charge' : `+${fmt(perSt)}/extra state`;
 
       // Custom badge + reset button
       const hasCustom = ['custom-base','custom-perempl','custom-perstate'].some(id => document.getElementById(id).value !== '');
@@ -351,7 +357,7 @@
       document.getElementById('promo-warning').style.display = (p50on && p30on) ? '' : 'none';
 
       // Plan badge
-      document.getElementById('plan-badge').textContent = currentPlan;
+      document.getElementById('plan-badge').textContent = PLAN_LABELS[currentPlan];
 
       // Price block
       const priceBlock = document.getElementById('result-price-block');
@@ -384,14 +390,14 @@
       document.getElementById('bd-state-label').textContent = `Extra states (${addlSt})`;
       document.getElementById('bd-state').textContent       = fmt(stateCost);
 
-      window._q = { plan: currentPlan, emps, states, addlSt, base, perEmp, perSt, empCost, stateCost, monthly, promo50Monthly, promo30Monthly, p50on, p30on, p30mo };
+      window._q = { plan: PLAN_LABELS[currentPlan], emps, states, addlSt, base, perEmp, perSt, empCost, stateCost, monthly, promo50Monthly, promo30Monthly, p50on, p30on, p30mo };
     }
 
     function buildOutput() {
       const d = window._q;
       const row = (a, b) => `${a.padEnd(24)}${b}`;
       const lines = [
-        `QBO Payroll — ${d.plan} Plan`,
+        `QuickBooks Workforce — ${d.plan} Plan`,
         '─'.repeat(36),
         row('Employees:', String(d.emps)),
         row('States:', String(d.states)),
@@ -426,10 +432,10 @@
 
     function doEmail() {
       const d = window._q;
-      window.location.href = `mailto:?subject=${encodeURIComponent('QBO Payroll ' + d.plan + ' — Quote')}&body=${encodeURIComponent(buildOutput())}`;
+      window.location.href = `mailto:?subject=${encodeURIComponent('QuickBooks Workforce ' + d.plan + ' — Quote')}&body=${encodeURIComponent(buildOutput())}`;
     }
 
-    // External link handler (matches index.html)
+    // External link handler
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
       const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
