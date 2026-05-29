@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meet the new HCM experience in QuickBooks Workforce — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1D9E75;
+      --green-dark: #0F6E56;
+      --green-light: #e8f7f2;
+      --cream: #faf9f6;
+      --border: #e8e6df;
+      --text: #1a1a1a;
+      --muted: #4b5563;
+      --badge-bg: #f0efe8;
+      --radius: 10px;
+      --nav-height: 56px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      gap: 8px;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--green-dark);
+      text-decoration: none;
+      white-space: nowrap;
+      margin-right: 8px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+      flex-wrap: wrap;
+    }
+    .nav-item {
+      position: relative;
+    }
+    .nav-link {
+      font-size: 13px;
+      color: #444;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      transition: background 0.15s;
+    }
+    .nav-link:hover { background: var(--badge-bg); color: var(--green-dark); }
+    .nav-link.active { color: var(--green-dark); font-weight: 600; }
+    .nav-link svg { width: 10px; height: 10px; fill: currentColor; }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 6px;
+      min-width: 200px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      z-index: 200;
+    }
+    .nav-item:hover .dropdown { display: block; }
+    .dropdown a {
+      display: block;
+      font-size: 13px;
+      color: #444;
+      text-decoration: none;
+      padding: 7px 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+    .dropdown a:hover { background: var(--badge-bg); color: var(--green-dark); }
+    .dropdown a.active { color: var(--green-dark); font-weight: 600; }
+
+    .nav-cta {
+      margin-left: auto;
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 7px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-dark); }
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── BADGE / EYEBROW ── */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--green-dark);
+      background: var(--green-light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero-title {
+      font-size: clamp(26px, 4vw, 34px);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 32px;
+      line-height: 1.65;
+    }
+
+    /* ── NEW BADGE ── */
+    .new-badge {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      vertical-align: middle;
+      margin-left: 6px;
+      position: relative;
+      top: -2px;
+    }
+
+    /* ── PAIN POINT CALLOUT ── */
+    .callout-stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 40px;
+    }
+    .callout-stat p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .callout-stat strong { color: var(--text); }
+
+    /* ── SECTION HEADING ── */
+    .section {
+      margin-bottom: 40px;
+    }
+    .section-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green-dark);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FEATURE GRID ── */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+    .feature-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+    }
+    .feature-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 2px 12px rgba(29,158,117,0.08);
+    }
+    .feature-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+    .feature-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .feature-tier {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--green-dark);
+      background: var(--green-light);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    /* ── TIER TABLE ── */
+    .table-wrap {
+      overflow-x: auto;
+      margin-bottom: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    th {
+      padding: 10px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 12px;
+      background: var(--badge-bg);
+      border-bottom: 2px solid var(--border);
+    }
+    th.th-wp { color: #555; }
+    th.th-wpm {
+      color: var(--green-dark);
+      border-left: 2px solid var(--green);
+      border-right: 2px solid var(--green);
+    }
+    th.th-we { color: #333; }
+    td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--badge-bg);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    td:first-child { font-weight: 600; color: var(--text); }
+    td.th-wpm {
+      border-left: 2px solid var(--green);
+      border-right: 2px solid var(--green);
+    }
+    td.check { color: var(--green); font-weight: 700; }
+    td.dash { color: #ccc; }
+    td.new-cell { color: var(--green-dark); font-weight: 600; }
+    .table-note {
+      font-size: 11px;
+      color: #999;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+    .table-note a { color: var(--green-dark); }
+
+    /* ── RESOURCE CARDS ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+    }
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .resource-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 2px 10px rgba(29,158,117,0.07);
+    }
+    .resource-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    .badge-article { background: #e8f0fb; color: #2563eb; }
+    .badge-guide   { background: #fef3c7; color: #92400e; }
+    .badge-video   { background: #fce7f3; color: #9d174d; }
+    .badge-news    { background: var(--green-light); color: var(--green-dark); }
+    .resource-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .resource-meta {
+      font-size: 11.5px;
+      color: #888;
+    }
+
+    /* ── CTA BLOCK ── */
+    .cta-block {
+      background: var(--green-dark);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      text-align: center;
+      color: #fff;
+      margin-top: 48px;
+    }
+    .cta-block h2 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cta-block p {
+      font-size: 14px;
+      opacity: 0.85;
+      margin-bottom: 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 7px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.5);
+      transition: border-color 0.15s;
+    }
+    .cta-btn-outline:hover { border-color: #fff; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      font-size: 12.5px;
+      color: #888;
+      text-align: center;
+    }
+    footer a { color: #888; text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--green-dark); }
+
+    @media (max-width: 600px) {
+      .feature-grid, .resource-grid { grid-template-columns: 1fr; }
+      .cta-block { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a class="nav-brand" href="https://workforcesolutionsonline.com/">Workforce Solutions</a>
+  <div class="nav-links">
+
+    <a class="nav-link" href="https://workforcesolutionsonline.com/">Home</a>
+
+    <!-- For SMBs dropdown -->
+    <div class="nav-item">
+      <span class="nav-link">For SMBs <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span>
+      <div class="dropdown">
+        <a href="https://workforcesolutionsonline.com/smb-challenges">Challenges for SMBs</a>
+        <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps">How QuickBooks Workforce helps</a>
+        <a href="https://workforcesolutionsonline.com/benefits-for-smbs">Benefits for SMBs</a>
+        <a href="https://workforcesolutionsonline.com/switching-from-desktop">Switching from Desktop?</a>
+        <a href="https://workforcesolutionsonline.com/switching-payroll-providers">Switching payroll providers</a>
+        <a href="https://workforcesolutionsonline.com/workforce-hcm" class="active">What's New: HCM Features ✦</a>
+      </div>
+    </div>
+
+    <!-- Resources dropdown -->
+    <div class="nav-item">
+      <span class="nav-link">Resources <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span>
+      <div class="dropdown">
+        <a href="https://workforcesolutionsonline.com/payroll-resources">Payroll resources</a>
+        <a href="https://workforcesolutionsonline.com/qb-time-resources">QB Time resources</a>
+        <a href="https://workforcesolutionsonline.com/projects-labor-costing">Projects &amp; labor costing</a>
+        <a href="https://workforcesolutionsonline.com/reviews">Reviews</a>
+      </div>
+    </div>
+
+    <!-- Switching dropdown -->
+    <div class="nav-item">
+      <span class="nav-link">Switching <svg viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg></span>
+      <div class="dropdown">
+        <a href="https://workforcesolutionsonline.com/switching-from-desktop">Switching from Desktop?</a>
+        <a href="https://workforcesolutionsonline.com/switching-payroll-providers">Switching payroll providers</a>
+      </div>
+    </div>
+
+    <a class="nav-link" href="https://workforcesolutionsonline.com/partner-resources">Partner &amp; Accountant Resources</a>
+  </div>
+
+  <a class="nav-cta" href="https://workforcesolutionsonline.com/payroll-quoter">Payroll Quoter ↗</a>
+</nav>
+
+<!-- ══ PAGE ══ -->
+<div class="page">
+
+  <!-- EYEBROW + HERO -->
+  <div class="eyebrow">✦ What's New · May 2026</div>
+  <h1 class="hero-title">Meet the new HCM experience<br>in QuickBooks Workforce</h1>
+  <p class="hero-sub">
+    Intuit launched QuickBooks Workforce on May 13, 2026 — bringing GoCo's human capital management technology directly into Workforce Premium and Elite. For the first time, payroll, hiring, onboarding, performance, and benefits all live in one place inside QuickBooks.
+  </p>
+
+  <!-- PAIN POINT STAT -->
+  <div class="callout-stat">
+    <p>Small businesses typically rely on <strong>7 to 25 separate tools</strong> to manage their workforce — creating fragmented data, manual data entry, and systems that don't talk to each other. QuickBooks Workforce consolidates all of this into a single hub connected directly to your books.</p>
+  </div>
+
+  <!-- NEW HCM FEATURES -->
+  <div class="section">
+    <div class="section-heading">🆕 New HCM features in Workforce Premium &amp; Elite</div>
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <div class="feature-title">Recruiting &amp; applicant tracking</div>
+        <div class="feature-desc">Post job listings, track applicants, and send offer letters — the entire hiring workflow automated end-to-end, without leaving QuickBooks.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <div class="feature-title">Automated onboarding</div>
+        <div class="feature-desc">New hire paperwork, e-signatures, document collection, and employee setup — automated from day one so nothing falls through the cracks.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Performance management</div>
+        <div class="feature-desc">Set goals, run reviews, and track employee growth over time — all connected to the same platform you use for payroll.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🗂️</div>
+        <div class="feature-title">Employee records &amp; profiles</div>
+        <div class="feature-desc">Centralized employee data — records, org charts, documents, and history — accessible alongside payroll and time tracking.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🏖️</div>
+        <div class="feature-title">Time off &amp; leave management</div>
+        <div class="feature-desc">Track PTO, sick leave, and other accruals in a single system that syncs automatically with payroll — no separate spreadsheets needed.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🚪</div>
+        <div class="feature-title">Offboarding</div>
+        <div class="feature-desc">Structured offboarding workflows ensure compliance, equipment return, and final pay are handled consistently every time.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TIER TABLE -->
+  <div class="section">
+    <div class="section-heading">📊 Which plan includes what?</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="th-wp">Workforce Payroll</th>
+            <th class="th-wpm">Workforce Premium ⭐</th>
+            <th class="th-we">Workforce Elite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Full-service payroll</td>
+            <td class="check">✓</td>
+            <td class="check th-wpm">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Health benefits</td>
+            <td class="check">✓</td>
+            <td class="check th-wpm">✓</td>
+            <td class="check">✓</td>
+          </tr>
+          <tr>
+            <td>Workers' comp administration</td>
+            <td>$5 admin fee/mo</td>
+            <td class="th-wpm">Admin fee included</td>
+            <td>Admin fee included</td>
+          </tr>
+          <tr>
+            <td>Mobile time tracking</td>
+            <td class="dash">—</td>
+            <td class="th-wpm">Track time &amp; location</td>
+            <td>Track project hours &amp; labor costs</td>
+          </tr>
+          <tr>
+            <td>HR support</td>
+            <td class="dash">—</td>
+            <td class="th-wpm">HR Support Center</td>
+            <td>HR Advisor</td>
+          </tr>
+          <tr>
+            <td>Recruiting &amp; applicant tracking <span class="new-badge">New</span></td>
+            <td class="dash">—</td>
+            <td class="new-cell th-wpm">✓ Included</td>
+            <td class="new-cell">✓ Included</td>
+          </tr>
+          <tr>
+            <td>Automated onboarding <span class="new-badge">New</span></td>
+            <td class="dash">—</td>
+            <td class="new-cell th-wpm">✓ Included</td>
+            <td class="new-cell">✓ Included</td>
+          </tr>
+          <tr>
+            <td>Performance management <span class="new-badge">New</span></td>
+            <td class="dash">—</td>
+            <td class="new-cell th-wpm">✓ Included</td>
+            <td class="new-cell">✓ Included</td>
+          </tr>
+          <tr>
+            <td>Background checks (Checkr) <span class="new-badge">New</span></td>
+            <td>Add-on fee applies</td>
+            <td class="th-wpm">Add-on fee applies</td>
+            <td>Add-on fee applies</td>
+          </tr>
+          <tr>
+            <td>Filing guarantee</td>
+            <td>Intuit Guarantee</td>
+            <td class="th-wpm">Intuit Guarantee</td>
+            <td>Intuit Guarantee + tax penalty protection</td>
+          </tr>
+          <tr>
+            <td>Payroll setup &amp; onboarding support</td>
+            <td>Self-serve</td>
+            <td class="th-wpm">Expert review</td>
+            <td>Expert setup</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">* Features subject to change. Verify current plan details at <a href="https://quickbooks.intuit.com/payroll/" target="_blank" rel="noopener">quickbooks.intuit.com/payroll</a>. For a full breakdown see <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps">How QuickBooks Workforce helps</a>.</p>
+  </div>
+
+  <!-- RESOURCES -->
+  <div class="section">
+    <div class="section-heading">📰 Learn more — May 2026 &amp; newer</div>
+    <div class="resource-grid">
+
+      <a class="resource-card" href="https://quickbooks.intuit.com/r/news/intuit-unveils-quickbooks-workforce/" target="_blank" rel="noopener">
+        <span class="resource-badge badge-news">News</span>
+        <span class="resource-title">Intuit unveils QuickBooks Workforce — official press release</span>
+        <span class="resource-meta">QuickBooks · May 2026</span>
+      </a>
+
+      <a class="resource-card" href="https://quickbooks.intuit.com/r/product-update/workforce-human-capital-management-payroll/" target="_blank" rel="noopener">
+        <span class="resource-badge badge-guide">Guide</span>
+        <span class="resource-title">QuickBooks Workforce: Unified payroll &amp; HCM for business success</span>
+        <span class="resource-meta">QuickBooks Blog · May 2026</span>
+      </a>
+
+      <a class="resource-card" href="https://www.accountingtoday.com/news/intuit-launches-quickbooks-workforce-for-hcm-payroll" target="_blank" rel="noopener">
+        <span class="resource-badge badge-article">Article</span>
+        <span class="resource-title">Intuit launches QuickBooks Workforce for HCM &amp; payroll</span>
+        <span class="resource-meta">Accounting Today · May 2026</span>
+      </a>
+
+      <a class="resource-card" href="https://www.cpapracticeadvisor.com/2026/05/21/intuit-quickbooks-workforce-a-new-era-of-human-capital-management-and-an-advisory-opportunity-for-accounting-firms/183824/" target="_blank" rel="noopener">
+        <span class="resource-badge badge-article">Article</span>
+        <span class="resource-title">QuickBooks Workforce: A new era of HCM for small businesses</span>
+        <span class="resource-meta">CPA Practice Advisor · May 2026</span>
+      </a>
+
+      <a class="resource-card" href="https://www.cpapracticeadvisor.com/2026/05/08/intuit-releases-quickbooks-workforce-a-human-capital-management-solution-for-smbs/183082/" target="_blank" rel="noopener">
+        <span class="resource-badge badge-article">Article</span>
+        <span class="resource-title">Intuit releases QuickBooks Workforce, an HCM solution for SMBs</span>
+        <span class="resource-meta">CPA Practice Advisor · May 2026</span>
+      </a>
+
+      <a class="resource-card" href="https://www.firmofthefuture.com/product-update/quickbooks-payroll-price-changes/" target="_blank" rel="noopener">
+        <span class="resource-badge badge-guide">Guide</span>
+        <span class="resource-title">QuickBooks Workforce pricing changes — what to know</span>
+        <span class="resource-meta">Firm of the Future · May 2026</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Ready to explore Workforce Premium or Elite?</h2>
+    <p>See what the new HCM features cost for your team — or connect with a QSP Partner for expert guidance on QuickBooks Workforce.</p>
+    <div class="cta-buttons">
+      <a class="cta-btn" href="https://workforcesolutionsonline.com/payroll-quoter">Open Payroll Quoter →</a>
+      <a class="cta-btn-outline" href="https://intuit.ziftone.com/#/page/directory" target="_blank" rel="noopener">Find a QSP Partner ↗</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  © 2026 Workforce Solutions &nbsp;|&nbsp;
+  <a href="https://workforcesolutionsonline.com/">Home</a>
+  <a href="https://workforcesolutionsonline.com/partner-resources">Partner resources</a>
+  <a href="https://workforcesolutionsonline.com/privacy-policy">Privacy policy</a>
+</footer>
+
+</body>
+</html>
