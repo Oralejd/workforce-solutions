@@ -47,13 +47,13 @@
     .callout-stat strong { color: #1a1a1a; }
 
     /* ── FEATURE GRID ── */
-    .feature-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; margin-bottom: 40px; }
-    .feature-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 20px; transition: border-color .15s, box-shadow .15s; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 40px; }
+    .feature-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 20px; transition: border-color .15s, box-shadow .15s; display: flex; flex-direction: column; }
     .feature-card:hover { border-color: #1D9E75; box-shadow: 0 2px 10px rgba(29,158,117,.07); }
     .feature-icon { font-size: 22px; margin-bottom: 10px; }
     .feature-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
     .feature-desc { font-size: 13px; color: #555; line-height: 1.55; }
-    .feature-tier { display: inline-block; font-size: 11px; font-weight: 700; color: #0F6E56; background: #E1F5EE; padding: 2px 8px; border-radius: 4px; margin-top: 10px; }
+    .feature-tier { display: inline-block; font-size: 11px; font-weight: 700; color: #0F6E56; background: #E1F5EE; padding: 2px 8px; border-radius: 4px; margin-top: auto; padding-top: 10px; }
 
     /* ── TIER TABLE ── */
     .table-wrap { overflow-x: auto; margin-bottom: 8px; }
@@ -71,8 +71,8 @@
     .new-badge { display: inline-block; background: #1D9E75; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; vertical-align: middle; margin-left: 6px; position: relative; top: -1px; }
 
     /* ── RESOURCE CARDS ── */
-    .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
-    .resource-card { display: flex; flex-direction: column; gap: 5px; background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s; }
+    .resource-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .resource-card { display: flex; flex-direction: column; gap: 5px; background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; text-decoration: none; color: inherit; transition: border-color .15s, box-shadow .15s; height: 100%; }
     .resource-card:hover { border-color: #1D9E75; box-shadow: 0 2px 10px rgba(29,158,117,.07); }
     .resource-badge { font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; width: fit-content; }
     .badge-article { background: #E6F1FB; color: #0C447C; }
@@ -103,6 +103,9 @@
       .nav-links { display: none; }
       .calc-callout { flex-direction: column; align-items: flex-start; }
       .page-hero { padding: 32px 20px; }
+    }
+    @media (min-width: 769px) and (max-width: 960px) {
+      .feature-grid, .resource-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -142,7 +145,7 @@
     <div class="page-hero-inner">
       <div class="hero-eyebrow">✦ What's New · May 2026</div>
       <h1 class="hero-headline">Meet the new HCM experience<br>in QuickBooks Workforce</h1>
-      <p class="hero-sub">Intuit launched QuickBooks Workforce on May 13, 2026 — bringing GoCo's human capital management technology directly into Workforce Premium and Elite. Payroll, hiring, onboarding, performance, and benefits all in one place inside QuickBooks.</p>
+      <p class="hero-sub">Intuit launched QuickBooks Workforce on May 13, 2026 — bringing a full human capital management experience directly into Workforce Premium and Elite. Payroll, hiring, onboarding, performance, and benefits all in one place inside QuickBooks.</p>
     </div>
   </div>
 
@@ -242,8 +245,7 @@
         <div class="calc-sub">See what the new HCM features cost for your team, or connect with a QSP Partner for expert guidance on QuickBooks Workforce.</div>
       </div>
       <div>
-        <a href="https://workforcesolutionsonline.com/payroll-quoter" class="calc-btn">Open Payroll Quoter →</a>
-        <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" rel="noopener" class="calc-btn-outline">Find a QSP Partner ↗</a>
+        <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" rel="noopener" class="calc-btn">Find a QSP Partner ↗</a>
       </div>
     </div>
   </div>
