@@ -49,6 +49,7 @@
     /* ── FEATURE GRID ── */
     .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 40px; }
     .feature-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 20px; transition: border-color .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .feature-card:last-child { grid-column: 1 / -1; max-width: 33.33%; }
     .feature-card:hover { border-color: #1D9E75; box-shadow: 0 2px 10px rgba(29,158,117,.07); }
     .feature-icon { font-size: 22px; margin-bottom: 10px; }
     .feature-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
@@ -169,10 +170,16 @@
         <span class="feature-tier">Premium &amp; Elite</span>
       </div>
       <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <div class="feature-title">HR workflows</div>
+        <div class="feature-desc">Automate the repetitive work of managing your team — from approvals and document requests to task assignments — so HR runs in the background.</div>
+        <span class="feature-tier">Premium &amp; Elite</span>
+      </div>
+      <div class="feature-card">
         <div class="feature-icon">📈</div>
         <div class="feature-title">Performance management</div>
         <div class="feature-desc">Set goals, run reviews, and track employee growth over time — all connected to the same platform you use for payroll.</div>
-        <span class="feature-tier">Premium &amp; Elite</span>
+        <span class="feature-tier">Elite only</span>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🗂️</div>
@@ -196,32 +203,31 @@
 
     <!-- TIER TABLE -->
     <div class="section-label">📊 Which plan includes what?</div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Feature</th>
-            <th>Workforce Payroll</th>
-            <th class="th-wpm">Workforce Premium ⭐</th>
-            <th>Workforce Elite</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Full-service payroll</td><td class="check">✓</td><td class="check th-wpm">✓</td><td class="check">✓</td></tr>
-          <tr><td>Health benefits</td><td class="check">✓</td><td class="check th-wpm">✓</td><td class="check">✓</td></tr>
-          <tr><td>Workers' comp administration</td><td>$5 admin fee/mo</td><td class="th-wpm">Admin fee included</td><td>Admin fee included</td></tr>
-          <tr><td>Background checks (Checkr)</td><td>Add-on fee applies</td><td class="th-wpm">Add-on fee applies</td><td>Add-on fee applies</td></tr>
-          <tr><td>Mobile time tracking</td><td class="dash">—</td><td class="th-wpm">Track time &amp; location</td><td>Track project hours &amp; labor costs</td></tr>
-          <tr><td>HR support</td><td class="dash">—</td><td class="th-wpm">HR Support Center</td><td>HR Advisor</td></tr>
-          <tr><td>Recruiting &amp; applicant tracking <span class="new-badge">New</span></td><td class="dash">—</td><td class="new-cell th-wpm">✓ Included</td><td class="new-cell">✓ Included</td></tr>
-          <tr><td>Automated onboarding <span class="new-badge">New</span></td><td class="dash">—</td><td class="new-cell th-wpm">✓ Included</td><td class="new-cell">✓ Included</td></tr>
-          <tr><td>Performance management <span class="new-badge">New</span></td><td class="dash">—</td><td class="new-cell th-wpm">✓ Included</td><td class="new-cell">✓ Included</td></tr>
-          <tr><td>Filing guarantee</td><td>Intuit Guarantee</td><td class="th-wpm">Intuit Guarantee</td><td>Intuit Guarantee + tax penalty protection</td></tr>
-          <tr><td>Payroll setup &amp; onboarding support</td><td>Self-serve</td><td class="th-wpm">Expert review</td><td>Expert setup</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="table-note">* Features subject to change. Verify current plan details at <a href="https://quickbooks.intuit.com/payroll/" target="_blank" rel="noopener">quickbooks.intuit.com/payroll</a>. For a full breakdown see <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps">How QuickBooks Workforce helps</a>.</p>
+    <table style="width:100%; border-collapse:collapse; font-size:13px; margin-bottom:10px;">
+      <thead>
+        <tr>
+          <th style="background:#f5f5f0; text-align:left; padding:10px 14px; font-weight:700; font-size:12px; border-bottom:1px solid #e0dfd8; border-radius:8px 0 0 0;">Feature</th>
+          <th style="background:#f5f5f0; text-align:left; padding:10px 14px; font-weight:700; font-size:12px; border-bottom:1px solid #e0dfd8;">Workforce Payroll</th>
+          <th style="background:#f5f5f0; text-align:left; padding:10px 14px; font-weight:700; font-size:12px; border-bottom:1px solid #e0dfd8; border:2px solid #1D9E75; border-bottom:2px solid #1D9E75;">Workforce Premium ⭐</th>
+          <th style="background:#f5f5f0; text-align:left; padding:10px 14px; font-weight:700; font-size:12px; border-bottom:1px solid #e0dfd8; border-radius:0 8px 0 0;">Workforce Elite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Fast unlimited payroll runs</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700;">✓</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">✓</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700;">✓</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Health benefits</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700;">✓</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">✓</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#1D9E75; font-weight:700;">✓</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Workers' comp administration</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">$5 admin fee/mo</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">Admin fee included</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Admin fee included</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Background checks (Checkr)</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Add-on fee applies</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">Add-on fee applies</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Add-on fee applies</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Mobile time tracking</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">Track time &amp; location</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Track project hours &amp; labor expenses</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Payroll setup &amp; onboarding</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Self-serve</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">Expert review</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">Expert setup</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">HR support</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">HR Support Center</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#555;">HR Advisor</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Recruiting &amp; applicant tracking <span style="display:inline-block;background:#1D9E75;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">New</span></td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">✓ Included</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600;">✓ Included</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Automated onboarding <span style="display:inline-block;background:#1D9E75;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">New</span></td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">✓ Included</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600;">✓ Included</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">HR workflows <span style="display:inline-block;background:#1D9E75;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">New</span></td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">✓ Included</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600;">✓ Included</td></tr>
+        <tr><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; font-weight:400; color:#1a1a1a;">Performance management <span style="display:inline-block;background:#1D9E75;color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:4px;vertical-align:middle;margin-left:4px;">New</span></td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#ccc; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75;">—</td><td style="padding:9px 14px; border-bottom:1px solid #f0efe8; color:#0F6E56; font-weight:600;">✓ Included</td></tr>
+        <tr><td style="padding:9px 14px; font-weight:400; color:#1a1a1a;">Filing guarantee</td><td style="padding:9px 14px; color:#555;">Intuit Guarantee</td><td style="padding:9px 14px; color:#555; border-left:2px solid #1D9E75; border-right:2px solid #1D9E75; border-bottom:2px solid #1D9E75;">Intuit Guarantee</td><td style="padding:9px 14px; color:#555;">Intuit Guarantee + tax penalty protection</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px; color:#999; margin-bottom:0; line-height:1.5;">* Features subject to change. Verify at <a href="https://quickbooks.intuit.com/payroll/" target="_blank" rel="noopener" style="color:#0F6E56;">quickbooks.intuit.com/payroll</a>. For a full breakdown see <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps" style="color:#0F6E56;">How QuickBooks Workforce helps</a>.</p>
   </div>
 
   <!-- RESOURCES -->
