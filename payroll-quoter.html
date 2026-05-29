@@ -126,37 +126,38 @@
 <body>
 
   <nav class="nav">
-    <a href="index.html" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <a href="https://workforcesolutionsonline.com/" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
     <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
+      <a href="https://workforcesolutionsonline.com/" class="nav-link">Home</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-toggle">For SMBs</div>
         <div class="nav-dropdown-menu">
-          <a href="smb-challenges.html" class="nav-dropdown-item">Challenges for SMBs</a>
-          <a href="how-qbo-payroll-helps.html" class="nav-dropdown-item">How QBO Payroll helps</a>
-          <a href="benefits-for-smbs.html" class="nav-dropdown-item">Benefits for SMBs</a>
-          <a href="switching-from-desktop.html" class="nav-dropdown-item">Switching from Desktop?</a>
-          <a href="switching-payroll-providers.html" class="nav-dropdown-item">Switching payroll providers</a>
+          <a href="https://workforcesolutionsonline.com/smb-challenges" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps" class="nav-dropdown-item">How QuickBooks Workforce helps</a>
+          <a href="https://workforcesolutionsonline.com/benefits-for-smbs" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="https://workforcesolutionsonline.com/switching-from-desktop" class="nav-dropdown-item">Switching from Desktop?</a>
+          <a href="https://workforcesolutionsonline.com/switching-payroll-providers" class="nav-dropdown-item">Switching payroll providers</a>
         </div>
       </div>
       <div class="nav-dropdown">
         <div class="nav-dropdown-toggle">Resources</div>
         <div class="nav-dropdown-menu">
-          <a href="payroll-resources.html" class="nav-dropdown-item">Payroll resources</a>
-          <a href="qb-time-resources.html" class="nav-dropdown-item">QB Time resources</a>
-          <a href="projects-labor-costing.html" class="nav-dropdown-item">Projects &amp; labor costing</a>
-          <a href="reviews.html" class="nav-dropdown-item">Reviews</a>
+          <a href="https://workforcesolutionsonline.com/payroll-resources" class="nav-dropdown-item">Payroll resources</a>
+          <a href="https://workforcesolutionsonline.com/qb-time-resources" class="nav-dropdown-item">QB Time resources</a>
+          <a href="https://workforcesolutionsonline.com/projects-labor-costing" class="nav-dropdown-item">Projects &amp; labor costing</a>
+          <a href="https://workforcesolutionsonline.com/reviews" class="nav-dropdown-item">Reviews</a>
+          <a href="https://workforcesolutionsonline.com/workforce-hcm" class="nav-dropdown-item">What's New: HCM Features ✦</a>
         </div>
       </div>
-      <a href="partner-resources.html" class="nav-link">Partner &amp; Accountant Resources</a>
+      <a href="https://workforcesolutionsonline.com/partner-resources" class="nav-link">Partner &amp; Accountant Resources</a>
     </div>
-    <a href="payroll-quoter.html" class="nav-cta active-page">Payroll Quoter ↗</a>
+    <a href="https://workforcesolutionsonline.com/payroll-quoter" class="nav-cta active-page">Payroll Quoter ↗</a>
   </nav>
 
   <div class="page-header">
     <div class="page-header-eyebrow">Pricing Tool</div>
     <h1>QuickBooks Workforce Quoter</h1>
-    <p>US monthly list pricing · Workforce Payroll, Workforce Premium &amp; Workforce Elite · Updated Oct 2025</p>
+    <p>US monthly list pricing · Workforce Payroll, Workforce Premium &amp; Workforce Elite · Updated May 2026</p>
   </div>
 
   <main>
@@ -256,16 +257,16 @@
       </div>
     </div>
 
-    <div class="footnote">List rates · Oct 2025 · Taxes, add-ons, and negotiated discounts not included.</div>
+    <div class="footnote">List rates · May 2026 · Taxes, add-ons, and negotiated discounts not included.</div>
 
   </main>
 
   <footer class="footer">
-    <div class="footer-brand">© 2025 Workforce Solutions</div>
+    <div class="footer-brand">© 2026 Workforce Solutions</div>
     <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="partner-resources.html">Partner resources</a>
-      <a href="privacy-policy.html">Privacy policy</a>
+      <a href="https://workforcesolutionsonline.com/">Home</a>
+      <a href="https://workforcesolutionsonline.com/partner-resources">Partner resources</a>
+      <a href="https://workforcesolutionsonline.com/privacy-policy">Privacy policy</a>
     </div>
   </footer>
 
@@ -327,25 +328,20 @@
       const stateCost = perSt  * addlSt;
       const monthly   = Math.max(0, base) + empCost + stateCost;
 
-      // 50% off BASE ONLY
       const promo50Monthly = Math.max(0, base) * 0.5 + empCost + stateCost;
-      // 30% off base + 15% off per-employee; per-state unchanged
       const promo30Monthly = Math.max(0, base) * 0.7 + perEmp * 0.85 * emps + stateCost;
 
       const p50on = document.getElementById('promo50').checked;
       const p30on = document.getElementById('promo30').checked;
       const p30mo = Math.max(1, parseInt(document.getElementById('promo30-months').value || '12', 10));
 
-      // State hint
       document.getElementById('state-hint').textContent =
         currentPlan === 'WorkforceElite' ? 'Multistate included at no extra charge' : `+${fmt(perSt)}/extra state`;
 
-      // Custom badge + reset button
       const hasCustom = ['custom-base','custom-perempl','custom-perstate'].some(id => document.getElementById(id).value !== '');
       document.getElementById('custom-badge').style.display   = hasCustom ? '' : 'none';
       document.getElementById('override-reset').style.display = hasCustom ? '' : 'none';
 
-      // Inline promo prices
       const p50el = document.getElementById('promo50-price');
       p50el.style.display = p50on ? '' : 'none';
       if (p50on) p50el.textContent = fmt(promo50Monthly) + '/mo';
@@ -356,10 +352,8 @@
 
       document.getElementById('promo-warning').style.display = (p50on && p30on) ? '' : 'none';
 
-      // Plan badge
       document.getElementById('plan-badge').textContent = PLAN_LABELS[currentPlan];
 
-      // Price block
       const priceBlock = document.getElementById('result-price-block');
       if (!p50on && !p30on) {
         priceBlock.innerHTML = `
@@ -383,7 +377,6 @@
         priceBlock.innerHTML = html;
       }
 
-      // Breakdown
       document.getElementById('bd-base').textContent        = fmt(Math.max(0, base));
       document.getElementById('bd-emp-label').textContent   = `Employees (${emps})`;
       document.getElementById('bd-emp').textContent         = fmt(empCost);
@@ -411,7 +404,7 @@
       if (d.p50on) lines.push(row('50% promo — base (3 mo):', fmt(d.promo50Monthly) + '/mo'));
       if (d.p30on) lines.push(row(`30/15 promo (${d.p30mo} mo):`, fmt(d.promo30Monthly) + '/mo'));
       if (d.p50on && d.p30on) lines.push('* Promos cannot be combined.');
-      lines.push('', 'Pricing as of Oct 2025. Subject to change.');
+      lines.push('', 'Pricing as of May 2026. Subject to change.');
       return lines.join('\n');
     }
 
@@ -435,7 +428,6 @@
       window.location.href = `mailto:?subject=${encodeURIComponent('QuickBooks Workforce ' + d.plan + ' — Quote')}&body=${encodeURIComponent(buildOutput())}`;
     }
 
-    // External link handler
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
       const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
