@@ -50,6 +50,11 @@
     .how-desc { font-size: 12px; color: #555; line-height: 1.6; }
     .plan-note { background: #E6F1FB; border: 1px solid #B5D4F4; border-radius: 10px; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; font-size: 13px; color: #0C447C; line-height: 1.6; }
     .plan-note strong { font-weight: 700; }
+    .ies-note { background: #EEEDFE; border: 1px solid #AFA9EC; border-radius: 12px; padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .ies-note-title { font-size: 15px; font-weight: 700; color: #26215C; margin-bottom: 4px; }
+    .ies-note-sub { font-size: 13px; color: #3C3489; max-width: 560px; line-height: 1.6; }
+    .ies-note-btn { background: #534AB7; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .ies-note-btn:hover { background: #3C3489; }
     .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
     .resource-card:hover { border-color: #aaa; }
@@ -59,11 +64,14 @@
     .badge-video   { background: #EEEDFE; color: #3C3489; }
     .badge-article { background: #E6F1FB; color: #0C447C; }
     .badge-guide   { background: #FAEEDA; color: #633806; }
-    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .bridge { background: #E1F5EE; border: 1px solid #9FE1CB; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
     .bridge-title { font-size: 15px; font-weight: 700; color: #04342C; margin-bottom: 4px; }
     .bridge-sub { font-size: 13px; color: #085041; }
+    .bridge-btns { display: flex; gap: 10px; flex-wrap: wrap; }
     .bridge-btn { background: #0F6E56; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
     .bridge-btn:hover { background: #085041; }
+    .bridge-btn-outline { background: #fff; color: #0F6E56; border: 1px solid #1D9E75; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn-outline:hover { background: #E1F5EE; }
     .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
     .footer-brand { font-weight: 700; color: #555; }
     .footer-links { display: flex; gap: 20px; }
@@ -74,7 +82,7 @@
       .section { padding: 24px 20px 0; }
       .page-header { padding: 28px 20px; }
       .nav-links { display: none; }
-      .bridge { flex-direction: column; align-items: flex-start; }
+      .bridge, .ies-note { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -94,6 +102,7 @@
           <a href="https://workforcesolutionsonline.com/switching-payroll-providers" class="nav-dropdown-item">Switching payroll providers</a>
         </div>
       </div>
+      <a href="https://workforcesolutionsonline.com/intuit-enterprise-suite" class="nav-link">Intuit Enterprise Suite</a>
       <div class="nav-dropdown">
         <div class="nav-dropdown-toggle active">Resources</div>
         <div class="nav-dropdown-menu">
@@ -207,6 +216,17 @@
     </div>
   </div>
 
+  <!-- OUTGROWN QBO PROJECTS? IES PATH -->
+  <div class="section">
+    <div class="ies-note">
+      <div>
+        <div class="ies-note-title">Managing project costing across multiple entities?</div>
+        <div class="ies-note-sub">QBO Projects works well for a single business. For companies running project costing across multiple entities, locations, or a construction portfolio, Intuit Enterprise Suite extends this with multi-entity consolidation, automated intercompany eliminations, and a dedicated Construction Edition — while keeping payroll, HR, and job costing on one platform.</div>
+      </div>
+      <a href="https://workforcesolutionsonline.com/intuit-enterprise-suite" class="ies-note-btn">Explore Intuit Enterprise Suite →</a>
+    </div>
+  </div>
+
   <!-- QSP PARTNER & PROADVISOR GUIDES -->
   <div class="section">
     <div class="section-header">
@@ -317,7 +337,10 @@
         <div class="bridge-title">Ready to see how QuickBooks Workforce fits into your workflow?</div>
         <div class="bridge-sub">Explore how QuickBooks Workforce's integration with Projects and QB Time solves the labor costing challenge end to end.</div>
       </div>
-      <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps" class="bridge-btn">How QuickBooks Workforce helps →</a>
+      <div class="bridge-btns">
+        <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps" class="bridge-btn-outline">How QuickBooks Workforce helps →</a>
+        <a href="https://workforcesolutionsonline.com/intuit-enterprise-suite" class="bridge-btn">Multi-entity? See Intuit Enterprise Suite →</a>
+      </div>
     </div>
   </div>
 
