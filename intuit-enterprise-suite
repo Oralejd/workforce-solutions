@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intuit Enterprise Suite — Workforce Solutions</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1a1a1a; background: #fafaf8; font-size: 15px; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .nav { background: #fff; border-bottom: 1px solid #e0dfd8; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .nav-brand { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .nav-brand-dot { width: 9px; height: 9px; border-radius: 50%; background: #1D9E75; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; }
+    .nav-link { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s; }
+    .nav-link:hover { color: #1a1a1a; }
+    .nav-link.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-cta { font-size: 13px; font-weight: 700; background: #1D9E75; color: #fff; border-radius: 20px; padding: 7px 16px; white-space: nowrap; }
+    .nav-cta:hover { background: #0F6E56; }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { font-size: 13px; color: #555; padding: 0 12px; height: 56px; display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; white-space: nowrap; cursor: pointer; transition: color .15s; }
+    .nav-dropdown-toggle:hover { color: #1a1a1a; }
+    .nav-dropdown-toggle.active { color: #1a1a1a; border-bottom-color: #1D9E75; font-weight: 700; }
+    .nav-dropdown-toggle::after { content: "▾"; font-size: 10px; margin-top: 1px; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 56px; left: 0; background: #fff; border: 1px solid #e0dfd8; border-radius: 0 0 10px 10px; min-width: 220px; z-index: 200; box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-item { display: block; font-size: 13px; color: #555; padding: 10px 16px; border-bottom: 1px solid #f0efe8; transition: background .1s, color .1s; }
+    .nav-dropdown-item:last-child { border-bottom: none; }
+    .nav-dropdown-item:hover { background: #f5f5f0; color: #1a1a1a; }
+    .nav-dropdown-item.active { font-weight: 700; color: #0F6E56; }
+
+    .page-header { background: #f5f5f0; border-bottom: 1px solid #e0dfd8; padding: 36px 32px 28px; }
+    .page-header-inner { max-width: 1100px; margin: 0 auto; }
+    .eyebrow { font-size: 11px; font-weight: 700; color: #534AB7; text-transform: uppercase; letter-spacing: .07em; margin-bottom: 8px; }
+    .page-title { font-size: 26px; font-weight: 700; margin-bottom: 8px; line-height: 1.25; }
+    .page-sub { font-size: 14px; color: #555; line-height: 1.7; max-width: 640px; }
+
+    .section { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; }
+    .section:last-of-type { padding-bottom: 40px; }
+    .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #e0dfd8; }
+    .section-icon { width: 28px; height: 28px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+    .section-title { font-size: 15px; font-weight: 700; }
+
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .why-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 18px; }
+    .why-icon { font-size: 20px; margin-bottom: 10px; }
+    .why-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .why-desc { font-size: 13px; color: #555; line-height: 1.6; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .feature-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 20px; transition: border-color .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .feature-card:hover { border-color: #534AB7; box-shadow: 0 2px 10px rgba(83,74,183,.08); }
+    .feature-icon { font-size: 22px; margin-bottom: 10px; }
+    .feature-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .feature-desc { font-size: 13px; color: #555; line-height: 1.55; }
+    .new-badge { display: inline-block; background: #534AB7; color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; vertical-align: middle; margin-left: 6px; position: relative; top: -1px; }
+
+    .table-wrap { overflow-x: auto; margin-bottom: 8px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    th { padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; background: #f5f5f0; border-bottom: 2px solid #e0dfd8; }
+    th.th-ies { color: #3C3489; border-left: 2px solid #534AB7; border-right: 2px solid #534AB7; border-top: 2px solid #534AB7; }
+    td { padding: 9px 14px; border-bottom: 1px solid #f0efe8; color: #555; vertical-align: top; }
+    td:first-child { font-weight: 600; color: #1a1a1a; }
+    td.td-ies { border-left: 2px solid #534AB7; border-right: 2px solid #534AB7; font-weight: 600; color: #3C3489; }
+    td.dash { color: #ccc; }
+    .table-note { font-size: 11px; color: #999; line-height: 1.5; margin-top: 6px; }
+    .table-note a { color: #534AB7; }
+
+    .fit-box { background: #EEEDFE; border: 1px solid #AFA9EC; border-radius: 12px; padding: 20px 24px; }
+    .fit-title { font-size: 14px; font-weight: 700; color: #26215C; margin-bottom: 12px; }
+    .fit-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .fit-col-title { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+    .fit-list { list-style: none; font-size: 13px; color: #3C3489; line-height: 1.9; }
+    .fit-list.no { color: #6b5f8f; }
+    .fit-list li::before { content: "✓ "; font-weight: 700; }
+    .fit-list.no li::before { content: "✕ "; font-weight: 700; }
+    .fit-note { font-size: 11.5px; color: #6b5f8f; margin-top: 14px; line-height: 1.6; border-top: 1px solid #AFA9EC; padding-top: 12px; }
+
+    .resource-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .resource-card { background: #fff; border: 1px solid #e0dfd8; border-radius: 10px; padding: 14px 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; transition: border-color .15s; }
+    .resource-card:hover { border-color: #aaa; }
+    .resource-title { font-size: 13px; font-weight: 700; line-height: 1.4; margin-bottom: 3px; }
+    .resource-source { font-size: 11px; color: #999; }
+    .badge { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-article { background: #E6F1FB; color: #0C447C; }
+    .badge-guide { background: #FAEEDA; color: #633806; }
+    .badge-official { background: #EEEDFE; color: #3C3489; }
+
+    .bridge { background: #EEEDFE; border: 1px solid #AFA9EC; border-radius: 12px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .bridge-title { font-size: 15px; font-weight: 700; color: #26215C; margin-bottom: 4px; }
+    .bridge-sub { font-size: 13px; color: #3C3489; }
+    .bridge-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .bridge-btn { background: #534AB7; color: #fff; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn:hover { background: #3C3489; }
+    .bridge-btn-outline { background: #fff; color: #534AB7; border: 1px solid #AFA9EC; border-radius: 24px; padding: 10px 20px; font-size: 13px; font-weight: 700; white-space: nowrap; }
+    .bridge-btn-outline:hover { background: #F4F3FD; }
+
+    .footer { background: #fff; border-top: 1px solid #e0dfd8; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #999; margin-top: 40px; }
+    .footer-brand { font-weight: 700; color: #555; }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: #999; }
+    .footer-links a:hover { color: #555; }
+
+    @media (max-width: 768px) {
+      .why-grid, .feature-grid, .resource-grid, .fit-cols { grid-template-columns: 1fr; }
+      .section { padding: 24px 20px 0; }
+      .page-header { padding: 28px 20px; }
+      .nav-links { display: none; }
+      .bridge { flex-direction: column; align-items: flex-start; }
+    }
+    @media (min-width: 769px) and (max-width: 960px) {
+      .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="https://workforcesolutionsonline.com/" class="nav-brand"><div class="nav-brand-dot"></div>Workforce Solutions</a>
+    <div class="nav-links">
+      <a href="https://workforcesolutionsonline.com/" class="nav-link">Home</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">For SMBs</div>
+        <div class="nav-dropdown-menu">
+          <a href="https://workforcesolutionsonline.com/smb-challenges" class="nav-dropdown-item">Challenges for SMBs</a>
+          <a href="https://workforcesolutionsonline.com/how-qbo-payroll-helps" class="nav-dropdown-item">How QuickBooks Workforce helps</a>
+          <a href="https://workforcesolutionsonline.com/benefits-for-smbs" class="nav-dropdown-item">Benefits for SMBs</a>
+          <a href="https://workforcesolutionsonline.com/switching-from-desktop" class="nav-dropdown-item">Switching from Desktop?</a>
+          <a href="https://workforcesolutionsonline.com/switching-payroll-providers" class="nav-dropdown-item">Switching payroll providers</a>
+        </div>
+      </div>
+      <a href="https://workforcesolutionsonline.com/intuit-enterprise-suite" class="nav-link active">Intuit Enterprise Suite</a>
+      <div class="nav-dropdown">
+        <div class="nav-dropdown-toggle">Resources</div>
+        <div class="nav-dropdown-menu">
+          <a href="https://workforcesolutionsonline.com/payroll-resources" class="nav-dropdown-item">Payroll resources</a>
+          <a href="https://workforcesolutionsonline.com/qb-time-resources" class="nav-dropdown-item">QB Time resources</a>
+          <a href="https://workforcesolutionsonline.com/projects-labor-costing" class="nav-dropdown-item">Projects &amp; labor costing</a>
+          <a href="https://workforcesolutionsonline.com/reviews" class="nav-dropdown-item">Reviews</a>
+          <a href="https://workforcesolutionsonline.com/workforce-hcm" class="nav-dropdown-item">What's New: HCM Features ✦</a>
+        </div>
+      </div>
+      <a href="https://workforcesolutionsonline.com/partner-resources" class="nav-link">Partner &amp; Accountant Resources</a>
+    </div>
+    <a href="https://workforcesolutionsonline.com/payroll-quoter" class="nav-cta">Payroll Quoter ↗</a>
+  </nav>
+
+  <div class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Scaling beyond QuickBooks Online</div>
+      <h1 class="page-title">Intuit Enterprise Suite</h1>
+      <p class="page-sub">For businesses that have outgrown QuickBooks Online but aren't ready for a traditional ERP. Intuit Enterprise Suite adds multi-entity consolidation, dimensional reporting, and integrated payroll &amp; HR — built on the same foundation as QuickBooks, without a six-month implementation.</p>
+    </div>
+  </div>
+
+  <!-- WHY BUSINESSES GRADUATE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">💡</div>
+      <div class="section-title">Why businesses graduate to Intuit Enterprise Suite</div>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🏢</div>
+        <div class="why-title">Managing more than one entity</div>
+        <p class="why-desc">Subsidiaries, franchises, acquisitions, or related businesses that today require separate QuickBooks logins and manual report-stitching in Excel to see the full picture.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <div class="why-title">Outgrowing spreadsheet-based reporting</div>
+        <p class="why-desc">When closing the books takes days instead of hours, and every board meeting means rebuilding reports by hand, it's a sign standard QBO reporting has hit its ceiling.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔗</div>
+        <div class="why-title">Intercompany transactions eating up staff time</div>
+        <p class="why-desc">Manually recording matching entries across entities is slow and error-prone. IES automates eliminations at the transaction level as they happen.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">👥</div>
+        <div class="why-title">Payroll, HR, and financials living in different systems</div>
+        <p class="why-desc">As teams grow, disconnected payroll/HR tools create duplicate data entry. IES brings QuickBooks Workforce Elite's full HCM suite into the same platform as the books.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPRING 2026 FEATURES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F4F3FD;">🆕</div>
+      <div class="section-title">What's included — Spring 2026 release</div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧮</div>
+        <div class="feature-title">Automated multi-entity close<span class="new-badge">New</span></div>
+        <p class="feature-desc">Intercompany eliminations are generated and tracked automatically at the transaction level, and journal entries can be bulk-imported from spreadsheets — cutting close time from days to hours.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗂️</div>
+        <div class="feature-title">Multi-level entity hierarchy<span class="new-badge">New</span></div>
+        <p class="feature-desc">Customizable entity structures reflect how the business actually operates — not just its legal structure — with consolidated statements that roll up correctly either way.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <div class="feature-title">Dimensional reporting &amp; peer benchmarking<span class="new-badge">New</span></div>
+        <p class="feature-desc">Slice reports by custom dimensions across financial and sales data — extending beyond classes — and compare performance against industry peers in real time.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👔</div>
+        <div class="feature-title">Integrated HCM (QuickBooks Workforce Elite)<span class="new-badge">New</span></div>
+        <p class="feature-desc">Hiring, onboarding, employee documents, time off, performance management, and offboarding now run in the same environment as the financials.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏗️</div>
+        <div class="feature-title">Construction Edition (beta)</div>
+        <p class="feature-desc">Real-time WIP reporting, construction KPI dashboards, a construction-specific chart of accounts, certified payroll reporting (WH-347), and AI-assisted cost allocation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI-powered automation</div>
+        <p class="feature-desc">Chart-of-accounts standardization, variance detection, and intercompany categorization run in the background so finance teams direct the work instead of doing it manually.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARISON TABLE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">📊</div>
+      <div class="section-title">QuickBooks Online Advanced vs. Intuit Enterprise Suite</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th>QBO Online Advanced</th>
+            <th class="th-ies">Intuit Enterprise Suite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Multi-entity consolidation</td><td>Manual, entity by entity</td><td class="td-ies">Native, automated</td></tr>
+          <tr><td>Intercompany eliminations</td><td class="dash">—</td><td class="td-ies">Automated at transaction level</td></tr>
+          <tr><td>Dimensional reporting &amp; peer benchmarking</td><td>Classes &amp; locations</td><td class="td-ies">Full dimensions + peer benchmarking</td></tr>
+          <tr><td>Payroll &amp; HCM</td><td>QuickBooks Workforce (add-on)</td><td class="td-ies">Workforce Elite, built in</td></tr>
+          <tr><td>Project profitability &amp; job costing</td><td>QBO Projects</td><td class="td-ies">Enhanced, plus Construction Edition (beta)</td></tr>
+          <tr><td>AI-powered automation</td><td>Limited</td><td class="td-ies">Categorization, variance detection, cost allocation</td></tr>
+          <tr><td>Typical business size</td><td>Up to ~$5M revenue, single entity</td><td class="td-ies">$5M–$250M revenue, single or multi-entity</td></tr>
+          <tr><td>Setup &amp; support model</td><td>Self-serve</td><td class="td-ies">Guided setup + dedicated Customer Success Manager</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">* Features and eligibility subject to change; verify current details at <a href="https://www.intuit.com/enterprise/" target="_blank" rel="noopener">intuit.com/enterprise</a>. Not a cloud version of QuickBooks Desktop Enterprise — IES is a distinct product category.</p>
+  </div>
+
+  <!-- FIT ASSESSMENT -->
+  <div class="section">
+    <div class="fit-box">
+      <div class="fit-title">Is Intuit Enterprise Suite the right fit?</div>
+      <div class="fit-cols">
+        <div>
+          <div class="fit-col-title" style="color:#26215C;">Good fit for businesses that:</div>
+          <ul class="fit-list">
+            <li>Manage multiple entities, locations, or subsidiaries</li>
+            <li>Are project-based — construction, specialty trades, professional services</li>
+            <li>Have outgrown spreadsheet-based consolidation and reporting</li>
+            <li>Want payroll, HR, and financials on one platform</li>
+          </ul>
+        </div>
+        <div>
+          <div class="fit-col-title" style="color:#6b5f8f;">Not yet the right fit if:</div>
+          <ul class="fit-list no">
+            <li>Inventory is core to the business — no serial/lot tracking, barcode workflows, or assembly builds as of 2026</li>
+            <li>The business needs global, heavy-manufacturing, or deep-customization ERP capability</li>
+            <li>Annual revenue is well under the ~$5M range QBO Advanced already serves well</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fit-note">Pricing is a custom quote based on user count, entity count, and integrations — Intuit does not publish flat pricing. A QSP Partner can help estimate cost and assess fit for a specific business.</div>
+    </div>
+  </div>
+
+  <!-- QSP / PROADVISOR RESOURCES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FAEEDA;">📄</div>
+      <div class="section-title">QSP Partner &amp; ProAdvisor guides</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.firmofthefuture.com/product-update/intuit-launches-new-solution-intuit-enterprise-suite/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Intuit Enterprise Suite — 5 benefits for accounting firms</div><div class="resource-source">Firm of the Future · Intuit · Updated Feb 2026</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.intuit.com/enterprise/blog/product-update/spring-2026-intuit-enterprise-suite-release-notes/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Spring 2026 Intuit Enterprise Suite release notes</div><div class="resource-source">Intuit Enterprise Suite Blog · May 2026</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://insightfulaccountant.com/accounting-tech/general-ledger/the-erp-update-has-the-intuit-enterprise-suite-spring-2026-rollout/" target="_blank" class="resource-card">
+        <div><div class="resource-title">The ERP Update — Spring 2026 IES rollout</div><div class="resource-source">Insightful Accountant · May 2026</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+      <a href="https://www.intuit.com/enterprise/blog/product-update/intuit-enterprise-suite-february-2026-release-notes/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Winter 2026 release notes — Construction Edition &amp; inventory updates</div><div class="resource-source">Intuit Enterprise Suite Blog · Feb 2026</div></div>
+        <span class="badge badge-article">Article</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- OFFICIAL INTUIT RESOURCES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EEEDFE;">✓</div>
+      <div class="section-title">Official Intuit resources</div>
+    </div>
+    <div class="resource-grid">
+      <a href="https://www.intuit.com/enterprise/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Intuit Enterprise Suite — official overview &amp; FAQ</div><div class="resource-source">Intuit</div></div>
+        <span class="badge badge-official">Official</span>
+      </a>
+      <a href="https://www.intuit.com/enterprise/" target="_blank" class="resource-card">
+        <div><div class="resource-title">Take an interactive tour of Intuit Enterprise Suite</div><div class="resource-source">Intuit</div></div>
+        <span class="badge badge-official">Official</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- BRIDGE -->
+  <div class="section">
+    <div class="bridge">
+      <div>
+        <div class="bridge-title">Not sure if a client or business is ready yet?</div>
+        <div class="bridge-sub">See how QBO Projects and QuickBooks Workforce handle labor costing and payroll today — then compare against what Intuit Enterprise Suite adds at scale.</div>
+      </div>
+      <div class="bridge-btns">
+        <a href="https://workforcesolutionsonline.com/projects-labor-costing" class="bridge-btn-outline">See QBO Projects & labor costing</a>
+        <a href="https://intuit.ziftone.com/#/page/directory" target="_blank" rel="noopener" class="bridge-btn">Find a QSP Partner ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-brand">© 2026 Workforce Solutions</div>
+    <div class="footer-links">
+      <a href="https://workforcesolutionsonline.com/">Home</a>
+      <a href="https://workforcesolutionsonline.com/partner-resources">Partner resources</a>
+      <a href="https://workforcesolutionsonline.com/privacy-policy">Privacy policy</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      const isExternal = href && (href.startsWith('http://') || href.startsWith('https://')) && !href.includes(window.location.hostname);
+      if (isExternal) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    });
+  </script>
+
+</body>
+</html>
