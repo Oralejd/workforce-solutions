@@ -62,14 +62,13 @@
     .challenge-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
     .challenge { background: #fff; border: 1px solid #e0dfd8; border-radius: 12px; padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s, box-shadow .15s; }
     .challenge:hover { border-color: #1D9E75; box-shadow: 0 2px 8px rgba(29,158,117,.07); }
-    .challenge:last-child { grid-column: 1 / -1; max-width: 50%; }
     .challenge-header { display: flex; align-items: center; gap: 12px; }
     .challenge-num { width: 30px; height: 30px; border-radius: 50%; background: #1D9E75; color: #fff; font-size: 13px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .challenge-title { font-size: 15px; font-weight: 700; }
     .challenge-desc { font-size: 13px; color: #555; line-height: 1.55; }
     .challenge-link { font-size: 13px; font-weight: 700; color: #0F6E56; margin-top: auto; }
     .challenge-link:hover { text-decoration: underline; }
-    @media (max-width: 768px) { .challenge-list { grid-template-columns: 1fr; } .challenge:last-child { max-width: 100%; } }
+    @media (max-width: 768px) { .challenge-list { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -133,6 +132,11 @@
         <div class="challenge-header"><div class="challenge-num">5</div><div class="challenge-title">State-mandated retirement plans</div></div>
         <p class="challenge-desc">More states are requiring employers to offer retirement savings options. Know whether your state has a mandate and what your obligations are.</p>
         <a class="challenge-link" href="https://www.vestwell.com/state-mandate" target="_blank">→ Read more</a>
+      </div>
+      <div class="challenge">
+        <div class="challenge-header"><div class="challenge-num">6</div><div class="challenge-title">Workers' compensation costs &amp; compliance</div></div>
+        <p class="challenge-desc">Requirements and rates vary by state, and premiums are shaped by claims history, industry classification, and experience modifiers — a rising cost many small businesses struggle to manage and predict on their own.</p>
+        <a class="challenge-link" href="https://quickbooks.intuit.com/r/payroll/workers-compensation-cost/" target="_blank">→ Read more</a>
       </div>
     </div>
     <div class="calc-callout">
