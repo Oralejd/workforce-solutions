@@ -158,7 +158,7 @@
   <div class="page-header">
     <div class="page-header-eyebrow">Pricing Tool</div>
     <h1>QuickBooks Workforce Quoter</h1>
-    <p>US monthly list pricing · Workforce Payroll, Workforce Premium &amp; Workforce Elite · Updated May 2026</p>
+    <p>US monthly list pricing · Workforce Payroll, Workforce Premium &amp; Workforce Elite · Updated August 2026</p>
   </div>
 
   <main>
@@ -228,7 +228,7 @@
           </div>
           <div>
             <label>Per employee ($/ee/mo)</label>
-            <input type="number" step="0.01" min="0" id="custom-perempl" placeholder="6.50" oninput="recalc()" />
+            <input type="number" step="0.01" min="0" id="custom-perempl" placeholder="7" oninput="recalc()" />
           </div>
           <div>
             <label>Per extra state ($/state/mo)</label>
@@ -258,7 +258,7 @@
       </div>
     </div>
 
-    <div class="footnote">List rates · May 2026 · Taxes, add-ons, and negotiated discounts not included.</div>
+    <div class="footnote">List rates · August 2026 · Taxes, add-ons, and negotiated discounts not included.</div>
 
   </main>
 
@@ -273,9 +273,9 @@
 
   <script>
     const PRICES = {
-      WorkforcePayroll: { base: 50,  perEmployee: 6.5,  perState: 12 },
-      WorkforcePremium: { base: 88,  perEmployee: 10,   perState: 12 },
-      WorkforceElite:   { base: 134, perEmployee: 12,   perState: 0  },
+      WorkforcePayroll: { base: 50,  perEmployee: 7,  perState: 12 },
+      WorkforcePremium: { base: 88,  perEmployee: 13, perState: 12 },
+      WorkforceElite:   { base: 134, perEmployee: 17, perState: 0  },
     };
 
     const PLAN_LABELS = {
@@ -405,7 +405,7 @@
       if (d.p50on) lines.push(row('50% promo — base (3 mo):', fmt(d.promo50Monthly) + '/mo'));
       if (d.p30on) lines.push(row(`30/15 promo (${d.p30mo} mo):`, fmt(d.promo30Monthly) + '/mo'));
       if (d.p50on && d.p30on) lines.push('* Promos cannot be combined.');
-      lines.push('', 'Pricing as of May 2026. Subject to change.');
+      lines.push('', 'Pricing as of August 2026. Subject to change.');
       return lines.join('\n');
     }
 
